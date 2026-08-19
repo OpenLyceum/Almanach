@@ -40,6 +40,12 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Check built pages for console errors
+        run: npm run check:pages
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5.0.0
         with:

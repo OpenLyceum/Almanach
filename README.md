@@ -17,6 +17,7 @@ npm run dev        # local dev server with live reload
 | `npm run generate` | Validate all frontmatter and regenerate the LLM artifacts in `docs/public/` |
 | `npm run build` | `generate` + full static site build (fails on schema violations or dead links) |
 | `npm run preview` | Serve the built site locally |
+| `npm run check:pages` | Load every built page in headless Chromium and report console errors, warnings, and failed requests (add `--strict` to fail on warnings). CI and the deploy workflow run this as a gate |
 
 ## For LLM agents
 
