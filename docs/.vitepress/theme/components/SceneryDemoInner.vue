@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import type { DemoId } from '../../demos/types';
 
 const props = withDefaults( defineProps<{
@@ -55,11 +55,12 @@ onMounted( async () => {
       backgroundColor: '#f5f5f5'
     } );
 
+    isLoading.value = false;
+    await nextTick();
     container.replaceChildren( display.domElement );
     display.initializeEvents();
     display.updateDisplay();
     display.updateOnRequestAnimationFrame();
-    isLoading.value = false;
   }
   catch ( error ) {
     isLoading.value = false;

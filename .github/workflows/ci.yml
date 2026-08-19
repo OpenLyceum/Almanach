@@ -36,3 +36,9 @@ jobs:
 
       - name: Build site
         run: npx vitepress build docs
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Check built pages for console errors
+        run: npm run check:pages
