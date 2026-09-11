@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress';
 import { buildSidebar } from './sidebar.js';
 
-// Served from https://openphysics.github.io/Almanach/ (project pages).
+// Served from https://openlyceum.github.io/Almanach/ (project pages).
 // Override with VITEPRESS_BASE=/ for local dev (see package.json "dev" script).
 export const BASE = process.env.VITEPRESS_BASE ?? '/Almanach/';
 
@@ -46,7 +46,7 @@ export default defineConfig( {
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/OpenPhysics/Almanach' }
+      { icon: 'github', link: 'https://github.com/OpenLyceum/Almanach' }
     ],
 
     outline: 'deep',

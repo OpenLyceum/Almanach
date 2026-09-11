@@ -19,7 +19,7 @@ import matter from 'gray-matter';
 const ROOT = path.resolve( path.dirname( fileURLToPath( import.meta.url ) ), '..' );
 const DOCS_DIR = path.join( ROOT, 'docs' );
 const OUT_DIR = path.join( DOCS_DIR, 'public' );
-const SITE_URL = 'https://openphysics.github.io/Almanach';
+const SITE_URL = 'https://openlyceum.github.io/Almanach';
 const SITE_TITLE = 'Almanach — SceneryStack Knowledge Base';
 const SITE_SUMMARY = 'A file-based knowledge base of SceneryStack knowledge: API guides, software patterns, styling, and accessibility conventions for building interactive simulations. Every page is plain Markdown with structured frontmatter.';
 
@@ -192,7 +192,7 @@ pages.sort( ( a, b ) => {
 fs.mkdirSync( OUT_DIR, { recursive: true } );
 
 // ---------- llms.txt ----------
-let llms = `# ${SITE_TITLE}\n\n> ${SITE_SUMMARY}\n\nFull content of every page is available at ${SITE_URL}/llms-full.txt and structured metadata at ${SITE_URL}/manifest.json. Raw Markdown sources live at https://github.com/OpenPhysics/Almanach under docs/.\n`;
+let llms = `# ${SITE_TITLE}\n\n> ${SITE_SUMMARY}\n\nFull content of every page is available at ${SITE_URL}/llms-full.txt and structured metadata at ${SITE_URL}/manifest.json. Raw Markdown sources live at https://github.com/OpenLyceum/Almanach under docs/.\n`;
 for ( const categoryKey of categoryOrder ) {
   const categoryPages = pages.filter( page => page.category === categoryKey );
   if ( categoryPages.length === 0 ) { continue; }

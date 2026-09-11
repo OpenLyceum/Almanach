@@ -82,7 +82,7 @@ Three machine-readable views of Almanach are generated from the same Markdown so
 | [`/llms-full.txt`](/llms-full.txt) | Full text of every page in a single file, for one-shot ingestion |
 | [`/manifest.json`](/manifest.json) | Structured metadata (title, category, tags, related pages, word counts) |
 
-The raw Markdown sources live in [the GitHub repository](https://github.com/OpenPhysics/Almanach) under `docs/`.
+The raw Markdown sources live in [the GitHub repository](https://github.com/OpenLyceum/Almanach) under `docs/`.
 
 ---
 

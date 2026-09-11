@@ -2,506 +2,506 @@
 
 > A file-based knowledge base of SceneryStack knowledge: API guides, software patterns, styling, and accessibility conventions for building interactive simulations. Every page is plain Markdown with structured frontmatter.
 
-Full content of every page is available at https://openphysics.github.io/Almanach/llms-full.txt and structured metadata at https://openphysics.github.io/Almanach/manifest.json. Raw Markdown sources live at https://github.com/OpenPhysics/Almanach under docs/.
+Full content of every page is available at https://openlyceum.github.io/Almanach/llms-full.txt and structured metadata at https://openlyceum.github.io/Almanach/manifest.json. Raw Markdown sources live at https://github.com/OpenLyceum/Almanach under docs/.
 
 ## Getting Started
 
-- [What is SceneryStack?](https://openphysics.github.io/Almanach/getting-started/what-is-scenerystack): Overview of the SceneryStack framework, its constituent libraries, and how to install and import it.
-- [Installation and Setup](https://openphysics.github.io/Almanach/getting-started/installation-and-setup): Setting up a new SceneryStack project - npm install, TypeScript config, and dev tooling.
-- [Your First Simulation](https://openphysics.github.io/Almanach/getting-started/your-first-simulation): Scaffolding a minimal one-screen simulation with Sim, Screen, and ScreenView.
-- [Running and Building a Simulation](https://openphysics.github.io/Almanach/getting-started/running-and-building-a-simulation): Dev server workflow and production build output for a SceneryStack sim.
-- [Project Structure Conventions](https://openphysics.github.io/Almanach/getting-started/project-structure-conventions): Standard folder/file layout of a SceneryStack repo (model/view split, strings, images).
-- [Scenery Application vs. Standalone Library](https://openphysics.github.io/Almanach/getting-started/scenery-application-vs-standalone-library): Choosing between a full joist-based Sim application and using scenery as a standalone rendering library.
-- [Supported Browsers](https://openphysics.github.io/Almanach/getting-started/supported-browsers): Browser/platform support matrix and graceful-degradation considerations.
-- [Troubleshooting Common Setup Errors](https://openphysics.github.io/Almanach/getting-started/troubleshooting-common-setup-errors): The most likely failure modes when starting a new scenerystack project - Node version mismatches, wrong import subpaths, missing peer deps, and TypeScript module resolution.
-- [Deploying a Simulation to GitHub Pages](https://openphysics.github.io/Almanach/getting-started/deploying-to-github-pages): Building a static SceneryStack simulation and publishing it to GitHub Pages via the gh-pages branch or GitHub Actions.
+- [What is SceneryStack?](https://openlyceum.github.io/Almanach/getting-started/what-is-scenerystack): Overview of the SceneryStack framework, its constituent libraries, and how to install and import it.
+- [Installation and Setup](https://openlyceum.github.io/Almanach/getting-started/installation-and-setup): Setting up a new SceneryStack project - npm install, TypeScript config, and dev tooling.
+- [Your First Simulation](https://openlyceum.github.io/Almanach/getting-started/your-first-simulation): Scaffolding a minimal one-screen simulation with Sim, Screen, and ScreenView.
+- [Running and Building a Simulation](https://openlyceum.github.io/Almanach/getting-started/running-and-building-a-simulation): Dev server workflow and production build output for a SceneryStack sim.
+- [Project Structure Conventions](https://openlyceum.github.io/Almanach/getting-started/project-structure-conventions): Standard folder/file layout of a SceneryStack repo (model/view split, strings, images).
+- [Scenery Application vs. Standalone Library](https://openlyceum.github.io/Almanach/getting-started/scenery-application-vs-standalone-library): Choosing between a full joist-based Sim application and using scenery as a standalone rendering library.
+- [Supported Browsers](https://openlyceum.github.io/Almanach/getting-started/supported-browsers): Browser/platform support matrix and graceful-degradation considerations.
+- [Troubleshooting Common Setup Errors](https://openlyceum.github.io/Almanach/getting-started/troubleshooting-common-setup-errors): The most likely failure modes when starting a new scenerystack project - Node version mismatches, wrong import subpaths, missing peer deps, and TypeScript module resolution.
+- [Deploying a Simulation to GitHub Pages](https://openlyceum.github.io/Almanach/getting-started/deploying-to-github-pages): Building a static SceneryStack simulation and publishing it to GitHub Pages via the gh-pages branch or GitHub Actions.
 
 ## Guides
 
-- [Scenery Basics](https://openphysics.github.io/Almanach/guides/scenery-basics): Introduction to the scene graph - the Node tree, render layers, and coordinate frames.
-- [Working with Model-View Transforms](https://openphysics.github.io/Almanach/guides/working-with-model-view-transforms): Why SceneryStack simulations separate model coordinates from view pixels, and the common ModelViewTransform2 usage patterns that follow from it.
-- [Scenery Layout](https://openphysics.github.io/Almanach/guides/scenery-layout): Overview of scenery's auto-layout system - FlowBox, GridBox, AlignBox, and layout options.
-- [Scenery Input](https://openphysics.github.io/Almanach/guides/scenery-input): Overview of scenery's input system - pointers, listeners, and event phases.
-- [UI Components Overview](https://openphysics.github.io/Almanach/guides/ui-components-overview): Tour of the sun and scenery-phet component libraries and when to reach for each.
-- [Accessible Interaction Tutorial](https://openphysics.github.io/Almanach/guides/accessible-interaction-tutorial): Making a custom draggable Node fully accessible end-to-end.
-- [Building Your First Screen](https://openphysics.github.io/Almanach/guides/building-your-first-screen): Step-by-step model/view/Screen wiring for a new screen in a multi-screen sim.
-- [Advanced Layout Techniques](https://openphysics.github.io/Almanach/guides/advanced-layout-techniques): Nesting FlowBox/GridBox containers, escaping to ManualConstraint for one-off positioning, and using AlignGroup to size content consistently across containers.
-- [Chart and Data Visualization with Bamboo](https://openphysics.github.io/Almanach/guides/chart-and-data-visualization-with-bamboo): Subsystem overview of bamboo - the ChartTransform every plot shares, the family of Plot Node types built on it, and axis/gridline decoration.
-- [Working with Sound (tambo Overview)](https://openphysics.github.io/Almanach/guides/working-with-sound): How tambo fits into a SceneryStack simulation - soundManager as the central mixer, and the sound-generator classes you compose to drive it.
-- [Haptics and Alternative Feedback Channels](https://openphysics.github.io/Almanach/guides/haptics-and-alternative-feedback-channels): Sound (tambo) and vibration (tappi) as feedback channels beyond the visual scene graph - when a simulation benefits from each, and how they relate to accessibility.
-- [Debugging Common Scenery Rendering Issues](https://openphysics.github.io/Almanach/guides/debugging-common-scenery-rendering-issues): A walkthrough of the most common visual bugs in a scenery scene graph - Nodes that won't show, layout that won't update, and z-order surprises - and the debug tools that narrow each one down.
-- [Performance and Profiling](https://openphysics.github.io/Almanach/guides/performance-and-profiling): Finding and fixing slow rendering or update-loop performance in a SceneryStack simulation - profiling query parameters, Node/Property overhead, and Canvas/SVG/WebGL tradeoffs.
-- [Translation and Localization](https://openphysics.github.io/Almanach/guides/translation-and-localization): String management with StringProperty and the PhET translation pipeline.
-- [Internationalization Deep Dive](https://openphysics.github.io/Almanach/guides/internationalization-deep-dive): Runtime locale switching, right-to-left layout, and PatternStringProperty for pluralization and placeholders, building on the translation pipeline basics.
-- [Sim Lifecycle and Startup Sequence](https://openphysics.github.io/Almanach/guides/sim-lifecycle-and-startup-sequence): The real sequence from Sim construction through start(), screen selection, and the running animation loop that steps Properties and listeners every frame.
-- [Preferences and Feature Flags](https://openphysics.github.io/Almanach/guides/preferences-and-feature-flags): Using the Preferences dialog and query parameters to configure sim behavior.
-- [PhET-iO and Instrumentation](https://openphysics.github.io/Almanach/guides/phet-io-and-instrumentation): Why PhET-iO and Tandem exist in SceneryStack, and why typical SceneryStack apps can ignore them.
-- [Testing and QA Strategy Overview](https://openphysics.github.io/Almanach/guides/testing-and-qa-strategy-overview): The layers of testing a SceneryStack simulation benefits from - headless unit tests, manual QA passes, and automated fuzz-testing.
-- [Continuous Integration for SceneryStack Projects](https://openphysics.github.io/Almanach/guides/continuous-integration-for-scenerystack-projects): What a CI pipeline for a SceneryStack simulation repository typically checks - type-checking, linting, a production build, unit tests, and automated fuzzing.
-- [Modifying SceneryStack](https://openphysics.github.io/Almanach/guides/modifying-scenerystack): Workflow for patching or contributing to the underlying common-code libraries.
-- [Publishing and Distributing a Simulation](https://openphysics.github.io/Almanach/guides/publishing-and-distributing-a-simulation): What a SceneryStack production build produces and the common ways to host it - static hosting, GitHub Pages, or a project's own server.
+- [Scenery Basics](https://openlyceum.github.io/Almanach/guides/scenery-basics): Introduction to the scene graph - the Node tree, render layers, and coordinate frames.
+- [Working with Model-View Transforms](https://openlyceum.github.io/Almanach/guides/working-with-model-view-transforms): Why SceneryStack simulations separate model coordinates from view pixels, and the common ModelViewTransform2 usage patterns that follow from it.
+- [Scenery Layout](https://openlyceum.github.io/Almanach/guides/scenery-layout): Overview of scenery's auto-layout system - FlowBox, GridBox, AlignBox, and layout options.
+- [Scenery Input](https://openlyceum.github.io/Almanach/guides/scenery-input): Overview of scenery's input system - pointers, listeners, and event phases.
+- [UI Components Overview](https://openlyceum.github.io/Almanach/guides/ui-components-overview): Tour of the sun and scenery-phet component libraries and when to reach for each.
+- [Accessible Interaction Tutorial](https://openlyceum.github.io/Almanach/guides/accessible-interaction-tutorial): Making a custom draggable Node fully accessible end-to-end.
+- [Building Your First Screen](https://openlyceum.github.io/Almanach/guides/building-your-first-screen): Step-by-step model/view/Screen wiring for a new screen in a multi-screen sim.
+- [Advanced Layout Techniques](https://openlyceum.github.io/Almanach/guides/advanced-layout-techniques): Nesting FlowBox/GridBox containers, escaping to ManualConstraint for one-off positioning, and using AlignGroup to size content consistently across containers.
+- [Chart and Data Visualization with Bamboo](https://openlyceum.github.io/Almanach/guides/chart-and-data-visualization-with-bamboo): Subsystem overview of bamboo - the ChartTransform every plot shares, the family of Plot Node types built on it, and axis/gridline decoration.
+- [Working with Sound (tambo Overview)](https://openlyceum.github.io/Almanach/guides/working-with-sound): How tambo fits into a SceneryStack simulation - soundManager as the central mixer, and the sound-generator classes you compose to drive it.
+- [Haptics and Alternative Feedback Channels](https://openlyceum.github.io/Almanach/guides/haptics-and-alternative-feedback-channels): Sound (tambo) and vibration (tappi) as feedback channels beyond the visual scene graph - when a simulation benefits from each, and how they relate to accessibility.
+- [Debugging Common Scenery Rendering Issues](https://openlyceum.github.io/Almanach/guides/debugging-common-scenery-rendering-issues): A walkthrough of the most common visual bugs in a scenery scene graph - Nodes that won't show, layout that won't update, and z-order surprises - and the debug tools that narrow each one down.
+- [Performance and Profiling](https://openlyceum.github.io/Almanach/guides/performance-and-profiling): Finding and fixing slow rendering or update-loop performance in a SceneryStack simulation - profiling query parameters, Node/Property overhead, and Canvas/SVG/WebGL tradeoffs.
+- [Translation and Localization](https://openlyceum.github.io/Almanach/guides/translation-and-localization): String management with StringProperty and the PhET translation pipeline.
+- [Internationalization Deep Dive](https://openlyceum.github.io/Almanach/guides/internationalization-deep-dive): Runtime locale switching, right-to-left layout, and PatternStringProperty for pluralization and placeholders, building on the translation pipeline basics.
+- [Sim Lifecycle and Startup Sequence](https://openlyceum.github.io/Almanach/guides/sim-lifecycle-and-startup-sequence): The real sequence from Sim construction through start(), screen selection, and the running animation loop that steps Properties and listeners every frame.
+- [Preferences and Feature Flags](https://openlyceum.github.io/Almanach/guides/preferences-and-feature-flags): Using the Preferences dialog and query parameters to configure sim behavior.
+- [PhET-iO and Instrumentation](https://openlyceum.github.io/Almanach/guides/phet-io-and-instrumentation): Why PhET-iO and Tandem exist in SceneryStack, and why typical SceneryStack apps can ignore them.
+- [Testing and QA Strategy Overview](https://openlyceum.github.io/Almanach/guides/testing-and-qa-strategy-overview): The layers of testing a SceneryStack simulation benefits from - headless unit tests, manual QA passes, and automated fuzz-testing.
+- [Continuous Integration for SceneryStack Projects](https://openlyceum.github.io/Almanach/guides/continuous-integration-for-scenerystack-projects): What a CI pipeline for a SceneryStack simulation repository typically checks - type-checking, linting, a production build, unit tests, and automated fuzzing.
+- [Modifying SceneryStack](https://openlyceum.github.io/Almanach/guides/modifying-scenerystack): Workflow for patching or contributing to the underlying common-code libraries.
+- [Publishing and Distributing a Simulation](https://openlyceum.github.io/Almanach/guides/publishing-and-distributing-a-simulation): What a SceneryStack production build produces and the common ways to host it - static hosting, GitHub Pages, or a project's own server.
 
 ## API
 
 
 ### axon
 
-- [BooleanProperty](https://openphysics.github.io/Almanach/api/axon/boolean-property): A Property<boolean> with a toggle() convenience method.
-- [DerivedProperty](https://openphysics.github.io/Almanach/api/axon/derived-property): A read-only Property computed from one or more dependencies.
-- [DerivedStringProperty](https://openphysics.github.io/Almanach/api/axon/derived-string-property): A DerivedProperty specialized for building translated or formatted string values, with the right PhET-iO metadata baked in.
-- [DynamicProperty](https://openphysics.github.io/Almanach/api/axon/dynamic-property): A Property that re-points itself to follow whichever inner Property a source Property currently holds.
-- [Emitter](https://openphysics.github.io/Almanach/api/axon/emitter): Discrete events that are not state.
-- [EnabledComponent and EnabledProperty](https://openphysics.github.io/Almanach/api/axon/enabled-component): The standard mixin-free pattern for giving any object a settable enabledProperty, with PhET-iO instrumentation baked in.
-- [EnumerationProperty](https://openphysics.github.io/Almanach/api/axon/enumeration-property): A Property restricted to the values of an EnumerationValue subclass.
-- [Multilink](https://openphysics.github.io/Almanach/api/axon/multilink): Reacting to several Properties at once without manually chaining links.
-- [NumberProperty](https://openphysics.github.io/Almanach/api/axon/number-property): A Property<number> with an optional range for validation and UI binding.
-- [Observable Array](https://openphysics.github.io/Almanach/api/axon/observable-array): createObservableArray: a Property-like array with add/remove item emitters.
-- [PatternStringProperty](https://openphysics.github.io/Almanach/api/axon/pattern-string-property): A derived string Property that fills a translated pattern string's placeholders from other Properties or plain values.
-- [Property](https://openphysics.github.io/Almanach/api/axon/property): The base observable value wrapper underlying all reactive state.
-- [ReadOnlyProperty](https://openphysics.github.io/Almanach/api/axon/read-only-property): The base observable class Property extends — the public type exposed by anything that shouldn't be externally settable.
-- [StringProperty](https://openphysics.github.io/Almanach/api/axon/string-property): A Property<string>'s role in localizable, translatable values.
-- [StringUnionProperty](https://openphysics.github.io/Almanach/api/axon/string-union-property): A Property constrained to a fixed union of string literal values, with validValues and PhET-iO serialization set up automatically.
-- [Timer, animationFrameTimer, and stepTimer](https://openphysics.github.io/Almanach/api/axon/timer): The shared Timer class and its two singleton instances — setTimeout/setInterval-alike scheduling driven by the sim's own frame loop instead of the browser clock.
-- [TinyEmitter](https://openphysics.github.io/Almanach/api/axon/tiny-emitter): The dependency-free, no-PhET-iO Emitter core that axon uses internally for hot paths.
-- [TinyProperty](https://openphysics.github.io/Almanach/api/axon/tiny-property): The minimal Property base, without phet-io instrumentation or validation, that Property and scenery internals build on.
-- [UnitConversionProperty](https://openphysics.github.io/Almanach/api/axon/unit-conversion-property): A derived, bidirectional Property that converts a numeric Property's value (and range) between units via a fixed multiplicative factor.
-- [Validation and validate](https://openphysics.github.io/Almanach/api/axon/validation): The shared validator schema and checking utility that Property's valueType/validValues/isValidValue options are built on.
+- [BooleanProperty](https://openlyceum.github.io/Almanach/api/axon/boolean-property): A Property<boolean> with a toggle() convenience method.
+- [DerivedProperty](https://openlyceum.github.io/Almanach/api/axon/derived-property): A read-only Property computed from one or more dependencies.
+- [DerivedStringProperty](https://openlyceum.github.io/Almanach/api/axon/derived-string-property): A DerivedProperty specialized for building translated or formatted string values, with the right PhET-iO metadata baked in.
+- [DynamicProperty](https://openlyceum.github.io/Almanach/api/axon/dynamic-property): A Property that re-points itself to follow whichever inner Property a source Property currently holds.
+- [Emitter](https://openlyceum.github.io/Almanach/api/axon/emitter): Discrete events that are not state.
+- [EnabledComponent and EnabledProperty](https://openlyceum.github.io/Almanach/api/axon/enabled-component): The standard mixin-free pattern for giving any object a settable enabledProperty, with PhET-iO instrumentation baked in.
+- [EnumerationProperty](https://openlyceum.github.io/Almanach/api/axon/enumeration-property): A Property restricted to the values of an EnumerationValue subclass.
+- [Multilink](https://openlyceum.github.io/Almanach/api/axon/multilink): Reacting to several Properties at once without manually chaining links.
+- [NumberProperty](https://openlyceum.github.io/Almanach/api/axon/number-property): A Property<number> with an optional range for validation and UI binding.
+- [Observable Array](https://openlyceum.github.io/Almanach/api/axon/observable-array): createObservableArray: a Property-like array with add/remove item emitters.
+- [PatternStringProperty](https://openlyceum.github.io/Almanach/api/axon/pattern-string-property): A derived string Property that fills a translated pattern string's placeholders from other Properties or plain values.
+- [Property](https://openlyceum.github.io/Almanach/api/axon/property): The base observable value wrapper underlying all reactive state.
+- [ReadOnlyProperty](https://openlyceum.github.io/Almanach/api/axon/read-only-property): The base observable class Property extends — the public type exposed by anything that shouldn't be externally settable.
+- [StringProperty](https://openlyceum.github.io/Almanach/api/axon/string-property): A Property<string>'s role in localizable, translatable values.
+- [StringUnionProperty](https://openlyceum.github.io/Almanach/api/axon/string-union-property): A Property constrained to a fixed union of string literal values, with validValues and PhET-iO serialization set up automatically.
+- [Timer, animationFrameTimer, and stepTimer](https://openlyceum.github.io/Almanach/api/axon/timer): The shared Timer class and its two singleton instances — setTimeout/setInterval-alike scheduling driven by the sim's own frame loop instead of the browser clock.
+- [TinyEmitter](https://openlyceum.github.io/Almanach/api/axon/tiny-emitter): The dependency-free, no-PhET-iO Emitter core that axon uses internally for hot paths.
+- [TinyProperty](https://openlyceum.github.io/Almanach/api/axon/tiny-property): The minimal Property base, without phet-io instrumentation or validation, that Property and scenery internals build on.
+- [UnitConversionProperty](https://openlyceum.github.io/Almanach/api/axon/unit-conversion-property): A derived, bidirectional Property that converts a numeric Property's value (and range) between units via a fixed multiplicative factor.
+- [Validation and validate](https://openlyceum.github.io/Almanach/api/axon/validation): The shared validator schema and checking utility that Property's valueType/validValues/isValidValue options are built on.
 
 ### bamboo
 
-- [AreaPlot](https://openphysics.github.io/Almanach/api/bamboo/area-plot): Renders a dataset as a filled, shaded region between the data and a baseline value on a bamboo chart.
-- [AxisLine and AxisArrowNode](https://openphysics.github.io/Almanach/api/bamboo/axis-nodes): Draws a bamboo chart's x or y axis as a plain line or an arrow-tipped line, positioned and auto-hidden by a ChartTransform.
-- [BarPlot](https://openphysics.github.io/Almanach/api/bamboo/bar-plot): Draws one rectangular bar per data point on a bamboo chart, growing from a shared baseline value.
-- [CanvasLinePlot](https://openphysics.github.io/Almanach/api/bamboo/canvas-line-plot): A Canvas-rendered equivalent of LinePlot, painted by a shared ChartCanvasNode for charts with too many points for per-point scenery Nodes to stay fast.
-- [ChartTransform](https://openphysics.github.io/Almanach/api/bamboo/chart-transform): Maps chart data between model coordinates and view (pixel) coordinates, and is the shared object every bamboo plot and axis is built around.
-- [GridLineSet, TickMarkSet, and TickLabelSet](https://openphysics.github.io/Almanach/api/bamboo/gridlines-and-tick-marks): The three bamboo Path/Node sets that draw a chart's repeating gridlines, tick marks, and tick labels at a fixed model-coordinate spacing.
-- [LinearEquationPlot](https://openphysics.github.io/Almanach/api/bamboo/linear-equation-plot): Draws the straight line y = mx + b (or a vertical line, for infinite slope) across a bamboo chart's model x-range.
-- [LinePlot](https://openphysics.github.io/Almanach/api/bamboo/line-plot): Draws a polyline through a dataset of points on a bamboo chart, with null entries producing gaps.
-- [ScatterPlot](https://openphysics.github.io/Almanach/api/bamboo/scatter-plot): Draws a dataset of points as filled circles on a bamboo chart.
+- [AreaPlot](https://openlyceum.github.io/Almanach/api/bamboo/area-plot): Renders a dataset as a filled, shaded region between the data and a baseline value on a bamboo chart.
+- [AxisLine and AxisArrowNode](https://openlyceum.github.io/Almanach/api/bamboo/axis-nodes): Draws a bamboo chart's x or y axis as a plain line or an arrow-tipped line, positioned and auto-hidden by a ChartTransform.
+- [BarPlot](https://openlyceum.github.io/Almanach/api/bamboo/bar-plot): Draws one rectangular bar per data point on a bamboo chart, growing from a shared baseline value.
+- [CanvasLinePlot](https://openlyceum.github.io/Almanach/api/bamboo/canvas-line-plot): A Canvas-rendered equivalent of LinePlot, painted by a shared ChartCanvasNode for charts with too many points for per-point scenery Nodes to stay fast.
+- [ChartTransform](https://openlyceum.github.io/Almanach/api/bamboo/chart-transform): Maps chart data between model coordinates and view (pixel) coordinates, and is the shared object every bamboo plot and axis is built around.
+- [GridLineSet, TickMarkSet, and TickLabelSet](https://openlyceum.github.io/Almanach/api/bamboo/gridlines-and-tick-marks): The three bamboo Path/Node sets that draw a chart's repeating gridlines, tick marks, and tick labels at a fixed model-coordinate spacing.
+- [LinearEquationPlot](https://openlyceum.github.io/Almanach/api/bamboo/linear-equation-plot): Draws the straight line y = mx + b (or a vertical line, for infinite slope) across a bamboo chart's model x-range.
+- [LinePlot](https://openlyceum.github.io/Almanach/api/bamboo/line-plot): Draws a polyline through a dataset of points on a bamboo chart, with null entries producing gaps.
+- [ScatterPlot](https://openlyceum.github.io/Almanach/api/bamboo/scatter-plot): Draws a dataset of points as filled circles on a bamboo chart.
 
 ### dot
 
-- [Bounds2](https://openphysics.github.io/Almanach/api/dot/bounds2): An axis-aligned rectangle used for layout, drag bounds, and hit-testing.
-- [Bounds3](https://openphysics.github.io/Almanach/api/dot/bounds3): An axis-aligned cuboid (3D bounding box), the 3D counterpart to Bounds2.
-- [Complex](https://openphysics.github.io/Almanach/api/dot/complex): A complex number type with immutable and mutable arithmetic, including polar form and polynomial root-solving.
-- [ConvexHull2](https://openphysics.github.io/Almanach/api/dot/convex-hull2): A Graham Scan implementation computing the 2D convex hull (minimal enclosing polygon) of a set of Vector2 points.
-- [DampedHarmonic](https://openphysics.github.io/Almanach/api/dot/damped-harmonic): A closed-form solver for the damped harmonic oscillator differential equation, useful for spring, pendulum, and oscillation sims.
-- [Dimension2](https://openphysics.github.io/Almanach/api/dot/dimension2): A plain width/height pair, like Bounds2 without a position.
-- [dotRandom](https://openphysics.github.io/Almanach/api/dot/dot-random): The shared, globally-seeded Random singleton simulations should use for every "random" call, instead of Math.random() or a private Random instance.
-- [LinearFunction](https://openphysics.github.io/Almanach/api/dot/linear-function): A reusable object that maps values between two linear numeric domains, with an invertible mapping.
-- [Matrix Decompositions](https://openphysics.github.io/Almanach/api/dot/matrix-decompositions): A practical survey of dot's LUDecomposition, QRDecomposition, EigenvalueDecomposition, and SingularValueDecomposition, and when a sim author would ever reach for one.
-- [Matrix3](https://openphysics.github.io/Almanach/api/dot/matrix3): The 3x3 transform matrix behind Node transforms and ModelViewTransform2.
-- [Matrix4](https://openphysics.github.io/Almanach/api/dot/matrix4): The 4x4 homogeneous transform matrix used for 3D affine math.
-- [Permutation and Combination](https://openphysics.github.io/Almanach/api/dot/permutation-and-combination): Immutable combinatorics helpers for reordering (Permutation) or selecting a subset of (Combination) an array.
-- [Quaternion and Plane3](https://openphysics.github.io/Almanach/api/dot/quaternion-and-plane3): A rotation quaternion class and an infinite-plane primitive used together for 3D rotation and plane/ray geometry.
-- [Random](https://openphysics.github.io/Almanach/api/dot/random): A seedable pseudo-random number generator class, plus the shared dotRandom singleton sims should use instead of Math.random().
-- [Range](https://openphysics.github.io/Almanach/api/dot/range): A min/max pair used for NumberProperty validation and slider ranges.
-- [RangeWithValue](https://openphysics.github.io/Almanach/api/dot/range-with-value): A Range subclass that also tracks a required default value within the min/max interval.
-- [Ray2](https://openphysics.github.io/Almanach/api/dot/ray2): A 2D ray (origin position plus a unit direction vector), used for hit-testing and intersection queries.
-- [Ray3](https://openphysics.github.io/Almanach/api/dot/ray3): A 3D ray (origin plus unit direction) used for picking and intersection queries in 3D-flavored code such as mobius.
-- [Transform3](https://openphysics.github.io/Almanach/api/dot/transform3): A cached, observable wrapper around a Matrix3, providing forward/inverse transform methods for points, deltas, bounds, and shapes.
-- [Utils](https://openphysics.github.io/Almanach/api/dot/dot-utils): dot's numeric helper functions: clamp, linear, roundSymmetric, and friends.
-- [Vector2](https://openphysics.github.io/Almanach/api/dot/vector2): The 2D vector/point class used throughout SceneryStack's math and positioning APIs.
-- [Vector2Property](https://openphysics.github.io/Almanach/api/dot/vector2-property): A Property<Vector2> subclass with built-in NaN and optional-bounds validation, the standard type for model positions.
-- [Vector3](https://openphysics.github.io/Almanach/api/dot/vector3): The 3D vector class used for color math and 3D-flavored simulations.
-- [Vector4](https://openphysics.github.io/Almanach/api/dot/vector4): The 4D vector class used for homogeneous coordinates and RGBA-style color math.
+- [Bounds2](https://openlyceum.github.io/Almanach/api/dot/bounds2): An axis-aligned rectangle used for layout, drag bounds, and hit-testing.
+- [Bounds3](https://openlyceum.github.io/Almanach/api/dot/bounds3): An axis-aligned cuboid (3D bounding box), the 3D counterpart to Bounds2.
+- [Complex](https://openlyceum.github.io/Almanach/api/dot/complex): A complex number type with immutable and mutable arithmetic, including polar form and polynomial root-solving.
+- [ConvexHull2](https://openlyceum.github.io/Almanach/api/dot/convex-hull2): A Graham Scan implementation computing the 2D convex hull (minimal enclosing polygon) of a set of Vector2 points.
+- [DampedHarmonic](https://openlyceum.github.io/Almanach/api/dot/damped-harmonic): A closed-form solver for the damped harmonic oscillator differential equation, useful for spring, pendulum, and oscillation sims.
+- [Dimension2](https://openlyceum.github.io/Almanach/api/dot/dimension2): A plain width/height pair, like Bounds2 without a position.
+- [dotRandom](https://openlyceum.github.io/Almanach/api/dot/dot-random): The shared, globally-seeded Random singleton simulations should use for every "random" call, instead of Math.random() or a private Random instance.
+- [LinearFunction](https://openlyceum.github.io/Almanach/api/dot/linear-function): A reusable object that maps values between two linear numeric domains, with an invertible mapping.
+- [Matrix Decompositions](https://openlyceum.github.io/Almanach/api/dot/matrix-decompositions): A practical survey of dot's LUDecomposition, QRDecomposition, EigenvalueDecomposition, and SingularValueDecomposition, and when a sim author would ever reach for one.
+- [Matrix3](https://openlyceum.github.io/Almanach/api/dot/matrix3): The 3x3 transform matrix behind Node transforms and ModelViewTransform2.
+- [Matrix4](https://openlyceum.github.io/Almanach/api/dot/matrix4): The 4x4 homogeneous transform matrix used for 3D affine math.
+- [Permutation and Combination](https://openlyceum.github.io/Almanach/api/dot/permutation-and-combination): Immutable combinatorics helpers for reordering (Permutation) or selecting a subset of (Combination) an array.
+- [Quaternion and Plane3](https://openlyceum.github.io/Almanach/api/dot/quaternion-and-plane3): A rotation quaternion class and an infinite-plane primitive used together for 3D rotation and plane/ray geometry.
+- [Random](https://openlyceum.github.io/Almanach/api/dot/random): A seedable pseudo-random number generator class, plus the shared dotRandom singleton sims should use instead of Math.random().
+- [Range](https://openlyceum.github.io/Almanach/api/dot/range): A min/max pair used for NumberProperty validation and slider ranges.
+- [RangeWithValue](https://openlyceum.github.io/Almanach/api/dot/range-with-value): A Range subclass that also tracks a required default value within the min/max interval.
+- [Ray2](https://openlyceum.github.io/Almanach/api/dot/ray2): A 2D ray (origin position plus a unit direction vector), used for hit-testing and intersection queries.
+- [Ray3](https://openlyceum.github.io/Almanach/api/dot/ray3): A 3D ray (origin plus unit direction) used for picking and intersection queries in 3D-flavored code such as mobius.
+- [Transform3](https://openlyceum.github.io/Almanach/api/dot/transform3): A cached, observable wrapper around a Matrix3, providing forward/inverse transform methods for points, deltas, bounds, and shapes.
+- [Utils](https://openlyceum.github.io/Almanach/api/dot/dot-utils): dot's numeric helper functions: clamp, linear, roundSymmetric, and friends.
+- [Vector2](https://openlyceum.github.io/Almanach/api/dot/vector2): The 2D vector/point class used throughout SceneryStack's math and positioning APIs.
+- [Vector2Property](https://openlyceum.github.io/Almanach/api/dot/vector2-property): A Property<Vector2> subclass with built-in NaN and optional-bounds validation, the standard type for model positions.
+- [Vector3](https://openlyceum.github.io/Almanach/api/dot/vector3): The 3D vector class used for color math and 3D-flavored simulations.
+- [Vector4](https://openlyceum.github.io/Almanach/api/dot/vector4): The 4D vector class used for homogeneous coordinates and RGBA-style color math.
 
 ### joist
 
-- [CreditsNode](https://openphysics.github.io/Almanach/api/joist/credits-node): Renders a simulation's credits (design, development, team, contributors, translation-independent thanks, etc.) as the content of the About dialog.
-- [HighlightNode](https://openphysics.github.io/Almanach/api/joist/highlight-node): An HBox of two gradient-faded vertical bars used as the press/hover highlight behind navigation bar buttons.
-- [HomeScreen](https://openphysics.github.io/Almanach/api/joist/home-screen): The auto-created Screen showing icon buttons for every screen in a multi-screen Sim.
-- [JoistButton](https://openphysics.github.io/Almanach/api/joist/joist-button): The base class behind chrome buttons like HomeButton - custom black/white highlighting instead of the standard sun button look.
-- [LookAndFeel](https://openphysics.github.io/Almanach/api/joist/look-and-feel): The Sim-wide manager of the current screen's background color and the derived navigation-bar colors that keep it readable against either black or white.
-- [NavigationBar](https://openphysics.github.io/Almanach/api/joist/navigation-bar): The bar of screen buttons, title, and PhET menu shown at the bottom of every running Sim.
-- [PreferencesModel and PreferencesDialog](https://openphysics.github.io/Almanach/api/joist/preferences-model-and-dialog): PreferencesModel declares which Preferences tabs a Sim supports; PreferencesDialog is the tabbed dialog Sim builds automatically from it.
-- [PreferencesPanel, PreferencesPanelSection, PreferencesControl, PreferencesTabs, and PreferencesTab](https://openphysics.github.io/Almanach/api/joist/preferences-panel-components): The building blocks the Preferences Dialog is assembled from, and the two of them (PreferencesPanelSection, PreferencesControl) sim authors use to build custom Preferences content.
-- [Region, Culture, and Locale Selection UI](https://openphysics.github.io/Almanach/api/joist/region-culture-and-locale-selection): The runtime language/locale Property, the region-and-culture Property and its localized-image helper, and the Preferences UI built on top of both.
-- [Screen](https://openphysics.github.io/Almanach/api/joist/screen): Pairing a model factory and view factory into one selectable unit of a Sim.
-- [ScreenIcon](https://openphysics.github.io/Almanach/api/joist/screen-icon): A Node wrapper that centers and scales an icon onto a fixed-size background, for use as a Screen's homeScreenIcon or navigationBarIcon.
-- [ScreenView](https://openphysics.github.io/Almanach/api/joist/screen-view): The root Node of a Screen's view, with layoutBounds and visibleBoundsProperty.
-- [Sim](https://openphysics.github.io/Almanach/api/joist/sim): The top-level application object owning Screens, the navigation bar, and the sim loop.
-- [SimInfo](https://openphysics.github.io/Almanach/api/joist/sim-info): A snapshot of runtime/browser/simulation diagnostic data, built once per Sim and surfaced via the About dialog and PhET-iO data stream.
+- [CreditsNode](https://openlyceum.github.io/Almanach/api/joist/credits-node): Renders a simulation's credits (design, development, team, contributors, translation-independent thanks, etc.) as the content of the About dialog.
+- [HighlightNode](https://openlyceum.github.io/Almanach/api/joist/highlight-node): An HBox of two gradient-faded vertical bars used as the press/hover highlight behind navigation bar buttons.
+- [HomeScreen](https://openlyceum.github.io/Almanach/api/joist/home-screen): The auto-created Screen showing icon buttons for every screen in a multi-screen Sim.
+- [JoistButton](https://openlyceum.github.io/Almanach/api/joist/joist-button): The base class behind chrome buttons like HomeButton - custom black/white highlighting instead of the standard sun button look.
+- [LookAndFeel](https://openlyceum.github.io/Almanach/api/joist/look-and-feel): The Sim-wide manager of the current screen's background color and the derived navigation-bar colors that keep it readable against either black or white.
+- [NavigationBar](https://openlyceum.github.io/Almanach/api/joist/navigation-bar): The bar of screen buttons, title, and PhET menu shown at the bottom of every running Sim.
+- [PreferencesModel and PreferencesDialog](https://openlyceum.github.io/Almanach/api/joist/preferences-model-and-dialog): PreferencesModel declares which Preferences tabs a Sim supports; PreferencesDialog is the tabbed dialog Sim builds automatically from it.
+- [PreferencesPanel, PreferencesPanelSection, PreferencesControl, PreferencesTabs, and PreferencesTab](https://openlyceum.github.io/Almanach/api/joist/preferences-panel-components): The building blocks the Preferences Dialog is assembled from, and the two of them (PreferencesPanelSection, PreferencesControl) sim authors use to build custom Preferences content.
+- [Region, Culture, and Locale Selection UI](https://openlyceum.github.io/Almanach/api/joist/region-culture-and-locale-selection): The runtime language/locale Property, the region-and-culture Property and its localized-image helper, and the Preferences UI built on top of both.
+- [Screen](https://openlyceum.github.io/Almanach/api/joist/screen): Pairing a model factory and view factory into one selectable unit of a Sim.
+- [ScreenIcon](https://openlyceum.github.io/Almanach/api/joist/screen-icon): A Node wrapper that centers and scales an icon onto a fixed-size background, for use as a Screen's homeScreenIcon or navigationBarIcon.
+- [ScreenView](https://openlyceum.github.io/Almanach/api/joist/screen-view): The root Node of a Screen's view, with layoutBounds and visibleBoundsProperty.
+- [Sim](https://openlyceum.github.io/Almanach/api/joist/sim): The top-level application object owning Screens, the navigation bar, and the sim loop.
+- [SimInfo](https://openlyceum.github.io/Almanach/api/joist/sim-info): A snapshot of runtime/browser/simulation diagnostic data, built once per Sim and surfaced via the About dialog and PhET-iO data stream.
 
 ### kite
 
-- [Arc](https://openphysics.github.io/Almanach/api/kite/arc): A circular arc segment defined by center, radius, and start/end angles — one of the pieces a Shape's subpaths are built from.
-- [Cubic](https://openphysics.github.io/Almanach/api/kite/cubic): A cubic Bezier curve segment defined by a start point, two control points, and an end point.
-- [EllipticalArc](https://openphysics.github.io/Almanach/api/kite/elliptical-arc): A generalization of Arc that sweeps an ellipse (independent x/y radii, plus rotation) rather than a circle.
-- [Graph and Boolean Shape Operations](https://openphysics.github.io/Almanach/api/kite/graph-and-boolean-operations): The Graph machinery powering Shape.union/intersection/xor and clipping — how to combine two Shapes, at a practical level.
-- [Line](https://openphysics.github.io/Almanach/api/kite/line-segment): kite's straight-line path segment (pure geometry, not a renderable Node) — one of the pieces a Shape's subpaths are built from.
-- [LineStyles](https://openphysics.github.io/Almanach/api/kite/line-styles): The stroke-rendering options (width, cap, join, dash, miter limit) used to turn a Shape's outline into a stroked shape.
-- [Quadratic](https://openphysics.github.io/Almanach/api/kite/quadratic): A quadratic Bezier curve segment defined by a start point, one control point, and an end point.
-- [RayIntersection and SegmentIntersection](https://openphysics.github.io/Almanach/api/kite/ray-and-segment-intersections): The two small result types returned by kite's ray-casting and segment/segment intersection queries.
-- [Segment](https://openphysics.github.io/Almanach/api/kite/segment): The abstract base class Arc, Cubic, Quadratic, Line, and EllipticalArc all extend — the shared parametric contract every segment type implements.
-- [Shape](https://openphysics.github.io/Almanach/api/kite/shape): kite's path-description class behind Path, and its common construction/query methods.
-- [Subpath](https://openphysics.github.io/Almanach/api/kite/subpath): An ordered, connected run of segments within a Shape — the container between individual segments and the whole Shape.
-- [SVG Path Parsing and Serialization](https://openphysics.github.io/Almanach/api/kite/svg-path-parsing-and-serialization): How Shape parses an SVG path-data string into segments, serializes back out with getSVGPath(), and the svgNumber/svgPath exports underneath both directions.
+- [Arc](https://openlyceum.github.io/Almanach/api/kite/arc): A circular arc segment defined by center, radius, and start/end angles — one of the pieces a Shape's subpaths are built from.
+- [Cubic](https://openlyceum.github.io/Almanach/api/kite/cubic): A cubic Bezier curve segment defined by a start point, two control points, and an end point.
+- [EllipticalArc](https://openlyceum.github.io/Almanach/api/kite/elliptical-arc): A generalization of Arc that sweeps an ellipse (independent x/y radii, plus rotation) rather than a circle.
+- [Graph and Boolean Shape Operations](https://openlyceum.github.io/Almanach/api/kite/graph-and-boolean-operations): The Graph machinery powering Shape.union/intersection/xor and clipping — how to combine two Shapes, at a practical level.
+- [Line](https://openlyceum.github.io/Almanach/api/kite/line-segment): kite's straight-line path segment (pure geometry, not a renderable Node) — one of the pieces a Shape's subpaths are built from.
+- [LineStyles](https://openlyceum.github.io/Almanach/api/kite/line-styles): The stroke-rendering options (width, cap, join, dash, miter limit) used to turn a Shape's outline into a stroked shape.
+- [Quadratic](https://openlyceum.github.io/Almanach/api/kite/quadratic): A quadratic Bezier curve segment defined by a start point, one control point, and an end point.
+- [RayIntersection and SegmentIntersection](https://openlyceum.github.io/Almanach/api/kite/ray-and-segment-intersections): The two small result types returned by kite's ray-casting and segment/segment intersection queries.
+- [Segment](https://openlyceum.github.io/Almanach/api/kite/segment): The abstract base class Arc, Cubic, Quadratic, Line, and EllipticalArc all extend — the shared parametric contract every segment type implements.
+- [Shape](https://openlyceum.github.io/Almanach/api/kite/shape): kite's path-description class behind Path, and its common construction/query methods.
+- [Subpath](https://openlyceum.github.io/Almanach/api/kite/subpath): An ordered, connected run of segments within a Shape — the container between individual segments and the whole Shape.
+- [SVG Path Parsing and Serialization](https://openlyceum.github.io/Almanach/api/kite/svg-path-parsing-and-serialization): How Shape parses an SVG path-data string into segments, serializes back out with getSVGPath(), and the svgNumber/svgPath exports underneath both directions.
 
 ### mobius
 
-- [ThreeIsometricNode](https://openphysics.github.io/Almanach/api/mobius/three-isometric-node): A scenery Node that fills a ScreenView's layout bounds with an isometric-scaled three.js viewport for full-screen 3D content.
-- [ThreeNode, ThreeInstrumentable, and ThreeObject3DPhetioObject](https://openphysics.github.io/Almanach/api/mobius/node-wrapping-conventions): The scenery Node that hosts a fixed-size three.js viewport, and the mixin/PhetioObject pair used to give individual three.js objects a PhET-iO address.
-- [ThreeStage](https://openphysics.github.io/Almanach/api/mobius/scene-and-camera-setup): The three.js scene, camera, and WebGLRenderer that every mobius 3D view is built around.
-- [ThreeUtils](https://openphysics.github.io/Almanach/api/mobius/three-utils-helpers): Static helpers for converting between dot and three.js vector types, building quad geometry, loading textures, and detecting WebGL support.
+- [ThreeIsometricNode](https://openlyceum.github.io/Almanach/api/mobius/three-isometric-node): A scenery Node that fills a ScreenView's layout bounds with an isometric-scaled three.js viewport for full-screen 3D content.
+- [ThreeNode, ThreeInstrumentable, and ThreeObject3DPhetioObject](https://openlyceum.github.io/Almanach/api/mobius/node-wrapping-conventions): The scenery Node that hosts a fixed-size three.js viewport, and the mixin/PhetioObject pair used to give individual three.js objects a PhET-iO address.
+- [ThreeStage](https://openlyceum.github.io/Almanach/api/mobius/scene-and-camera-setup): The three.js scene, camera, and WebGLRenderer that every mobius 3D view is built around.
+- [ThreeUtils](https://openlyceum.github.io/Almanach/api/mobius/three-utils-helpers): Static helpers for converting between dot and three.js vector types, building quad geometry, loading textures, and detecting WebGL support.
 
 ### nitroglycerin
 
-- [Atom, Element, and AtomNode](https://openphysics.github.io/Almanach/api/nitroglycerin/atom-and-element): The model layer for a single atom - immutable per-element physical constants (Element), a lightweight per-instance wrapper (Atom), and its shaded-sphere view (AtomNode).
-- [ChemUtils](https://openphysics.github.io/Almanach/api/nitroglycerin/chem-utils): Plain-object chemistry helpers for molecular formulas, Hill-system sorting, and HTML subscript formatting in nitroglycerin sims.
-- [MoleculeNode](https://openphysics.github.io/Almanach/api/nitroglycerin/molecule-node): The base class every pre-built molecule Node (H2ONode, CO2Node, and ~40 others) extends, composing a fixed arrangement of AtomNodes centered at the origin.
+- [Atom, Element, and AtomNode](https://openlyceum.github.io/Almanach/api/nitroglycerin/atom-and-element): The model layer for a single atom - immutable per-element physical constants (Element), a lightweight per-instance wrapper (Atom), and its shaded-sphere view (AtomNode).
+- [ChemUtils](https://openlyceum.github.io/Almanach/api/nitroglycerin/chem-utils): Plain-object chemistry helpers for molecular formulas, Hill-system sorting, and HTML subscript formatting in nitroglycerin sims.
+- [MoleculeNode](https://openlyceum.github.io/Almanach/api/nitroglycerin/molecule-node): The base class every pre-built molecule Node (H2ONode, CO2Node, and ~40 others) extends, composing a fixed arrangement of AtomNodes centered at the origin.
 
 ### phet-core
 
-- [arrayRemove, arrayDifference, and cleanArray](https://openphysics.github.io/Almanach/api/phet-core/collection-utilities): Small, dependency-free array helpers for mutation-in-place, set-style comparison, and resetting an array without reallocating it.
-- [assertHasProperties and assertMutuallyExclusiveOptions](https://openphysics.github.io/Almanach/api/phet-core/assertion-helpers): Two development-time assertion helpers for validating shape - that an object has certain members, and that certain option keys are never combined.
-- [EnumerationValue](https://openphysics.github.io/Almanach/api/phet-core/enumeration-value): The base class instances of a PhET-style closed enumeration extend, providing name/enumeration bookkeeping once paired with Enumeration.
-- [optionize and merge](https://openphysics.github.io/Almanach/api/phet-core/optionize-and-merge): The two building blocks behind the options pattern - optionize for type-checked defaulting, merge for its untyped runtime engine.
-- [Orientation](https://openphysics.github.io/Almanach/api/phet-core/orientation): The HORIZONTAL/VERTICAL enumeration threaded through layout code (FlowBox, sliders, bamboo charts) to write orientation-agnostic logic.
-- [platform](https://openphysics.github.io/Almanach/api/phet-core/platform-detection): A plain object of boolean browser/OS/engine feature-detection flags, computed once from navigator.userAgent at import time.
-- [Pool](https://openphysics.github.io/Almanach/api/phet-core/pool): A generic object-pooling utility that reuses instances instead of constructing new ones, reducing GC churn for objects created and discarded at high frequency.
+- [arrayRemove, arrayDifference, and cleanArray](https://openlyceum.github.io/Almanach/api/phet-core/collection-utilities): Small, dependency-free array helpers for mutation-in-place, set-style comparison, and resetting an array without reallocating it.
+- [assertHasProperties and assertMutuallyExclusiveOptions](https://openlyceum.github.io/Almanach/api/phet-core/assertion-helpers): Two development-time assertion helpers for validating shape - that an object has certain members, and that certain option keys are never combined.
+- [EnumerationValue](https://openlyceum.github.io/Almanach/api/phet-core/enumeration-value): The base class instances of a PhET-style closed enumeration extend, providing name/enumeration bookkeeping once paired with Enumeration.
+- [optionize and merge](https://openlyceum.github.io/Almanach/api/phet-core/optionize-and-merge): The two building blocks behind the options pattern - optionize for type-checked defaulting, merge for its untyped runtime engine.
+- [Orientation](https://openlyceum.github.io/Almanach/api/phet-core/orientation): The HORIZONTAL/VERTICAL enumeration threaded through layout code (FlowBox, sliders, bamboo charts) to write orientation-agnostic logic.
+- [platform](https://openlyceum.github.io/Almanach/api/phet-core/platform-detection): A plain object of boolean browser/OS/engine feature-detection flags, computed once from navigator.userAgent at import time.
+- [Pool](https://openlyceum.github.io/Almanach/api/phet-core/pool): A generic object-pooling utility that reuses instances instead of constructing new ones, reducing GC churn for objects created and discarded at high frequency.
 
 ### phetcommon
 
-- [Bucket](https://openphysics.github.io/Almanach/api/phetcommon/bucket): The model for a container UI element that other model objects can be dropped into and stacked within, as used in build-a-molecule-style sims.
-- [Fraction](https://openphysics.github.io/Almanach/api/phetcommon/fraction): An exact-arithmetic numerator/denominator fraction class with add/subtract/multiply/divide and reduction, used throughout PhET's fraction and ratio sims.
-- [ModelViewTransform2](https://openphysics.github.io/Almanach/api/phetcommon/model-view-transform): Mapping between model coordinates (physical units, y-up) and view coordinates (pixels, y-down) with ModelViewTransform2.
-- [StringUtils](https://openphysics.github.io/Almanach/api/phetcommon/string-utils): phetcommon's small collection of string-handling helpers for translated pattern strings and bidirectional (LTR/RTL) text safety.
+- [Bucket](https://openlyceum.github.io/Almanach/api/phetcommon/bucket): The model for a container UI element that other model objects can be dropped into and stacked within, as used in build-a-molecule-style sims.
+- [Fraction](https://openlyceum.github.io/Almanach/api/phetcommon/fraction): An exact-arithmetic numerator/denominator fraction class with add/subtract/multiply/divide and reduction, used throughout PhET's fraction and ratio sims.
+- [ModelViewTransform2](https://openlyceum.github.io/Almanach/api/phetcommon/model-view-transform): Mapping between model coordinates (physical units, y-up) and view coordinates (pixels, y-down) with ModelViewTransform2.
+- [StringUtils](https://openlyceum.github.io/Almanach/api/phetcommon/string-utils): phetcommon's small collection of string-handling helpers for translated pattern strings and bidirectional (LTR/RTL) text safety.
 
 ### query-string-machine
 
-- [Query parameter schema conventions (QSMSchemaObject)](https://openphysics.github.io/Almanach/api/query-string-machine/query-parameter-schema-conventions): The shape of an individual QueryStringMachine schema entry - required and optional fields per type, and the validation rules the parser enforces.
-- [QueryStringMachine.getAll](https://openphysics.github.io/Almanach/api/query-string-machine/query-string-machine-getall): Parsing every URL query parameter for a sim in one call, plus the related single-key and non-URL-string variants on the same object.
+- [Query parameter schema conventions (QSMSchemaObject)](https://openlyceum.github.io/Almanach/api/query-string-machine/query-parameter-schema-conventions): The shape of an individual QueryStringMachine schema entry - required and optional fields per type, and the validation rules the parser enforces.
+- [QueryStringMachine.getAll](https://openlyceum.github.io/Almanach/api/query-string-machine/query-string-machine-getall): Parsing every URL query parameter for a sim in one call, plus the related single-key and non-URL-string variants on the same object.
 
 ### scenery
 
-- [AlignBox](https://openphysics.github.io/Almanach/api/scenery/align-box): A single-child container for alignment and fixed-size placement within layouts.
-- [AlignGroup](https://openphysics.github.io/Almanach/api/scenery/align-group): Coordinates multiple independent AlignBoxes so they all share one common size.
-- [AnimatedPanZoomListener](https://openphysics.github.io/Almanach/api/scenery/animated-pan-zoom-listener): A pan/zoom listener supporting trackpad, wheel, and keyboard gestures that animates a target Node toward its destination pan/scale.
-- [Circle](https://openphysics.github.io/Almanach/api/scenery/circle): A Path subclass for drawing circles by radius.
-- [Color](https://openphysics.github.io/Almanach/api/scenery/color): Scenery's RGBA color object - construction from RGB, hex, or CSS keywords, and mutation/derivation methods used as a Node's fill or stroke.
-- [ColorProperty, ProfileColorProperty, and PaintColorProperty](https://openphysics.github.io/Almanach/api/scenery/color-property-and-profile-color-property): The Property-driven pattern for colors that can change (by color profile, by derivation from another paint, or just by being observable) instead of being fixed values.
-- [Display](https://openphysics.github.io/Almanach/api/scenery/display): The root object that turns a Node tree into rendered/attached DOM output.
-- [DragListener](https://openphysics.github.io/Almanach/api/scenery/drag-listener): The pointer-driven drag listener that most draggable Nodes are built on.
-- [Filter and the Node.filters visual effects](https://openphysics.github.io/Almanach/api/scenery/visual-filters): The Filter base class and its named subtypes (Brightness, Contrast, Grayscale, Invert, Sepia, HueRotate, Saturate) applied via Node.filters.
-- [FlowBox](https://openphysics.github.io/Almanach/api/scenery/flow-box): A single-axis (row/column) auto-layout container.
-- [FocusManager](https://openphysics.github.io/Almanach/api/scenery/focus-manager): The static class that tracks DOM focus, pointer focus, and reading-block focus across a scenery application.
-- [Font](https://openphysics.github.io/Almanach/api/scenery/font): Scenery's immutable font-description object used by Text and RichText, and the lower-level class PhetFont builds on.
-- [GridBox](https://openphysics.github.io/Almanach/api/scenery/grid-box): A two-dimensional grid auto-layout container.
-- [HBox](https://openphysics.github.io/Almanach/api/scenery/h-box): A FlowBox convenience subclass fixed to horizontal orientation, for laying children out in a row.
-- [Highlight Rendering: HighlightPath and HighlightOverlay](https://openphysics.github.io/Almanach/api/scenery/highlight-rendering): The Path subclass and per-Display overlay that actually draw focus, interactive, and reading-block highlights.
-- [Hit-Testing and Picking](https://openphysics.github.io/Almanach/api/scenery/hit-testing-and-picking): How scenery decides what a pointer is over, and the Node options that shape it.
-- [Hotkey, HotkeyData, and globalHotkeyRegistry](https://openphysics.github.io/Almanach/api/scenery/hotkeys): The declarative building blocks underneath KeyboardListener for defining keyboard shortcuts.
-- [HSeparator, VSeparator, HStrut, and VStrut](https://openphysics.github.io/Almanach/api/scenery/separators-and-struts): Small layout-helper Nodes for adding a visible dividing line or invisible fixed-size gap inside a FlowBox/VBox/HBox.
-- [Image](https://openphysics.github.io/Almanach/api/scenery/image): A Node that renders a raster image with optional Property-driven swapping.
-- [InteractiveHighlighting](https://openphysics.github.io/Almanach/api/scenery/interactive-highlighting): The trait that shows a highlight on pointer hover for interactive Nodes, mirroring keyboard focus highlights.
-- [KeyboardDragListener](https://openphysics.github.io/Almanach/api/scenery/keyboard-drag-listener): The keyboard-driven equivalent of pointer dragging, moving a positionProperty with arrow keys or WASD.
-- [KeyboardListener](https://openphysics.github.io/Almanach/api/scenery/keyboard-listener): A declarative hotkey listener that fires a callback when a specific combination of keys is pressed.
-- [Line](https://openphysics.github.io/Almanach/api/scenery/line): A Path subclass for drawing single line segments.
-- [LinearGradient](https://openphysics.github.io/Almanach/api/scenery/linear-gradient): A paint type for straight-line color gradients, usable anywhere a Node accepts a fill or stroke.
-- [ManualConstraint](https://openphysics.github.io/Almanach/api/scenery/manual-constraint): A low-level layout constraint for one-off imperative positioning logic that should automatically rerun when the involved Nodes' bounds change.
-- [Node](https://openphysics.github.io/Almanach/api/scenery/node): The base class of every item in the scene graph and its core options.
-- [ParallelDOM](https://openphysics.github.io/Almanach/api/scenery/parallel-dom-deep-dive): The trait every Node mixes in that provides its Parallel DOM options, such as tagName and accessibleName.
-- [Path](https://openphysics.github.io/Almanach/api/scenery/path): A Node that renders a kite Shape with fill/stroke.
-- [Pattern](https://openphysics.github.io/Almanach/api/scenery/pattern-paint): The image-tiling paint type usable as a Node's fill or stroke - unrelated to the software-design conventions in the patterns/ section.
-- [Pointer, Mouse, Touch, and Pen](https://openphysics.github.io/Almanach/api/scenery/pointer-mouse-touch-pen): The abstract input-device abstraction behind every scenery pointer event, and its Mouse/Touch/Pen subclasses.
-- [PressListener (direct usage)](https://openphysics.github.io/Almanach/api/scenery/press-listener): Using PressListener directly for custom pressable interactions, and the PDOM/focus-aware state it exposes beyond what FireListener and DragListener summarize.
-- [PressListener and FireListener](https://openphysics.github.io/Almanach/api/scenery/fire-listener): The base classes behind clickable/pressable Nodes.
-- [RadialGradient](https://openphysics.github.io/Almanach/api/scenery/radial-gradient): A paint type for circular color gradients between two circles, usable anywhere a Node accepts a fill or stroke.
-- [Rectangle](https://openphysics.github.io/Almanach/api/scenery/rectangle): A Path subclass for drawing (optionally rounded) rectangles.
-- [RichDragListener](https://openphysics.github.io/Almanach/api/scenery/rich-drag-listener): A single input listener that composes a DragListener and a KeyboardDragListener, giving one draggable object both pointer and keyboard support.
-- [RichText](https://openphysics.github.io/Almanach/api/scenery/rich-text): A Text-like Node supporting a constrained markup subset for mixed styling.
-- [SceneryEvent](https://openphysics.github.io/Almanach/api/scenery/scenery-event): The event object scenery passes to input listeners, wrapping the native DOM event, the pointer, and the hit trail.
-- [Sizable, WidthSizable, and HeightSizable](https://openphysics.github.io/Almanach/api/scenery/sizable-mixins): The mixins that let a custom Node expose a settable preferred/minimum size so layout containers can resize it.
-- [Spacer](https://openphysics.github.io/Almanach/api/scenery/spacer): An invisible, childless Node that reserves a fixed rectangular area of layout space.
-- [Sprites, Sprite, SpriteImage, and SpriteSheet](https://openphysics.github.io/Almanach/api/scenery/sprites): The high-performance rendering system for drawing many instances of a small set of images in a single Node, instead of one scenery Node per instance.
-- [Text](https://openphysics.github.io/Almanach/api/scenery/text): A Node that renders a single string of plain text.
-- [Trail](https://openphysics.github.io/Almanach/api/scenery/trail): An indexed path of Nodes from a root to a descendant, used for hit-testing, ordering, and coordinate transforms across the scene graph.
-- [TransformTracker](https://openphysics.github.io/Almanach/api/scenery/transform-tracker): Efficiently watches a Trail's cumulative transform for changes, without re-deriving it from scratch on every check.
-- [VBox](https://openphysics.github.io/Almanach/api/scenery/v-box): A FlowBox convenience subclass fixed to vertical orientation, for stacking children in a column.
-- [Voicing](https://openphysics.github.io/Almanach/api/scenery/voicing): The Voicing trait's class-level API - response Properties, speak methods, and how to compose it into a Node.
-- [WebGLNode, CanvasNode, and DOM](https://openphysics.github.io/Almanach/api/scenery/rendering-backends): The three alternate rendering-backend Node subclasses for custom drawing outside scenery's default SVG/Canvas pipeline, compared.
+- [AlignBox](https://openlyceum.github.io/Almanach/api/scenery/align-box): A single-child container for alignment and fixed-size placement within layouts.
+- [AlignGroup](https://openlyceum.github.io/Almanach/api/scenery/align-group): Coordinates multiple independent AlignBoxes so they all share one common size.
+- [AnimatedPanZoomListener](https://openlyceum.github.io/Almanach/api/scenery/animated-pan-zoom-listener): A pan/zoom listener supporting trackpad, wheel, and keyboard gestures that animates a target Node toward its destination pan/scale.
+- [Circle](https://openlyceum.github.io/Almanach/api/scenery/circle): A Path subclass for drawing circles by radius.
+- [Color](https://openlyceum.github.io/Almanach/api/scenery/color): Scenery's RGBA color object - construction from RGB, hex, or CSS keywords, and mutation/derivation methods used as a Node's fill or stroke.
+- [ColorProperty, ProfileColorProperty, and PaintColorProperty](https://openlyceum.github.io/Almanach/api/scenery/color-property-and-profile-color-property): The Property-driven pattern for colors that can change (by color profile, by derivation from another paint, or just by being observable) instead of being fixed values.
+- [Display](https://openlyceum.github.io/Almanach/api/scenery/display): The root object that turns a Node tree into rendered/attached DOM output.
+- [DragListener](https://openlyceum.github.io/Almanach/api/scenery/drag-listener): The pointer-driven drag listener that most draggable Nodes are built on.
+- [Filter and the Node.filters visual effects](https://openlyceum.github.io/Almanach/api/scenery/visual-filters): The Filter base class and its named subtypes (Brightness, Contrast, Grayscale, Invert, Sepia, HueRotate, Saturate) applied via Node.filters.
+- [FlowBox](https://openlyceum.github.io/Almanach/api/scenery/flow-box): A single-axis (row/column) auto-layout container.
+- [FocusManager](https://openlyceum.github.io/Almanach/api/scenery/focus-manager): The static class that tracks DOM focus, pointer focus, and reading-block focus across a scenery application.
+- [Font](https://openlyceum.github.io/Almanach/api/scenery/font): Scenery's immutable font-description object used by Text and RichText, and the lower-level class PhetFont builds on.
+- [GridBox](https://openlyceum.github.io/Almanach/api/scenery/grid-box): A two-dimensional grid auto-layout container.
+- [HBox](https://openlyceum.github.io/Almanach/api/scenery/h-box): A FlowBox convenience subclass fixed to horizontal orientation, for laying children out in a row.
+- [Highlight Rendering: HighlightPath and HighlightOverlay](https://openlyceum.github.io/Almanach/api/scenery/highlight-rendering): The Path subclass and per-Display overlay that actually draw focus, interactive, and reading-block highlights.
+- [Hit-Testing and Picking](https://openlyceum.github.io/Almanach/api/scenery/hit-testing-and-picking): How scenery decides what a pointer is over, and the Node options that shape it.
+- [Hotkey, HotkeyData, and globalHotkeyRegistry](https://openlyceum.github.io/Almanach/api/scenery/hotkeys): The declarative building blocks underneath KeyboardListener for defining keyboard shortcuts.
+- [HSeparator, VSeparator, HStrut, and VStrut](https://openlyceum.github.io/Almanach/api/scenery/separators-and-struts): Small layout-helper Nodes for adding a visible dividing line or invisible fixed-size gap inside a FlowBox/VBox/HBox.
+- [Image](https://openlyceum.github.io/Almanach/api/scenery/image): A Node that renders a raster image with optional Property-driven swapping.
+- [InteractiveHighlighting](https://openlyceum.github.io/Almanach/api/scenery/interactive-highlighting): The trait that shows a highlight on pointer hover for interactive Nodes, mirroring keyboard focus highlights.
+- [KeyboardDragListener](https://openlyceum.github.io/Almanach/api/scenery/keyboard-drag-listener): The keyboard-driven equivalent of pointer dragging, moving a positionProperty with arrow keys or WASD.
+- [KeyboardListener](https://openlyceum.github.io/Almanach/api/scenery/keyboard-listener): A declarative hotkey listener that fires a callback when a specific combination of keys is pressed.
+- [Line](https://openlyceum.github.io/Almanach/api/scenery/line): A Path subclass for drawing single line segments.
+- [LinearGradient](https://openlyceum.github.io/Almanach/api/scenery/linear-gradient): A paint type for straight-line color gradients, usable anywhere a Node accepts a fill or stroke.
+- [ManualConstraint](https://openlyceum.github.io/Almanach/api/scenery/manual-constraint): A low-level layout constraint for one-off imperative positioning logic that should automatically rerun when the involved Nodes' bounds change.
+- [Node](https://openlyceum.github.io/Almanach/api/scenery/node): The base class of every item in the scene graph and its core options.
+- [ParallelDOM](https://openlyceum.github.io/Almanach/api/scenery/parallel-dom-deep-dive): The trait every Node mixes in that provides its Parallel DOM options, such as tagName and accessibleName.
+- [Path](https://openlyceum.github.io/Almanach/api/scenery/path): A Node that renders a kite Shape with fill/stroke.
+- [Pattern](https://openlyceum.github.io/Almanach/api/scenery/pattern-paint): The image-tiling paint type usable as a Node's fill or stroke - unrelated to the software-design conventions in the patterns/ section.
+- [Pointer, Mouse, Touch, and Pen](https://openlyceum.github.io/Almanach/api/scenery/pointer-mouse-touch-pen): The abstract input-device abstraction behind every scenery pointer event, and its Mouse/Touch/Pen subclasses.
+- [PressListener (direct usage)](https://openlyceum.github.io/Almanach/api/scenery/press-listener): Using PressListener directly for custom pressable interactions, and the PDOM/focus-aware state it exposes beyond what FireListener and DragListener summarize.
+- [PressListener and FireListener](https://openlyceum.github.io/Almanach/api/scenery/fire-listener): The base classes behind clickable/pressable Nodes.
+- [RadialGradient](https://openlyceum.github.io/Almanach/api/scenery/radial-gradient): A paint type for circular color gradients between two circles, usable anywhere a Node accepts a fill or stroke.
+- [Rectangle](https://openlyceum.github.io/Almanach/api/scenery/rectangle): A Path subclass for drawing (optionally rounded) rectangles.
+- [RichDragListener](https://openlyceum.github.io/Almanach/api/scenery/rich-drag-listener): A single input listener that composes a DragListener and a KeyboardDragListener, giving one draggable object both pointer and keyboard support.
+- [RichText](https://openlyceum.github.io/Almanach/api/scenery/rich-text): A Text-like Node supporting a constrained markup subset for mixed styling.
+- [SceneryEvent](https://openlyceum.github.io/Almanach/api/scenery/scenery-event): The event object scenery passes to input listeners, wrapping the native DOM event, the pointer, and the hit trail.
+- [Sizable, WidthSizable, and HeightSizable](https://openlyceum.github.io/Almanach/api/scenery/sizable-mixins): The mixins that let a custom Node expose a settable preferred/minimum size so layout containers can resize it.
+- [Spacer](https://openlyceum.github.io/Almanach/api/scenery/spacer): An invisible, childless Node that reserves a fixed rectangular area of layout space.
+- [Sprites, Sprite, SpriteImage, and SpriteSheet](https://openlyceum.github.io/Almanach/api/scenery/sprites): The high-performance rendering system for drawing many instances of a small set of images in a single Node, instead of one scenery Node per instance.
+- [Text](https://openlyceum.github.io/Almanach/api/scenery/text): A Node that renders a single string of plain text.
+- [Trail](https://openlyceum.github.io/Almanach/api/scenery/trail): An indexed path of Nodes from a root to a descendant, used for hit-testing, ordering, and coordinate transforms across the scene graph.
+- [TransformTracker](https://openlyceum.github.io/Almanach/api/scenery/transform-tracker): Efficiently watches a Trail's cumulative transform for changes, without re-deriving it from scratch on every check.
+- [VBox](https://openlyceum.github.io/Almanach/api/scenery/v-box): A FlowBox convenience subclass fixed to vertical orientation, for stacking children in a column.
+- [Voicing](https://openlyceum.github.io/Almanach/api/scenery/voicing): The Voicing trait's class-level API - response Properties, speak methods, and how to compose it into a Node.
+- [WebGLNode, CanvasNode, and DOM](https://openlyceum.github.io/Almanach/api/scenery/rendering-backends): The three alternate rendering-backend Node subclasses for custom drawing outside scenery's default SVG/Canvas pipeline, compared.
 
 ### scenery-phet
 
-- [ArrowNode](https://openphysics.github.io/Almanach/api/scenery-phet/arrow-node): A configurable arrow shape used for vectors, force diagrams, and callouts.
-- [BackButton](https://openphysics.github.io/Almanach/api/scenery-phet/back-button): A rectangular button with a leftward arrow icon, used for navigating back (e.g. to a level-selection screen).
-- [Background Nodes](https://openphysics.github.io/Almanach/api/scenery-phet/background-nodes): Small building blocks for scene backgrounds — the sky/ground gradient family (SkyNode, GroundNode, OutsideBackgroundNode) plus BackgroundNode and GradientRectangle.
-- [BannedNode](https://openphysics.github.io/Almanach/api/scenery-phet/banned-node): The universal "no"/prohibition icon — a circle with a diagonal slash through it.
-- [BicyclePumpNode](https://openphysics.github.io/Almanach/api/scenery-phet/bicycle-pump-node): An animated bicycle-pump graphic whose handle, when dragged down, injects discrete units (particles, air, etc.) into a model quantity.
-- [BoxNode](https://openphysics.github.io/Almanach/api/scenery-phet/box-node): A pseudo-3D box drawn as three flat parallelograms (top, front, right side), used for capacitor and battery visualizations.
-- [BracketNode](https://openphysics.github.io/Almanach/api/scenery-phet/bracket-node): A curly-brace-like bracket Path with a single tip, optionally labeled, pointing in one of four directions.
-- [BucketFront and BucketHole](https://openphysics.github.io/Almanach/api/scenery-phet/bucket-front-and-hole): The two view Nodes that render a phetcommon Bucket model — a hole behind draggable contents and a front in front of them.
-- [Capacitor Visualization Nodes](https://openphysics.github.io/Almanach/api/scenery-phet/capacitor-visualization-nodes): The CapacitorNode family — a pseudo-3D capacitor visualization (plates, plate charge, and E-field lines) shared by Capacitor Lab and Circuit Construction Kit-style sims.
-- [CloseButton](https://openphysics.github.io/Almanach/api/scenery-phet/close-button): A red rectangular button with a white "X" icon, the standard control for dismissing a dialog or panel.
-- [ComboBoxDisplay](https://openphysics.github.io/Almanach/api/scenery-phet/combo-box-display): A ComboBox whose items are live NumberDisplay readouts instead of static labels - pick which of several dynamic quantities to show.
-- [ConductivityTesterNode](https://openphysics.github.io/Almanach/api/scenery-phet/conductivity-tester-node): A light bulb wired to a battery and two draggable probes, visualizing circuit conductivity for chemistry sims.
-- [Developer Overlay Nodes](https://openphysics.github.io/Almanach/api/scenery-phet/dev-overlay-nodes): CanvasWarningNode and PointerCoordinatesNode — two debug/developer-only overlay Nodes for surfacing a WebGL fallback warning and live pointer coordinates.
-- [Drawer](https://openphysics.github.io/Almanach/api/scenery-phet/drawer): A container that animates open and closed, revealing or hiding an arbitrary contents Node, toggled by a handle.
-- [EraserButton](https://openphysics.github.io/Almanach/api/scenery-phet/eraser-button): A standard rectangular button with an eraser icon, typically wired to a "clear" or "reset the drawing" action.
-- [EyeDropperNode](https://openphysics.github.io/Almanach/api/scenery-phet/eye-dropper-node): An eye-dropper graphic with a squeeze-bulb button for dispensing colored fluid, driven by dispensing/empty Properties.
-- [FaceNode](https://openphysics.github.io/Almanach/api/scenery-phet/face-node): A simple smiling/frowning face graphic, typically shown as feedback for a correct or incorrect answer.
-- [FaucetNode](https://openphysics.github.io/Almanach/api/scenery-phet/faucet-node): A faucet control with a draggable pinball-shooter-style handle that drives a flow-rate Property, used in fluid/flow simulations.
-- [FineCoarseSpinner](https://openphysics.github.io/Almanach/api/scenery-phet/fine-coarse-spinner): A five-part numeric spinner - fine decrement, coarse decrement, a NumberDisplay readout, coarse increment, fine increment.
-- [FormulaNode](https://openphysics.github.io/Almanach/api/scenery-phet/formula-node): Renders a LaTeX-style math formula via KaTeX, as a DOM Node embedded in the scene graph.
-- [Fraction Display Nodes](https://openphysics.github.io/Almanach/api/scenery-phet/fraction-display-nodes): A small family of Nodes for rendering fractions, mixed numbers, and hand-drawn plus/minus signs without relying on Text glyphs.
-- [GaugeNode](https://openphysics.github.io/Almanach/api/scenery-phet/gauge-node): A circular dial gauge with a needle, tick marks, and a label, driven by a numeric value Property within a fixed range.
-- [GrabDragInteraction](https://openphysics.github.io/Almanach/api/scenery-phet/grab-drag-interaction): The accessible "grab with Enter/Space, arrow-key drag, release with Escape" interaction pattern that mixes into an existing draggable Node's PDOM content.
-- [GridCheckbox and GridIcon](https://openphysics.github.io/Almanach/api/scenery-phet/grid-checkbox): A Checkbox pre-built with a small NxN-grid icon, for toggling a coordinate grid's visibility.
-- [GridNode](https://openphysics.github.io/Almanach/api/scenery-phet/grid-node): A Path drawing an evenly-spaced coordinate grid, positioned and re-projected via a ModelViewTransform2 Property.
-- [Group Sort Interaction](https://openphysics.github.io/Almanach/api/scenery-phet/group-sort-interaction): The accessible keyboard pattern for selecting an item within a group and then sorting it by changing its value — GroupSelectModel/GroupSelectView for selection alone, GroupSortInteractionView adding sorting.
-- [HandleNode](https://openphysics.github.io/Almanach/api/scenery-phet/handle-node): A purely decorative graphic of a grippable handle attached to a surface by one or two elbow-shaped mounts.
-- [HeaterCoolerNode](https://openphysics.github.io/Almanach/api/scenery-phet/heater-cooler-node): A stove-style heating/cooling control driven by a bidirectional -1-to-+1 Property, with an embedded vertical slider.
-- [Icon Toggle Buttons](https://openphysics.github.io/Almanach/api/scenery-phet/icon-toggle-buttons): SoundToggleButton, TimerToggleButton, and EyeToggleButton — toggle buttons bound to a boolean Property that swap between two pre-built icons.
-- [InfoButton](https://openphysics.github.io/Almanach/api/scenery-phet/info-button): The standard round grey button bearing an "i" info-circle icon, typically used to open an informational dialog.
-- [Keyboard Help Node Basics](https://openphysics.github.io/Almanach/api/scenery-phet/keyboard-help-node-basics): KeyNode and its subclasses render individual keycap icons; KeyboardHelpIconFactory composes them into the rows used by a Keyboard Help Dialog.
-- [Keyboard Help Sections](https://openphysics.github.io/Almanach/api/scenery-phet/keyboard-help-sections): KeyboardHelpSection and KeyboardHelpSectionRow lay out one labeled group of shortcuts; a family of ready-made sections covers sliders, spinners, time controls, combo boxes, and more.
-- [Keypad](https://openphysics.github.io/Almanach/api/scenery-phet/keypad): A calculator-like on-screen numeric keypad, driven by a pluggable key-accumulator that interprets key presses into a value.
-- [LaserPointerNode](https://openphysics.github.io/Almanach/api/scenery-phet/laser-pointer-node): A laser-pointer-styled Node with an optional on/off button, used to represent a light source in optics sims.
-- [LightBulbNode](https://openphysics.github.io/Almanach/api/scenery-phet/light-bulb-node): A bulb image that glows and casts light rays as a function of a 0-1 brightness Property.
-- [LightRaysNode](https://openphysics.github.io/Almanach/api/scenery-phet/light-rays-node): A Path of radiating line segments whose count and length scale with a 0-1 brightness value.
-- [LineArrowNode](https://openphysics.github.io/Almanach/api/scenery-phet/line-arrow-node): A lightweight, stroke-only arrow built from three line segments, as opposed to the filled-shape ArrowNode.
-- [LockNode](https://openphysics.github.io/Almanach/api/scenery-phet/lock-node): A padlock icon that swaps between locked and unlocked graphics based on a boolean Property.
-- [MagnifyingGlassNode](https://openphysics.github.io/Almanach/api/scenery-phet/magnifying-glass-node): A simple magnifying-glass icon (circular glass plus a handle) that can center an arbitrary icon Node inside the glass.
-- [MathSymbolFont](https://openphysics.github.io/Almanach/api/scenery-phet/math-symbol-font): The italic serif font PhET sims use for math symbols and variables, kept visually distinct from PhetFont.
-- [MatrixNode](https://openphysics.github.io/Almanach/api/scenery-phet/matrix-node): Renders an MxN matrix of numbers or strings between bracket glyphs, in row-major order.
-- [MeasuringTapeNode](https://openphysics.github.io/Almanach/api/scenery-phet/measuring-tape-node): A draggable measuring tape with a base, an extendable tip, and a live distance readout, common in physics sims.
-- [Movement and Border Alerters](https://openphysics.github.io/Almanach/api/scenery-phet/movement-and-border-alerters): Alerter, MovementAlerter, and BorderAlertsDescriber — utilities that announce which direction a dragged object moved and when it has hit the edge of its movement bounds.
-- [NumberControl](https://openphysics.github.io/Almanach/api/scenery-phet/number-control): A composite slider + label + value-readout control bound to a NumberProperty.
-- [NumberDisplay](https://openphysics.github.io/Almanach/api/scenery-phet/number-display): A labeled, fixed-width numeric readout in a background rectangle, bound to a number Property.
-- [OffScaleIndicatorNode](https://openphysics.github.io/Almanach/api/scenery-phet/off-scale-indicator-node): A labeled arrow-in-a-panel indicator that points toward data which has gone off the edge of a plot.
-- [PaperAirplaneNode and SimpleClockIcon](https://openphysics.github.io/Almanach/api/scenery-phet/paper-airplane-and-simple-clock-icon): Two small, static decorative icon Nodes — the PhET-logo paper airplane, and a plain analog clock face.
-- [ParametricSpringNode](https://openphysics.github.io/Almanach/api/scenery-phet/parametric-spring-node): A coiled spring drawn from a parametric (cycloid-like) equation, with live-adjustable loop count, radius, and phase.
-- [PhetColorScheme, SceneryPhetColors, and SceneryPhetConstants](https://openphysics.github.io/Almanach/api/scenery-phet/phet-color-scheme-and-constants): The shared default colors and numeric constants reused across scenery-phet components, so common physics-quantity colors and button sizing stay consistent across sims.
-- [PhetFont](https://openphysics.github.io/Almanach/api/scenery-phet/phet-font): The standard font class used across every SceneryStack simulation.
-- [PhetUnit](https://openphysics.github.io/Almanach/api/scenery-phet/phet-unit): A rich enumeration-style unit value (e.g. meters, newtons) that a Property can carry to drive automatic value-plus-units string formatting.
-- [Play Control Buttons](https://openphysics.github.io/Almanach/api/scenery-phet/play-control-buttons): PlayControlButton, PlayStopButton, RecordStopButton, and PlayPauseStepButtonGroup — the round toggle buttons and layout group behind time/recording controls.
-- [PlayPauseButton](https://openphysics.github.io/Almanach/api/scenery-phet/play-pause-button): The round toggle button that starts and stops time in a simulation, swapping between a play triangle and a pause icon.
-- [ProbeNode](https://openphysics.github.io/Almanach/api/scenery-phet/probe-node): A physical-looking sensor probe graphic — a circular sensing head on a handle — typically wired to a readout body via WireNode.
-- [ProtractorNode](https://openphysics.github.io/Almanach/api/scenery-phet/protractor-node): A draggable, rotatable protractor image for measuring angles, backed by an angleProperty.
-- [QuestionBar](https://openphysics.github.io/Almanach/api/scenery-phet/question-bar): A StatusBar that floats a single bold framing question at the top of a screen.
-- [ResetAllButton](https://openphysics.github.io/Almanach/api/scenery-phet/reset-all-button): The standard circular reset control wired to a model's reset() method.
-- [RulerNode](https://openphysics.github.io/Almanach/api/scenery-phet/ruler-node): A ruler graphic with major/minor tick marks and a units label, for measurement-style interactions.
-- [sceneryPhetQueryParameters and isResettingAllProperty](https://openphysics.github.io/Almanach/api/scenery-phet/scenery-phet-query-parameters): scenery-phet's own demo-app query parameters, and a global TinyProperty flag that's true while any reset-all is in progress.
-- [ScientificNotationNode](https://openphysics.github.io/Almanach/api/scenery-phet/scientific-notation-node): Renders a number Property as mantissa x 10^exponent, updating live as the value changes.
-- [Screen Summary Layout Nodes](https://openphysics.github.io/Almanach/api/scenery-phet/screen-summary-layout-nodes): PlayAreaNode, ControlAreaNode, and ScreenSummaryNode — the standard PDOM structural sections ScreenView uses to organize a screen's accessible description tree.
-- [ShadedRectangle and ShadedSphereNode](https://openphysics.github.io/Almanach/api/scenery-phet/shaded-rectangle-and-sphere): Two pseudo-3D shading primitives - a beveled rounded rectangle and a specular-highlighted sphere - built from gradients rather than images.
-- [ShadowText](https://openphysics.github.io/Almanach/api/scenery-phet/shadow-text): A Text node rendered twice - an offset dark copy behind a foreground copy - to fake a drop shadow.
-- [Small Icon Utility Buttons](https://openphysics.github.io/Almanach/api/scenery-phet/round-icon-buttons): RefreshButton, RestartButton, ReturnButton, CameraButton, ClapperboardButton, and StarButton — one-shot push buttons distinguished mainly by a fixed icon.
-- [Sound Drag Listeners](https://openphysics.github.io/Almanach/api/scenery-phet/sound-drag-listeners): SoundDragListener, SoundKeyboardDragListener, and SoundRichDragListener — drop-in replacements for scenery's drag listeners that also play grab/release sounds.
-- [SpectrumNode](https://openphysics.github.io/Almanach/api/scenery-phet/spectrum-node): A Node that rasterizes a value range into a horizontal color gradient bar via a client-supplied value-to-color function.
-- [SpinningIndicatorNode](https://openphysics.github.io/Almanach/api/scenery-phet/spinning-indicator-node): A ring of elements whose fill colors cycle to simulate spinning, for indicating indeterminate progress.
-- [StarNode and StarShape](https://openphysics.github.io/Almanach/api/scenery-phet/star-node): A five-pointed star that fills in from left to right by a 0-to-1 value, used as PhET's standard game score indicator.
-- [StatusBar](https://openphysics.github.io/Almanach/api/scenery-phet/status-bar): The scenery-phet base class for a resizing bar pinned to the top of a screen, handling only geometry — subclasses decide what content goes in it.
-- [StepBackwardButton](https://openphysics.github.io/Almanach/api/scenery-phet/step-backward-button): A round push button with a backward-step icon, used to rewind a paused simulation by one fixed increment.
-- [StepForwardButton](https://openphysics.github.io/Almanach/api/scenery-phet/step-forward-button): A round push button with a forward-step icon, used to advance a paused simulation by one fixed increment.
-- [StopSignNode](https://openphysics.github.io/Almanach/api/scenery-phet/stop-sign-node): An octagonal red stop-sign icon with a white inner border and black outer border.
-- [StopwatchNode](https://openphysics.github.io/Almanach/api/scenery-phet/stopwatch-node): A draggable digital stopwatch bound to a Stopwatch model element.
-- [TemperatureAndColorSensorNode](https://openphysics.github.io/Almanach/api/scenery-phet/temperature-and-color-sensor-node): A composite Node pairing a ThermometerNode with a triangular color-swatch indicator, for sensors that report both a temperature and a sampled color.
-- [ThermometerNode](https://openphysics.github.io/Almanach/api/scenery-phet/thermometer-node): A fluid-level thermometer visualization bound to a temperature Property.
-- [TimeControlNode](https://openphysics.github.io/Almanach/api/scenery-phet/time-control-node): The standard play/pause/step-forward control for time-based simulations.
-- [TimeSpeedRadioButtonGroup](https://openphysics.github.io/Almanach/api/scenery-phet/time-speed-radio-button-group): A vertical Aqua radio button group for selecting among the TimeSpeed enumeration values (SLOW, NORMAL, FAST).
-- [Trash Buttons](https://openphysics.github.io/Almanach/api/scenery-phet/trash-buttons): MoveToTrashButton, MoveToTrashLegendButton, and TrashButton — the standard trash-can icon buttons, with and without a "move to" arrow.
-- [TriangleNode](https://openphysics.github.io/Almanach/api/scenery-phet/triangle-node): An equilateral or isosceles triangle Path, pointing in any of the four cardinal directions.
-- [ValueGaugeNode](https://openphysics.github.io/Almanach/api/scenery-phet/value-gauge-node): A GaugeNode subclass with a built-in, centered NumberDisplay showing the gauge's numeric value.
-- [ViewSynchronizer](https://openphysics.github.io/Almanach/api/scenery-phet/view-synchronizer): A small utility that keeps a container Node's children in sync with an array of model elements, via a view factory function.
-- [Wavelength and Spectrum Sliders](https://openphysics.github.io/Almanach/api/scenery-phet/wavelength-and-spectrum-sliders): SpectrumSliderThumb and SpectrumSliderTrack build a color-gradient Slider; WavelengthNumberControl and WavelengthSpectrumNode specialize that for visible-light wavelength; VisibleColor converts between wavelength and RGB.
-- [WireNode](https://openphysics.github.io/Almanach/api/scenery-phet/wire-node): A cubic-bezier wire Path that continuously reconnects two moving points, typically a ProbeNode and its readout body.
-- [XNode](https://openphysics.github.io/Almanach/api/scenery-phet/x-node): A simple 'x' mark Node, drawn as a PlusNode rotated 45 degrees.
-- [YawPitchModelViewTransform3](https://openphysics.github.io/Almanach/api/scenery-phet/yaw-pitch-model-view-transform3): A pseudo-3D model-view transform that projects 3D model coordinates onto a 2D view plane using a fixed yaw/pitch/scale, for capacitor-style oblique visualizations.
-- [Zoom Button Groups](https://openphysics.github.io/Almanach/api/scenery-phet/zoom-button-groups): ZoomButton, ZoomButtonGroup, PlusMinusZoomButtonGroup, and MagnifyingGlassZoomButtonGroup — the standard zoom-in/zoom-out button pair bound to a ranged numeric Property.
+- [ArrowNode](https://openlyceum.github.io/Almanach/api/scenery-phet/arrow-node): A configurable arrow shape used for vectors, force diagrams, and callouts.
+- [BackButton](https://openlyceum.github.io/Almanach/api/scenery-phet/back-button): A rectangular button with a leftward arrow icon, used for navigating back (e.g. to a level-selection screen).
+- [Background Nodes](https://openlyceum.github.io/Almanach/api/scenery-phet/background-nodes): Small building blocks for scene backgrounds — the sky/ground gradient family (SkyNode, GroundNode, OutsideBackgroundNode) plus BackgroundNode and GradientRectangle.
+- [BannedNode](https://openlyceum.github.io/Almanach/api/scenery-phet/banned-node): The universal "no"/prohibition icon — a circle with a diagonal slash through it.
+- [BicyclePumpNode](https://openlyceum.github.io/Almanach/api/scenery-phet/bicycle-pump-node): An animated bicycle-pump graphic whose handle, when dragged down, injects discrete units (particles, air, etc.) into a model quantity.
+- [BoxNode](https://openlyceum.github.io/Almanach/api/scenery-phet/box-node): A pseudo-3D box drawn as three flat parallelograms (top, front, right side), used for capacitor and battery visualizations.
+- [BracketNode](https://openlyceum.github.io/Almanach/api/scenery-phet/bracket-node): A curly-brace-like bracket Path with a single tip, optionally labeled, pointing in one of four directions.
+- [BucketFront and BucketHole](https://openlyceum.github.io/Almanach/api/scenery-phet/bucket-front-and-hole): The two view Nodes that render a phetcommon Bucket model — a hole behind draggable contents and a front in front of them.
+- [Capacitor Visualization Nodes](https://openlyceum.github.io/Almanach/api/scenery-phet/capacitor-visualization-nodes): The CapacitorNode family — a pseudo-3D capacitor visualization (plates, plate charge, and E-field lines) shared by Capacitor Lab and Circuit Construction Kit-style sims.
+- [CloseButton](https://openlyceum.github.io/Almanach/api/scenery-phet/close-button): A red rectangular button with a white "X" icon, the standard control for dismissing a dialog or panel.
+- [ComboBoxDisplay](https://openlyceum.github.io/Almanach/api/scenery-phet/combo-box-display): A ComboBox whose items are live NumberDisplay readouts instead of static labels - pick which of several dynamic quantities to show.
+- [ConductivityTesterNode](https://openlyceum.github.io/Almanach/api/scenery-phet/conductivity-tester-node): A light bulb wired to a battery and two draggable probes, visualizing circuit conductivity for chemistry sims.
+- [Developer Overlay Nodes](https://openlyceum.github.io/Almanach/api/scenery-phet/dev-overlay-nodes): CanvasWarningNode and PointerCoordinatesNode — two debug/developer-only overlay Nodes for surfacing a WebGL fallback warning and live pointer coordinates.
+- [Drawer](https://openlyceum.github.io/Almanach/api/scenery-phet/drawer): A container that animates open and closed, revealing or hiding an arbitrary contents Node, toggled by a handle.
+- [EraserButton](https://openlyceum.github.io/Almanach/api/scenery-phet/eraser-button): A standard rectangular button with an eraser icon, typically wired to a "clear" or "reset the drawing" action.
+- [EyeDropperNode](https://openlyceum.github.io/Almanach/api/scenery-phet/eye-dropper-node): An eye-dropper graphic with a squeeze-bulb button for dispensing colored fluid, driven by dispensing/empty Properties.
+- [FaceNode](https://openlyceum.github.io/Almanach/api/scenery-phet/face-node): A simple smiling/frowning face graphic, typically shown as feedback for a correct or incorrect answer.
+- [FaucetNode](https://openlyceum.github.io/Almanach/api/scenery-phet/faucet-node): A faucet control with a draggable pinball-shooter-style handle that drives a flow-rate Property, used in fluid/flow simulations.
+- [FineCoarseSpinner](https://openlyceum.github.io/Almanach/api/scenery-phet/fine-coarse-spinner): A five-part numeric spinner - fine decrement, coarse decrement, a NumberDisplay readout, coarse increment, fine increment.
+- [FormulaNode](https://openlyceum.github.io/Almanach/api/scenery-phet/formula-node): Renders a LaTeX-style math formula via KaTeX, as a DOM Node embedded in the scene graph.
+- [Fraction Display Nodes](https://openlyceum.github.io/Almanach/api/scenery-phet/fraction-display-nodes): A small family of Nodes for rendering fractions, mixed numbers, and hand-drawn plus/minus signs without relying on Text glyphs.
+- [GaugeNode](https://openlyceum.github.io/Almanach/api/scenery-phet/gauge-node): A circular dial gauge with a needle, tick marks, and a label, driven by a numeric value Property within a fixed range.
+- [GrabDragInteraction](https://openlyceum.github.io/Almanach/api/scenery-phet/grab-drag-interaction): The accessible "grab with Enter/Space, arrow-key drag, release with Escape" interaction pattern that mixes into an existing draggable Node's PDOM content.
+- [GridCheckbox and GridIcon](https://openlyceum.github.io/Almanach/api/scenery-phet/grid-checkbox): A Checkbox pre-built with a small NxN-grid icon, for toggling a coordinate grid's visibility.
+- [GridNode](https://openlyceum.github.io/Almanach/api/scenery-phet/grid-node): A Path drawing an evenly-spaced coordinate grid, positioned and re-projected via a ModelViewTransform2 Property.
+- [Group Sort Interaction](https://openlyceum.github.io/Almanach/api/scenery-phet/group-sort-interaction): The accessible keyboard pattern for selecting an item within a group and then sorting it by changing its value — GroupSelectModel/GroupSelectView for selection alone, GroupSortInteractionView adding sorting.
+- [HandleNode](https://openlyceum.github.io/Almanach/api/scenery-phet/handle-node): A purely decorative graphic of a grippable handle attached to a surface by one or two elbow-shaped mounts.
+- [HeaterCoolerNode](https://openlyceum.github.io/Almanach/api/scenery-phet/heater-cooler-node): A stove-style heating/cooling control driven by a bidirectional -1-to-+1 Property, with an embedded vertical slider.
+- [Icon Toggle Buttons](https://openlyceum.github.io/Almanach/api/scenery-phet/icon-toggle-buttons): SoundToggleButton, TimerToggleButton, and EyeToggleButton — toggle buttons bound to a boolean Property that swap between two pre-built icons.
+- [InfoButton](https://openlyceum.github.io/Almanach/api/scenery-phet/info-button): The standard round grey button bearing an "i" info-circle icon, typically used to open an informational dialog.
+- [Keyboard Help Node Basics](https://openlyceum.github.io/Almanach/api/scenery-phet/keyboard-help-node-basics): KeyNode and its subclasses render individual keycap icons; KeyboardHelpIconFactory composes them into the rows used by a Keyboard Help Dialog.
+- [Keyboard Help Sections](https://openlyceum.github.io/Almanach/api/scenery-phet/keyboard-help-sections): KeyboardHelpSection and KeyboardHelpSectionRow lay out one labeled group of shortcuts; a family of ready-made sections covers sliders, spinners, time controls, combo boxes, and more.
+- [Keypad](https://openlyceum.github.io/Almanach/api/scenery-phet/keypad): A calculator-like on-screen numeric keypad, driven by a pluggable key-accumulator that interprets key presses into a value.
+- [LaserPointerNode](https://openlyceum.github.io/Almanach/api/scenery-phet/laser-pointer-node): A laser-pointer-styled Node with an optional on/off button, used to represent a light source in optics sims.
+- [LightBulbNode](https://openlyceum.github.io/Almanach/api/scenery-phet/light-bulb-node): A bulb image that glows and casts light rays as a function of a 0-1 brightness Property.
+- [LightRaysNode](https://openlyceum.github.io/Almanach/api/scenery-phet/light-rays-node): A Path of radiating line segments whose count and length scale with a 0-1 brightness value.
+- [LineArrowNode](https://openlyceum.github.io/Almanach/api/scenery-phet/line-arrow-node): A lightweight, stroke-only arrow built from three line segments, as opposed to the filled-shape ArrowNode.
+- [LockNode](https://openlyceum.github.io/Almanach/api/scenery-phet/lock-node): A padlock icon that swaps between locked and unlocked graphics based on a boolean Property.
+- [MagnifyingGlassNode](https://openlyceum.github.io/Almanach/api/scenery-phet/magnifying-glass-node): A simple magnifying-glass icon (circular glass plus a handle) that can center an arbitrary icon Node inside the glass.
+- [MathSymbolFont](https://openlyceum.github.io/Almanach/api/scenery-phet/math-symbol-font): The italic serif font PhET sims use for math symbols and variables, kept visually distinct from PhetFont.
+- [MatrixNode](https://openlyceum.github.io/Almanach/api/scenery-phet/matrix-node): Renders an MxN matrix of numbers or strings between bracket glyphs, in row-major order.
+- [MeasuringTapeNode](https://openlyceum.github.io/Almanach/api/scenery-phet/measuring-tape-node): A draggable measuring tape with a base, an extendable tip, and a live distance readout, common in physics sims.
+- [Movement and Border Alerters](https://openlyceum.github.io/Almanach/api/scenery-phet/movement-and-border-alerters): Alerter, MovementAlerter, and BorderAlertsDescriber — utilities that announce which direction a dragged object moved and when it has hit the edge of its movement bounds.
+- [NumberControl](https://openlyceum.github.io/Almanach/api/scenery-phet/number-control): A composite slider + label + value-readout control bound to a NumberProperty.
+- [NumberDisplay](https://openlyceum.github.io/Almanach/api/scenery-phet/number-display): A labeled, fixed-width numeric readout in a background rectangle, bound to a number Property.
+- [OffScaleIndicatorNode](https://openlyceum.github.io/Almanach/api/scenery-phet/off-scale-indicator-node): A labeled arrow-in-a-panel indicator that points toward data which has gone off the edge of a plot.
+- [PaperAirplaneNode and SimpleClockIcon](https://openlyceum.github.io/Almanach/api/scenery-phet/paper-airplane-and-simple-clock-icon): Two small, static decorative icon Nodes — the PhET-logo paper airplane, and a plain analog clock face.
+- [ParametricSpringNode](https://openlyceum.github.io/Almanach/api/scenery-phet/parametric-spring-node): A coiled spring drawn from a parametric (cycloid-like) equation, with live-adjustable loop count, radius, and phase.
+- [PhetColorScheme, SceneryPhetColors, and SceneryPhetConstants](https://openlyceum.github.io/Almanach/api/scenery-phet/phet-color-scheme-and-constants): The shared default colors and numeric constants reused across scenery-phet components, so common physics-quantity colors and button sizing stay consistent across sims.
+- [PhetFont](https://openlyceum.github.io/Almanach/api/scenery-phet/phet-font): The standard font class used across every SceneryStack simulation.
+- [PhetUnit](https://openlyceum.github.io/Almanach/api/scenery-phet/phet-unit): A rich enumeration-style unit value (e.g. meters, newtons) that a Property can carry to drive automatic value-plus-units string formatting.
+- [Play Control Buttons](https://openlyceum.github.io/Almanach/api/scenery-phet/play-control-buttons): PlayControlButton, PlayStopButton, RecordStopButton, and PlayPauseStepButtonGroup — the round toggle buttons and layout group behind time/recording controls.
+- [PlayPauseButton](https://openlyceum.github.io/Almanach/api/scenery-phet/play-pause-button): The round toggle button that starts and stops time in a simulation, swapping between a play triangle and a pause icon.
+- [ProbeNode](https://openlyceum.github.io/Almanach/api/scenery-phet/probe-node): A physical-looking sensor probe graphic — a circular sensing head on a handle — typically wired to a readout body via WireNode.
+- [ProtractorNode](https://openlyceum.github.io/Almanach/api/scenery-phet/protractor-node): A draggable, rotatable protractor image for measuring angles, backed by an angleProperty.
+- [QuestionBar](https://openlyceum.github.io/Almanach/api/scenery-phet/question-bar): A StatusBar that floats a single bold framing question at the top of a screen.
+- [ResetAllButton](https://openlyceum.github.io/Almanach/api/scenery-phet/reset-all-button): The standard circular reset control wired to a model's reset() method.
+- [RulerNode](https://openlyceum.github.io/Almanach/api/scenery-phet/ruler-node): A ruler graphic with major/minor tick marks and a units label, for measurement-style interactions.
+- [sceneryPhetQueryParameters and isResettingAllProperty](https://openlyceum.github.io/Almanach/api/scenery-phet/scenery-phet-query-parameters): scenery-phet's own demo-app query parameters, and a global TinyProperty flag that's true while any reset-all is in progress.
+- [ScientificNotationNode](https://openlyceum.github.io/Almanach/api/scenery-phet/scientific-notation-node): Renders a number Property as mantissa x 10^exponent, updating live as the value changes.
+- [Screen Summary Layout Nodes](https://openlyceum.github.io/Almanach/api/scenery-phet/screen-summary-layout-nodes): PlayAreaNode, ControlAreaNode, and ScreenSummaryNode — the standard PDOM structural sections ScreenView uses to organize a screen's accessible description tree.
+- [ShadedRectangle and ShadedSphereNode](https://openlyceum.github.io/Almanach/api/scenery-phet/shaded-rectangle-and-sphere): Two pseudo-3D shading primitives - a beveled rounded rectangle and a specular-highlighted sphere - built from gradients rather than images.
+- [ShadowText](https://openlyceum.github.io/Almanach/api/scenery-phet/shadow-text): A Text node rendered twice - an offset dark copy behind a foreground copy - to fake a drop shadow.
+- [Small Icon Utility Buttons](https://openlyceum.github.io/Almanach/api/scenery-phet/round-icon-buttons): RefreshButton, RestartButton, ReturnButton, CameraButton, ClapperboardButton, and StarButton — one-shot push buttons distinguished mainly by a fixed icon.
+- [Sound Drag Listeners](https://openlyceum.github.io/Almanach/api/scenery-phet/sound-drag-listeners): SoundDragListener, SoundKeyboardDragListener, and SoundRichDragListener — drop-in replacements for scenery's drag listeners that also play grab/release sounds.
+- [SpectrumNode](https://openlyceum.github.io/Almanach/api/scenery-phet/spectrum-node): A Node that rasterizes a value range into a horizontal color gradient bar via a client-supplied value-to-color function.
+- [SpinningIndicatorNode](https://openlyceum.github.io/Almanach/api/scenery-phet/spinning-indicator-node): A ring of elements whose fill colors cycle to simulate spinning, for indicating indeterminate progress.
+- [StarNode and StarShape](https://openlyceum.github.io/Almanach/api/scenery-phet/star-node): A five-pointed star that fills in from left to right by a 0-to-1 value, used as PhET's standard game score indicator.
+- [StatusBar](https://openlyceum.github.io/Almanach/api/scenery-phet/status-bar): The scenery-phet base class for a resizing bar pinned to the top of a screen, handling only geometry — subclasses decide what content goes in it.
+- [StepBackwardButton](https://openlyceum.github.io/Almanach/api/scenery-phet/step-backward-button): A round push button with a backward-step icon, used to rewind a paused simulation by one fixed increment.
+- [StepForwardButton](https://openlyceum.github.io/Almanach/api/scenery-phet/step-forward-button): A round push button with a forward-step icon, used to advance a paused simulation by one fixed increment.
+- [StopSignNode](https://openlyceum.github.io/Almanach/api/scenery-phet/stop-sign-node): An octagonal red stop-sign icon with a white inner border and black outer border.
+- [StopwatchNode](https://openlyceum.github.io/Almanach/api/scenery-phet/stopwatch-node): A draggable digital stopwatch bound to a Stopwatch model element.
+- [TemperatureAndColorSensorNode](https://openlyceum.github.io/Almanach/api/scenery-phet/temperature-and-color-sensor-node): A composite Node pairing a ThermometerNode with a triangular color-swatch indicator, for sensors that report both a temperature and a sampled color.
+- [ThermometerNode](https://openlyceum.github.io/Almanach/api/scenery-phet/thermometer-node): A fluid-level thermometer visualization bound to a temperature Property.
+- [TimeControlNode](https://openlyceum.github.io/Almanach/api/scenery-phet/time-control-node): The standard play/pause/step-forward control for time-based simulations.
+- [TimeSpeedRadioButtonGroup](https://openlyceum.github.io/Almanach/api/scenery-phet/time-speed-radio-button-group): A vertical Aqua radio button group for selecting among the TimeSpeed enumeration values (SLOW, NORMAL, FAST).
+- [Trash Buttons](https://openlyceum.github.io/Almanach/api/scenery-phet/trash-buttons): MoveToTrashButton, MoveToTrashLegendButton, and TrashButton — the standard trash-can icon buttons, with and without a "move to" arrow.
+- [TriangleNode](https://openlyceum.github.io/Almanach/api/scenery-phet/triangle-node): An equilateral or isosceles triangle Path, pointing in any of the four cardinal directions.
+- [ValueGaugeNode](https://openlyceum.github.io/Almanach/api/scenery-phet/value-gauge-node): A GaugeNode subclass with a built-in, centered NumberDisplay showing the gauge's numeric value.
+- [ViewSynchronizer](https://openlyceum.github.io/Almanach/api/scenery-phet/view-synchronizer): A small utility that keeps a container Node's children in sync with an array of model elements, via a view factory function.
+- [Wavelength and Spectrum Sliders](https://openlyceum.github.io/Almanach/api/scenery-phet/wavelength-and-spectrum-sliders): SpectrumSliderThumb and SpectrumSliderTrack build a color-gradient Slider; WavelengthNumberControl and WavelengthSpectrumNode specialize that for visible-light wavelength; VisibleColor converts between wavelength and RGB.
+- [WireNode](https://openlyceum.github.io/Almanach/api/scenery-phet/wire-node): A cubic-bezier wire Path that continuously reconnects two moving points, typically a ProbeNode and its readout body.
+- [XNode](https://openlyceum.github.io/Almanach/api/scenery-phet/x-node): A simple 'x' mark Node, drawn as a PlusNode rotated 45 degrees.
+- [YawPitchModelViewTransform3](https://openlyceum.github.io/Almanach/api/scenery-phet/yaw-pitch-model-view-transform3): A pseudo-3D model-view transform that projects 3D model coordinates onto a 2D view plane using a fixed yaw/pitch/scale, for capacitor-style oblique visualizations.
+- [Zoom Button Groups](https://openlyceum.github.io/Almanach/api/scenery-phet/zoom-button-groups): ZoomButton, ZoomButtonGroup, PlusMinusZoomButtonGroup, and MagnifyingGlassZoomButtonGroup — the standard zoom-in/zoom-out button pair bound to a ranged numeric Property.
 
 ### sun
 
-- [ABSwitch](https://openphysics.github.io/Almanach/api/sun/ab-switch): A labeled two-option toggle switch bound to a Property over exactly two named values.
-- [AccessibleNumberSpinner](https://openphysics.github.io/Almanach/api/sun/accessible-number-spinner): The trait/mixin that gives NumberSpinner its keyboard and PDOM behavior, with press-and-hold repeat.
-- [AccessibleSlider](https://openphysics.github.io/Almanach/api/sun/accessible-slider): The trait/mixin that gives Slider (and HSlider/VSlider) its keyboard and PDOM behavior.
-- [AccordionBox](https://openphysics.github.io/Almanach/api/sun/accordion-box): An expandable/collapsible titled container bound to an expandedProperty.
-- [AquaRadioButton](https://openphysics.github.io/Almanach/api/sun/aqua-radio-button): A single flat, circular radio button with a label Node, the building block behind AquaRadioButtonGroup.
-- [AquaRadioButtonGroup](https://openphysics.github.io/Almanach/api/sun/aqua-radio-button-group): Aqua-style radio button groups bound to a Property, plus the Horizontal/VerticalAquaRadioButtonGroup orientation convenience subclasses.
-- [ArrowButton](https://openphysics.github.io/Almanach/api/sun/arrow-button): A small rectangular push button whose content is an arrow, with built-in press-and-hold repeat firing.
-- [Carousel](https://openphysics.github.io/Almanach/api/sun/carousel): A paged, scrollable strip of items with next/previous buttons, animated between pages.
-- [CarouselButton](https://openphysics.github.io/Almanach/api/sun/carousel-button): The flat-styled next/previous arrow button Carousel builds and manages internally.
-- [CarouselComboBox](https://openphysics.github.io/Almanach/api/sun/carousel-combo-box): A ComboBox-like dropdown whose popup is a scrollable Carousel, for item lists too long for a plain list box.
-- [Checkbox](https://openphysics.github.io/Almanach/api/sun/checkbox): A checkbox bound to a BooleanProperty, with label-Node composition.
-- [ColorConstants and SunConstants](https://openphysics.github.io/Almanach/api/sun/color-constants): The small set of shared default colors and constant values reused across sun's UI components.
-- [ComboBox](https://openphysics.github.io/Almanach/api/sun/combo-box): A dropdown selector bound to a Property over an enumerated set of items.
-- [ComboBoxListBox](https://openphysics.github.io/Almanach/api/sun/list-box): The popup list-box Panel that ComboBox creates internally to display its items.
-- [ExpandCollapseButton](https://openphysics.github.io/Almanach/api/sun/expand-collapse-button): The square plus/minus toggle button that AccordionBox uses internally for its expand/collapse control.
-- [HSlider](https://openphysics.github.io/Almanach/api/sun/hslider): The horizontal slider bound to a NumberProperty and Range.
-- [MenuItem](https://openphysics.github.io/Almanach/api/sun/menu-item): A single row in PhET's popup PhetMenu — a width-sizable, Voicing-enabled, optionally-checkable menu row.
-- [Momentary Buttons](https://openphysics.github.io/Almanach/api/sun/momentary-button): Press-and-hold buttons that set a Property to an "on" value only while pressed, reverting when released.
-- [NumberPicker](https://openphysics.github.io/Almanach/api/sun/number-picker): A compact up/down arrow spinner bound to a NumberProperty, with its arrows drawn directly on the value display.
-- [NumberSpinner](https://openphysics.github.io/Almanach/api/sun/number-spinner): An integer value display flanked by increment/decrement arrow buttons, bound to a Property and a dynamic Range.
-- [OnOffSwitch](https://openphysics.github.io/Almanach/api/sun/on-off-switch): The iOS-style sliding toggle for a boolean Property, one of three sun affordances for the same on/off pattern.
-- [PageControl](https://openphysics.github.io/Almanach/api/sun/page-control): An iOS-style row of dots indicating the current page, typically paired with Carousel.
-- [Panel](https://openphysics.github.io/Almanach/api/sun/panel): A bordered/background container used to group related controls.
-- [PushButtonModel](https://openphysics.github.io/Almanach/api/sun/push-button-model): The non-visual press/fire state machine behind RectangularPushButton and RoundPushButton, and its ButtonModel base.
-- [Radio Button Groups](https://openphysics.github.io/Almanach/api/sun/radio-button-group): Mutually-exclusive selection bound to a Property (rectangular and Aqua styles).
-- [RectangularButton](https://openphysics.github.io/Almanach/api/sun/rectangular-button): The abstract rectangular button shape and appearance layer that every rectangular sun button builds on.
-- [RectangularPushButton](https://openphysics.github.io/Almanach/api/sun/rectangular-push-button): The standard rectangular momentary-action button.
-- [RectangularRadioButton](https://openphysics.github.io/Almanach/api/sun/rectangular-radio-button): A single boxed radio button, the building block behind RectangularRadioButtonGroup.
-- [RoundButton](https://openphysics.github.io/Almanach/api/sun/round-button): The abstract round button shape and appearance layer that every circular sun button builds on.
-- [RoundPushButton](https://openphysics.github.io/Almanach/api/sun/round-push-button): The circular momentary-action button, sharing PushButtonModel with RectangularPushButton.
-- [Slider](https://openphysics.github.io/Almanach/api/sun/slider): The orientation-agnostic base class behind HSlider and VSlider.
-- [SliderTrack, DefaultSliderTrack, and SliderThumb](https://openphysics.github.io/Almanach/api/sun/slider-track-and-thumb): The pluggable track and thumb pieces you swap out to customize a Slider/HSlider/VSlider's visual appearance.
-- [Sticky Toggle Buttons](https://openphysics.github.io/Almanach/api/sun/sticky-toggle-button): Press-to-latch, press-again-to-release buttons bound to a two-value Property.
-- [TextPushButton](https://openphysics.github.io/Almanach/api/sun/text-push-button): A push button whose content is a text label.
-- [Toggle Buttons](https://openphysics.github.io/Almanach/api/sun/toggle-button): The rectangular/round toggle-button family bound to a BooleanProperty or two-state value.
-- [ToggleNode and BooleanToggleNode](https://openphysics.github.io/Almanach/api/sun/toggle-node): Show exactly one of several child Nodes, chosen by the current value of a Property.
-- [ToggleSwitch](https://openphysics.github.io/Almanach/api/sun/toggle-switch): The generic two-value sliding switch that OnOffSwitch specializes to boolean on/off.
-- [VerticalCheckboxGroup](https://openphysics.github.io/Almanach/api/sun/vertical-checkbox-group): A convenience VBox layout of several independent Checkboxes, one per boolean Property.
-- [VSlider](https://openphysics.github.io/Almanach/api/sun/v-slider): The vertical counterpart to HSlider, bound to the same NumberProperty/Range pattern.
+- [ABSwitch](https://openlyceum.github.io/Almanach/api/sun/ab-switch): A labeled two-option toggle switch bound to a Property over exactly two named values.
+- [AccessibleNumberSpinner](https://openlyceum.github.io/Almanach/api/sun/accessible-number-spinner): The trait/mixin that gives NumberSpinner its keyboard and PDOM behavior, with press-and-hold repeat.
+- [AccessibleSlider](https://openlyceum.github.io/Almanach/api/sun/accessible-slider): The trait/mixin that gives Slider (and HSlider/VSlider) its keyboard and PDOM behavior.
+- [AccordionBox](https://openlyceum.github.io/Almanach/api/sun/accordion-box): An expandable/collapsible titled container bound to an expandedProperty.
+- [AquaRadioButton](https://openlyceum.github.io/Almanach/api/sun/aqua-radio-button): A single flat, circular radio button with a label Node, the building block behind AquaRadioButtonGroup.
+- [AquaRadioButtonGroup](https://openlyceum.github.io/Almanach/api/sun/aqua-radio-button-group): Aqua-style radio button groups bound to a Property, plus the Horizontal/VerticalAquaRadioButtonGroup orientation convenience subclasses.
+- [ArrowButton](https://openlyceum.github.io/Almanach/api/sun/arrow-button): A small rectangular push button whose content is an arrow, with built-in press-and-hold repeat firing.
+- [Carousel](https://openlyceum.github.io/Almanach/api/sun/carousel): A paged, scrollable strip of items with next/previous buttons, animated between pages.
+- [CarouselButton](https://openlyceum.github.io/Almanach/api/sun/carousel-button): The flat-styled next/previous arrow button Carousel builds and manages internally.
+- [CarouselComboBox](https://openlyceum.github.io/Almanach/api/sun/carousel-combo-box): A ComboBox-like dropdown whose popup is a scrollable Carousel, for item lists too long for a plain list box.
+- [Checkbox](https://openlyceum.github.io/Almanach/api/sun/checkbox): A checkbox bound to a BooleanProperty, with label-Node composition.
+- [ColorConstants and SunConstants](https://openlyceum.github.io/Almanach/api/sun/color-constants): The small set of shared default colors and constant values reused across sun's UI components.
+- [ComboBox](https://openlyceum.github.io/Almanach/api/sun/combo-box): A dropdown selector bound to a Property over an enumerated set of items.
+- [ComboBoxListBox](https://openlyceum.github.io/Almanach/api/sun/list-box): The popup list-box Panel that ComboBox creates internally to display its items.
+- [ExpandCollapseButton](https://openlyceum.github.io/Almanach/api/sun/expand-collapse-button): The square plus/minus toggle button that AccordionBox uses internally for its expand/collapse control.
+- [HSlider](https://openlyceum.github.io/Almanach/api/sun/hslider): The horizontal slider bound to a NumberProperty and Range.
+- [MenuItem](https://openlyceum.github.io/Almanach/api/sun/menu-item): A single row in PhET's popup PhetMenu — a width-sizable, Voicing-enabled, optionally-checkable menu row.
+- [Momentary Buttons](https://openlyceum.github.io/Almanach/api/sun/momentary-button): Press-and-hold buttons that set a Property to an "on" value only while pressed, reverting when released.
+- [NumberPicker](https://openlyceum.github.io/Almanach/api/sun/number-picker): A compact up/down arrow spinner bound to a NumberProperty, with its arrows drawn directly on the value display.
+- [NumberSpinner](https://openlyceum.github.io/Almanach/api/sun/number-spinner): An integer value display flanked by increment/decrement arrow buttons, bound to a Property and a dynamic Range.
+- [OnOffSwitch](https://openlyceum.github.io/Almanach/api/sun/on-off-switch): The iOS-style sliding toggle for a boolean Property, one of three sun affordances for the same on/off pattern.
+- [PageControl](https://openlyceum.github.io/Almanach/api/sun/page-control): An iOS-style row of dots indicating the current page, typically paired with Carousel.
+- [Panel](https://openlyceum.github.io/Almanach/api/sun/panel): A bordered/background container used to group related controls.
+- [PushButtonModel](https://openlyceum.github.io/Almanach/api/sun/push-button-model): The non-visual press/fire state machine behind RectangularPushButton and RoundPushButton, and its ButtonModel base.
+- [Radio Button Groups](https://openlyceum.github.io/Almanach/api/sun/radio-button-group): Mutually-exclusive selection bound to a Property (rectangular and Aqua styles).
+- [RectangularButton](https://openlyceum.github.io/Almanach/api/sun/rectangular-button): The abstract rectangular button shape and appearance layer that every rectangular sun button builds on.
+- [RectangularPushButton](https://openlyceum.github.io/Almanach/api/sun/rectangular-push-button): The standard rectangular momentary-action button.
+- [RectangularRadioButton](https://openlyceum.github.io/Almanach/api/sun/rectangular-radio-button): A single boxed radio button, the building block behind RectangularRadioButtonGroup.
+- [RoundButton](https://openlyceum.github.io/Almanach/api/sun/round-button): The abstract round button shape and appearance layer that every circular sun button builds on.
+- [RoundPushButton](https://openlyceum.github.io/Almanach/api/sun/round-push-button): The circular momentary-action button, sharing PushButtonModel with RectangularPushButton.
+- [Slider](https://openlyceum.github.io/Almanach/api/sun/slider): The orientation-agnostic base class behind HSlider and VSlider.
+- [SliderTrack, DefaultSliderTrack, and SliderThumb](https://openlyceum.github.io/Almanach/api/sun/slider-track-and-thumb): The pluggable track and thumb pieces you swap out to customize a Slider/HSlider/VSlider's visual appearance.
+- [Sticky Toggle Buttons](https://openlyceum.github.io/Almanach/api/sun/sticky-toggle-button): Press-to-latch, press-again-to-release buttons bound to a two-value Property.
+- [TextPushButton](https://openlyceum.github.io/Almanach/api/sun/text-push-button): A push button whose content is a text label.
+- [Toggle Buttons](https://openlyceum.github.io/Almanach/api/sun/toggle-button): The rectangular/round toggle-button family bound to a BooleanProperty or two-state value.
+- [ToggleNode and BooleanToggleNode](https://openlyceum.github.io/Almanach/api/sun/toggle-node): Show exactly one of several child Nodes, chosen by the current value of a Property.
+- [ToggleSwitch](https://openlyceum.github.io/Almanach/api/sun/toggle-switch): The generic two-value sliding switch that OnOffSwitch specializes to boolean on/off.
+- [VerticalCheckboxGroup](https://openlyceum.github.io/Almanach/api/sun/vertical-checkbox-group): A convenience VBox layout of several independent Checkboxes, one per boolean Property.
+- [VSlider](https://openlyceum.github.io/Almanach/api/sun/v-slider): The vertical counterpart to HSlider, bound to the same NumberProperty/Range pattern.
 
 ### tambo
 
-- [How tambo's Sound Generation Fits Together](https://openphysics.github.io/Almanach/api/tambo/sound-generation-guide): A conceptual overview of how soundManager, SoundGenerator subclasses, and enabled-state gating compose into tambo's sonification model.
-- [PitchedPopGenerator](https://openphysics.github.io/Almanach/api/tambo/pitched-pop-generator): A tambo sound generator that synthesizes a short "pop" sound at a controllable pitch, useful for sonifying discrete value changes.
-- [SoundClip](https://openphysics.github.io/Almanach/api/tambo/sound-clip): A tambo sound generator that plays a decoded audio buffer as a one-shot or looping clip.
-- [SoundClipPlayer](https://openphysics.github.io/Almanach/api/tambo/sound-clip-player): A lightweight, self-registering wrapper around SoundClip for sounds shared across many places in a sim.
-- [soundManager](https://openphysics.github.io/Almanach/api/tambo/sound-manager): The singleton that registers tambo sound generators, routes them to the Web Audio output, and controls global enable/disable, per-category gain, and reverb.
+- [How tambo's Sound Generation Fits Together](https://openlyceum.github.io/Almanach/api/tambo/sound-generation-guide): A conceptual overview of how soundManager, SoundGenerator subclasses, and enabled-state gating compose into tambo's sonification model.
+- [PitchedPopGenerator](https://openlyceum.github.io/Almanach/api/tambo/pitched-pop-generator): A tambo sound generator that synthesizes a short "pop" sound at a controllable pitch, useful for sonifying discrete value changes.
+- [SoundClip](https://openlyceum.github.io/Almanach/api/tambo/sound-clip): A tambo sound generator that plays a decoded audio buffer as a one-shot or looping clip.
+- [SoundClipPlayer](https://openlyceum.github.io/Almanach/api/tambo/sound-clip-player): A lightweight, self-registering wrapper around SoundClip for sounds shared across many places in a sim.
+- [soundManager](https://openlyceum.github.io/Almanach/api/tambo/sound-manager): The singleton that registers tambo sound generators, routes them to the Web Audio output, and controls global enable/disable, per-category gain, and reverb.
 
 ### tandem
 
-- [Built-in IOTypes](https://openphysics.github.io/Almanach/api/tandem/built-in-io-types): Ready-made PhET-iO serializers for primitives and containers — usually ignore unless you are building PhET-iO.
-- [Disposable](https://openphysics.github.io/Almanach/api/tandem/disposable): The base dispose-lifecycle class that Node, Property, and other long-lived types build on.
-- [IOType](https://openphysics.github.io/Almanach/api/tandem/io-type): PhET-iO serialization descriptor — usually ignore unless you are building PhET-iO.
-- [PhetioCapsule](https://openphysics.github.io/Almanach/api/tandem/phetio-capsule): PhET-iO container for a single lazily created instrumented element — usually ignore unless you are building PhET-iO.
-- [PhetioGroup](https://openphysics.github.io/Almanach/api/tandem/phetio-group): PhET-iO container for a dynamic collection of instrumented elements — usually ignore unless you are building PhET-iO.
-- [PhetioIDUtils and Tandem Naming Conventions](https://openphysics.github.io/Almanach/api/tandem/phetio-id-utils-and-naming): String helpers for PhET-iO element IDs — usually ignore unless you are building PhET-iO.
-- [PhetioObject](https://openphysics.github.io/Almanach/api/tandem/phetio-object): Base class for PhET-iO instrumentation — usually ignore unless you are building PhET-iO.
-- [Tandem](https://openphysics.github.io/Almanach/api/tandem/tandem): The naming handle PhET-iO uses for instrumented elements — usually ignore it in SceneryStack apps.
+- [Built-in IOTypes](https://openlyceum.github.io/Almanach/api/tandem/built-in-io-types): Ready-made PhET-iO serializers for primitives and containers — usually ignore unless you are building PhET-iO.
+- [Disposable](https://openlyceum.github.io/Almanach/api/tandem/disposable): The base dispose-lifecycle class that Node, Property, and other long-lived types build on.
+- [IOType](https://openlyceum.github.io/Almanach/api/tandem/io-type): PhET-iO serialization descriptor — usually ignore unless you are building PhET-iO.
+- [PhetioCapsule](https://openlyceum.github.io/Almanach/api/tandem/phetio-capsule): PhET-iO container for a single lazily created instrumented element — usually ignore unless you are building PhET-iO.
+- [PhetioGroup](https://openlyceum.github.io/Almanach/api/tandem/phetio-group): PhET-iO container for a dynamic collection of instrumented elements — usually ignore unless you are building PhET-iO.
+- [PhetioIDUtils and Tandem Naming Conventions](https://openlyceum.github.io/Almanach/api/tandem/phetio-id-utils-and-naming): String helpers for PhET-iO element IDs — usually ignore unless you are building PhET-iO.
+- [PhetioObject](https://openlyceum.github.io/Almanach/api/tandem/phetio-object): Base class for PhET-iO instrumentation — usually ignore unless you are building PhET-iO.
+- [Tandem](https://openlyceum.github.io/Almanach/api/tandem/tandem): The naming handle PhET-iO uses for instrumented elements — usually ignore it in SceneryStack apps.
 
 ### tappi
 
-- [VibrationIndicator and ContinuousPatternVibrationController](https://openphysics.github.io/Almanach/api/tappi/vibration-indicator-and-controller): An on-screen phone icon that visualizes vibration state, and a pattern-transition controller built on top of the (deprecated, iOS-only) native vibration bridge.
-- [vibrationManager and VibrationPatterns](https://openphysics.github.io/Almanach/api/tappi/vibration-manager-and-patterns): The shared singleton that drives device vibration through the Web Vibration API, plus a library of reusable on/off interval patterns to feed it.
+- [VibrationIndicator and ContinuousPatternVibrationController](https://openlyceum.github.io/Almanach/api/tappi/vibration-indicator-and-controller): An on-screen phone icon that visualizes vibration state, and a pattern-transition controller built on top of the (deprecated, iOS-only) native vibration bridge.
+- [vibrationManager and VibrationPatterns](https://openlyceum.github.io/Almanach/api/tappi/vibration-manager-and-patterns): The shared singleton that drives device vibration through the Web Vibration API, plus a library of reusable on/off interval patterns to feed it.
 
 ### twixt
 
-- [Animation and Easing](https://openphysics.github.io/Almanach/api/twixt/animation): Animating a Property's value smoothly over time instead of setting it instantly.
-- [AnimationTarget and Easing](https://openphysics.github.io/Almanach/api/twixt/animation-target-and-easing): The per-value binding object and interpolation-curve class that Animation is built from internally, and how to use AnimationTarget directly for multi-target animations.
-- [DampedAnimation](https://openphysics.github.io/Almanach/api/twixt/damped-animation): A single-dimension damped-harmonic-oscillator animation that pulls a value toward a target, as an alternative to Animation's fixed-duration easing curves.
-- [TransitionNode](https://openphysics.github.io/Almanach/api/twixt/transition-node): A Node that swaps between two child Nodes using an animated slide, wipe, or dissolve transition.
+- [Animation and Easing](https://openlyceum.github.io/Almanach/api/twixt/animation): Animating a Property's value smoothly over time instead of setting it instantly.
+- [AnimationTarget and Easing](https://openlyceum.github.io/Almanach/api/twixt/animation-target-and-easing): The per-value binding object and interpolation-curve class that Animation is built from internally, and how to use AnimationTarget directly for multi-target animations.
+- [DampedAnimation](https://openlyceum.github.io/Almanach/api/twixt/damped-animation): A single-dimension damped-harmonic-oscillator animation that pulls a value toward a target, as an alternative to Animation's fixed-duration easing curves.
+- [TransitionNode](https://openlyceum.github.io/Almanach/api/twixt/transition-node): A Node that swaps between two child Nodes using an animated slide, wipe, or dissolve transition.
 
 ### utterance-queue
 
-- [Announcer, AriaLiveAnnouncer, and SpeechSynthesisAnnouncer](https://openphysics.github.io/Almanach/api/utterance-queue/announcers): The Announcer hierarchy that UtteranceQueue hands resolved alert text to — aria-live DOM updates and Web Speech API synthesis.
-- [ResponsePacket and ResponsePatternCollection](https://openphysics.github.io/Almanach/api/utterance-queue/response-packet-and-patterns): Structuring a spoken response into name/object/context/hint categories, and controlling how those categories are combined into one string.
-- [Utterance](https://openphysics.github.io/Almanach/api/utterance-queue/utterance): A wrapper around alert content that tracks stability, priority, and per-feature announcing control before it reaches an UtteranceQueue.
-- [UtteranceQueue](https://openphysics.github.io/Almanach/api/utterance-queue/utterance-queue): The FIFO queue that manages timing, priority, and interruption for Utterances before handing text off to an Announcer.
+- [Announcer, AriaLiveAnnouncer, and SpeechSynthesisAnnouncer](https://openlyceum.github.io/Almanach/api/utterance-queue/announcers): The Announcer hierarchy that UtteranceQueue hands resolved alert text to — aria-live DOM updates and Web Speech API synthesis.
+- [ResponsePacket and ResponsePatternCollection](https://openlyceum.github.io/Almanach/api/utterance-queue/response-packet-and-patterns): Structuring a spoken response into name/object/context/hint categories, and controlling how those categories are combined into one string.
+- [Utterance](https://openlyceum.github.io/Almanach/api/utterance-queue/utterance): A wrapper around alert content that tracks stability, priority, and per-feature announcing control before it reaches an UtteranceQueue.
+- [UtteranceQueue](https://openlyceum.github.io/Almanach/api/utterance-queue/utterance-queue): The FIFO queue that manages timing, priority, and interruption for Utterances before handing text off to an Announcer.
 
 ### vegas
 
-- [AllLevelsCompletedNode](https://openphysics.github.io/Almanach/api/vegas/all-levels-completed-node): A pseudo-dialog Node shown when a player has completed every level in a game, with a smiley face and a Done button.
-- [ElapsedTimeNode](https://openphysics.github.io/Almanach/api/vegas/elapsed-time-node): An HBox that displays a clock icon next to a formatted H:MM:SS (or M:SS) elapsed-time readout, driven by a numeric Property.
-- [FiniteStatusBar and InfiniteStatusBar](https://openphysics.github.io/Almanach/api/vegas/status-bars): The standard game-screen status bars that pin a score display (and optionally level/challenge/timer info) to the top of a ScreenView.
-- [GameAudioPlayer](https://openphysics.github.io/Almanach/api/vegas/game-audio-player): A small helper class that plays the standard set of vegas game-feedback sounds (correct/wrong answer, challenge complete, game-over variants).
-- [GameTimer](https://openphysics.github.io/Almanach/api/vegas/game-timer): A simple wall-clock-driven timer, ticking once per second, used to drive a game level's elapsed-time display.
-- [LevelCompletedNode](https://openphysics.github.io/Almanach/api/vegas/level-completed-node): A Panel shown when a player finishes a single game level, summarizing score, stars, and (optionally) elapsed/best time.
-- [LevelSelectionButton](https://openphysics.github.io/Almanach/api/vegas/level-selection-button): A push button for a game's level-selection screen, combining an icon, a score display, and a level-specific sound.
-- [LevelSelectionButtonGroup](https://openphysics.github.io/Almanach/api/vegas/level-selection-button-group): Instantiates and lays out a row (or custom arrangement) of LevelSelectionButtons from a declarative list of items, with built-in support for a gameLevels query parameter.
-- [ScoreDisplay Family](https://openphysics.github.io/Almanach/api/vegas/score-display-family): The three sibling score-display Nodes alongside ScoreDisplayNumberAndStar -- a plain labeled number, a labeled star row, and a bare star row.
-- [ScoreDisplayNumberAndStar](https://openphysics.github.io/Almanach/api/vegas/score-display-number-and-star): A compact vegas score display showing a number and a single star, used where space is tight (e.g. inside a LevelSelectionButton).
+- [AllLevelsCompletedNode](https://openlyceum.github.io/Almanach/api/vegas/all-levels-completed-node): A pseudo-dialog Node shown when a player has completed every level in a game, with a smiley face and a Done button.
+- [ElapsedTimeNode](https://openlyceum.github.io/Almanach/api/vegas/elapsed-time-node): An HBox that displays a clock icon next to a formatted H:MM:SS (or M:SS) elapsed-time readout, driven by a numeric Property.
+- [FiniteStatusBar and InfiniteStatusBar](https://openlyceum.github.io/Almanach/api/vegas/status-bars): The standard game-screen status bars that pin a score display (and optionally level/challenge/timer info) to the top of a ScreenView.
+- [GameAudioPlayer](https://openlyceum.github.io/Almanach/api/vegas/game-audio-player): A small helper class that plays the standard set of vegas game-feedback sounds (correct/wrong answer, challenge complete, game-over variants).
+- [GameTimer](https://openlyceum.github.io/Almanach/api/vegas/game-timer): A simple wall-clock-driven timer, ticking once per second, used to drive a game level's elapsed-time display.
+- [LevelCompletedNode](https://openlyceum.github.io/Almanach/api/vegas/level-completed-node): A Panel shown when a player finishes a single game level, summarizing score, stars, and (optionally) elapsed/best time.
+- [LevelSelectionButton](https://openlyceum.github.io/Almanach/api/vegas/level-selection-button): A push button for a game's level-selection screen, combining an icon, a score display, and a level-specific sound.
+- [LevelSelectionButtonGroup](https://openlyceum.github.io/Almanach/api/vegas/level-selection-button-group): Instantiates and lays out a row (or custom arrangement) of LevelSelectionButtons from a declarative list of items, with built-in support for a gameLevels query parameter.
+- [ScoreDisplay Family](https://openlyceum.github.io/Almanach/api/vegas/score-display-family): The three sibling score-display Nodes alongside ScoreDisplayNumberAndStar -- a plain labeled number, a labeled star row, and a bare star row.
+- [ScoreDisplayNumberAndStar](https://openlyceum.github.io/Almanach/api/vegas/score-display-number-and-star): A compact vegas score display showing a number and a single star, used where space is tight (e.g. inside a LevelSelectionButton).
 
 ## Patterns
 
-- [Model-View Separation](https://openphysics.github.io/Almanach/patterns/model-view-separation): The foundational SceneryStack architecture - axon Properties form the model, scenery Nodes observe it, and nothing flows the other way.
-- [Composing View Nodes](https://openphysics.github.io/Almanach/patterns/composing-view-nodes): Building a screen's view as small, composed Node subclasses instead of one giant ScreenView.
-- [Derived-Enablement Pattern](https://openphysics.github.io/Almanach/patterns/derived-enablement-pattern): Computing a control's enabledProperty from a DerivedProperty over other model state, instead of imperatively setting .enabled from scattered call sites.
-- [Drag Listeners](https://openphysics.github.io/Almanach/patterns/drag-listeners): Making nodes draggable with DragListener, KeyboardDragListener, and RichDragListener, wired to a model positionProperty through a transform.
-- [Grid-Snapping and Constrained-Dragging Pattern](https://openphysics.github.io/Almanach/patterns/grid-snapping-and-constrained-dragging-pattern): When and why to constrain a draggable Node's input - snapping to a grid, clamping to bounds, or restricting to one axis - as distinct decisions layered on top of the ordinary drag-listener pattern.
-- [The Enumeration Pattern](https://openphysics.github.io/Almanach/patterns/enumeration-pattern): Modeling closed sets of values instead of string literals.
-- [The Multilink Pattern](https://openphysics.github.io/Almanach/patterns/multilink-pattern): Combining multiple Properties into one derived reaction.
-- [Emitter vs. Property](https://openphysics.github.io/Almanach/patterns/emitter-vs-property): When to model state as a Property versus a discrete event as an Emitter.
-- [Immutable vs. Mutable Model Data](https://openphysics.github.io/Almanach/patterns/immutable-vs-mutable-model-data): When model state should be an immutable value object replaced wholesale via property.value = newValue, versus mutated in place - and why SceneryStack's math types default to returning new instances.
-- [Constants File Pattern](https://openphysics.github.io/Almanach/patterns/constants-file-pattern): The convention of one MySimConstants.ts module holding every shared magic number, color, and font - the same convention scenery-phet/sun's own SceneryPhetConstants and SunConstants follow.
-- [Singleton and Namespace Conventions](https://openphysics.github.io/Almanach/patterns/singleton-and-namespace-conventions): When a library exposes a ready-made shared-instance singleton (like dotRandom or animationFrameTimer) versus when you construct and own your own instance.
-- [Lazy Initialization Pattern](https://openphysics.github.io/Almanach/patterns/lazy-initialization-pattern): Deferring an expensive object's construction until it's actually needed, instead of paying its cost unconditionally at startup.
-- [Dispose and Memory Management](https://openphysics.github.io/Almanach/patterns/dispose-and-memory-management): The dispose() convention - when Nodes/Properties/listeners must clean up.
-- [Avoiding Property Leaks](https://openphysics.github.io/Almanach/patterns/avoiding-property-leaks): Listener-unlinking discipline for Properties, DerivedProperties, and Multilinks so dynamically created objects don't leak their whole dependency chain.
-- [The Reset-All Pattern](https://openphysics.github.io/Almanach/patterns/reset-all-pattern): Wiring every model Property's reset() through one ResetAllButton.
-- [Testing Model Logic Headlessly](https://openphysics.github.io/Almanach/patterns/testing-model-logic-headlessly): Unit-testing model classes without instantiating scenery Nodes or a Display, so tests run fast and in plain Node.js.
-- [Multi-Screen Sim Structure](https://openphysics.github.io/Almanach/patterns/multi-screen-sim-structure): Structuring model/view code across multiple Screens in one Sim.
-- [The Options Pattern](https://openphysics.github.io/Almanach/patterns/options-pattern): The options-object convention for configuring Nodes and components.
-- [Query Parameters Pattern](https://openphysics.github.io/Almanach/patterns/query-parameters-pattern): Using query parameters to drive optional/debug behavior.
-- [State Persistence and Save/Restore Patterns](https://openphysics.github.io/Almanach/patterns/state-persistence-and-save-restore-patterns): Structuring model state as enumerable Properties so it can be saved and restored by a simulation's own save/load feature.
-- [Command/Undo Pattern for Interactive Sims](https://openphysics.github.io/Almanach/patterns/command-undo-pattern): Structuring a reversible user action as a command object with do/undo so a simulation can support undo, if it needs to - built on the same Property-based state that reset() and dispose() already rely on.
-- [Feature Flags and Preferences Pattern](https://openphysics.github.io/Almanach/patterns/feature-flags-and-preferences-pattern): The narrow convention of gating an in-development or optional feature behind a single, consistently-named boolean Property.
+- [Model-View Separation](https://openlyceum.github.io/Almanach/patterns/model-view-separation): The foundational SceneryStack architecture - axon Properties form the model, scenery Nodes observe it, and nothing flows the other way.
+- [Composing View Nodes](https://openlyceum.github.io/Almanach/patterns/composing-view-nodes): Building a screen's view as small, composed Node subclasses instead of one giant ScreenView.
+- [Derived-Enablement Pattern](https://openlyceum.github.io/Almanach/patterns/derived-enablement-pattern): Computing a control's enabledProperty from a DerivedProperty over other model state, instead of imperatively setting .enabled from scattered call sites.
+- [Drag Listeners](https://openlyceum.github.io/Almanach/patterns/drag-listeners): Making nodes draggable with DragListener, KeyboardDragListener, and RichDragListener, wired to a model positionProperty through a transform.
+- [Grid-Snapping and Constrained-Dragging Pattern](https://openlyceum.github.io/Almanach/patterns/grid-snapping-and-constrained-dragging-pattern): When and why to constrain a draggable Node's input - snapping to a grid, clamping to bounds, or restricting to one axis - as distinct decisions layered on top of the ordinary drag-listener pattern.
+- [The Enumeration Pattern](https://openlyceum.github.io/Almanach/patterns/enumeration-pattern): Modeling closed sets of values instead of string literals.
+- [The Multilink Pattern](https://openlyceum.github.io/Almanach/patterns/multilink-pattern): Combining multiple Properties into one derived reaction.
+- [Emitter vs. Property](https://openlyceum.github.io/Almanach/patterns/emitter-vs-property): When to model state as a Property versus a discrete event as an Emitter.
+- [Immutable vs. Mutable Model Data](https://openlyceum.github.io/Almanach/patterns/immutable-vs-mutable-model-data): When model state should be an immutable value object replaced wholesale via property.value = newValue, versus mutated in place - and why SceneryStack's math types default to returning new instances.
+- [Constants File Pattern](https://openlyceum.github.io/Almanach/patterns/constants-file-pattern): The convention of one MySimConstants.ts module holding every shared magic number, color, and font - the same convention scenery-phet/sun's own SceneryPhetConstants and SunConstants follow.
+- [Singleton and Namespace Conventions](https://openlyceum.github.io/Almanach/patterns/singleton-and-namespace-conventions): When a library exposes a ready-made shared-instance singleton (like dotRandom or animationFrameTimer) versus when you construct and own your own instance.
+- [Lazy Initialization Pattern](https://openlyceum.github.io/Almanach/patterns/lazy-initialization-pattern): Deferring an expensive object's construction until it's actually needed, instead of paying its cost unconditionally at startup.
+- [Dispose and Memory Management](https://openlyceum.github.io/Almanach/patterns/dispose-and-memory-management): The dispose() convention - when Nodes/Properties/listeners must clean up.
+- [Avoiding Property Leaks](https://openlyceum.github.io/Almanach/patterns/avoiding-property-leaks): Listener-unlinking discipline for Properties, DerivedProperties, and Multilinks so dynamically created objects don't leak their whole dependency chain.
+- [The Reset-All Pattern](https://openlyceum.github.io/Almanach/patterns/reset-all-pattern): Wiring every model Property's reset() through one ResetAllButton.
+- [Testing Model Logic Headlessly](https://openlyceum.github.io/Almanach/patterns/testing-model-logic-headlessly): Unit-testing model classes without instantiating scenery Nodes or a Display, so tests run fast and in plain Node.js.
+- [Multi-Screen Sim Structure](https://openlyceum.github.io/Almanach/patterns/multi-screen-sim-structure): Structuring model/view code across multiple Screens in one Sim.
+- [The Options Pattern](https://openlyceum.github.io/Almanach/patterns/options-pattern): The options-object convention for configuring Nodes and components.
+- [Query Parameters Pattern](https://openlyceum.github.io/Almanach/patterns/query-parameters-pattern): Using query parameters to drive optional/debug behavior.
+- [State Persistence and Save/Restore Patterns](https://openlyceum.github.io/Almanach/patterns/state-persistence-and-save-restore-patterns): Structuring model state as enumerable Properties so it can be saved and restored by a simulation's own save/load feature.
+- [Command/Undo Pattern for Interactive Sims](https://openlyceum.github.io/Almanach/patterns/command-undo-pattern): Structuring a reversible user action as a command object with do/undo so a simulation can support undo, if it needs to - built on the same Property-based state that reset() and dispose() already rely on.
+- [Feature Flags and Preferences Pattern](https://openlyceum.github.io/Almanach/patterns/feature-flags-and-preferences-pattern): The narrow convention of gating an in-development or optional feature behind a single, consistently-named boolean Property.
 
 ## Styling
 
-- [Animation and Motion Design Conventions](https://openphysics.github.io/Almanach/styling/animation-and-motion-design-conventions): When to animate a transition instead of snapping it instantly, how long an animation should run, which Easing curve to reach for, and how to avoid overusing motion.
-- [Color Profiles](https://openphysics.github.io/Almanach/styling/color-profiles): Centralizing colors with ProfileColorProperty so an application can switch between default and projector color schemes at runtime.
-- [High-Contrast / Projector-Mode Deep Dive](https://openphysics.github.io/Almanach/styling/high-contrast-projector-mode): Palette-design considerations specific to projector mode - contrast ratios, saturation, and what breaks on a washed-out classroom projector.
-- [Icon Sizing and Button Padding Standards](https://openphysics.github.io/Almanach/styling/icon-sizing-and-button-padding-standards): Standardizing icon dimensions and button touch-target padding once you already have icons and buttons, so a sim's controls read as one consistent set rather than a collection of individually-reasonable sizes.
-- [Iconography Conventions](https://openphysics.github.io/Almanach/styling/iconography-conventions): Building consistent icons for buttons and controls.
-- [Layout Container Conventions](https://openphysics.github.io/Almanach/styling/layout-container-conventions): Styling conventions when composing FlowBox/GridBox/AlignBox layouts.
-- [Panels and Backgrounds](https://openphysics.github.io/Almanach/styling/panels-and-backgrounds): Conventions for grouping controls with Panel/AccordionBox.
-- [Responsive Layout Strategies](https://openphysics.github.io/Almanach/styling/responsive-layout-strategies): How a ScreenView's fixed layoutBounds and scenery's layout containers together handle windows of different sizes and aspect ratios.
-- [Spacing and Sizing Constants](https://openphysics.github.io/Almanach/styling/spacing-and-sizing-constants): Centralizing margins, spacing, and icon sizes in one constants file instead of hardcoding magic numbers throughout view code.
-- [Stroke and Line Styling](https://openphysics.github.io/Almanach/styling/stroke-and-line-styling): Conventions for stroke width, dash patterns, and line joins/caps.
-- [Typography and Fonts](https://openphysics.github.io/Almanach/styling/typography-and-fonts): Using PhetFont consistently and font-size/weight conventions.
-- [Visual Debugging Aids](https://openphysics.github.io/Almanach/styling/visual-debugging-aids): Using scenery's built-in debug query parameters to visualize hit areas, pointer areas, and rendering-block boundaries while tracking down layout and input problems.
+- [Animation and Motion Design Conventions](https://openlyceum.github.io/Almanach/styling/animation-and-motion-design-conventions): When to animate a transition instead of snapping it instantly, how long an animation should run, which Easing curve to reach for, and how to avoid overusing motion.
+- [Color Profiles](https://openlyceum.github.io/Almanach/styling/color-profiles): Centralizing colors with ProfileColorProperty so an application can switch between default and projector color schemes at runtime.
+- [High-Contrast / Projector-Mode Deep Dive](https://openlyceum.github.io/Almanach/styling/high-contrast-projector-mode): Palette-design considerations specific to projector mode - contrast ratios, saturation, and what breaks on a washed-out classroom projector.
+- [Icon Sizing and Button Padding Standards](https://openlyceum.github.io/Almanach/styling/icon-sizing-and-button-padding-standards): Standardizing icon dimensions and button touch-target padding once you already have icons and buttons, so a sim's controls read as one consistent set rather than a collection of individually-reasonable sizes.
+- [Iconography Conventions](https://openlyceum.github.io/Almanach/styling/iconography-conventions): Building consistent icons for buttons and controls.
+- [Layout Container Conventions](https://openlyceum.github.io/Almanach/styling/layout-container-conventions): Styling conventions when composing FlowBox/GridBox/AlignBox layouts.
+- [Panels and Backgrounds](https://openlyceum.github.io/Almanach/styling/panels-and-backgrounds): Conventions for grouping controls with Panel/AccordionBox.
+- [Responsive Layout Strategies](https://openlyceum.github.io/Almanach/styling/responsive-layout-strategies): How a ScreenView's fixed layoutBounds and scenery's layout containers together handle windows of different sizes and aspect ratios.
+- [Spacing and Sizing Constants](https://openlyceum.github.io/Almanach/styling/spacing-and-sizing-constants): Centralizing margins, spacing, and icon sizes in one constants file instead of hardcoding magic numbers throughout view code.
+- [Stroke and Line Styling](https://openlyceum.github.io/Almanach/styling/stroke-and-line-styling): Conventions for stroke width, dash patterns, and line joins/caps.
+- [Typography and Fonts](https://openlyceum.github.io/Almanach/styling/typography-and-fonts): Using PhetFont consistently and font-size/weight conventions.
+- [Visual Debugging Aids](https://openlyceum.github.io/Almanach/styling/visual-debugging-aids): Using scenery's built-in debug query parameters to visualize hit areas, pointer areas, and rendering-block boundaries while tracking down layout and input problems.
 
 ## Accessibility
 
-- [Accessible Descriptions for Charts and Graphs](https://openphysics.github.io/Almanach/accessibility/accessible-descriptions-for-charts-and-graphs): Writing PDOM description content for a bamboo chart that conveys the data's trend and key values, not just the fact that a chart exists.
-- [Alternative Input Overview](https://openphysics.github.io/Almanach/accessibility/alternative-input-overview): How pointer, keyboard, and switch/AT input all route through the same listeners.
-- [Cognitive Accessibility Considerations](https://openphysics.github.io/Almanach/accessibility/cognitive-accessibility-considerations): Reducing cognitive load - clear language, consistent layout, and avoiding unnecessary complexity or timers - as an accessibility axis distinct from screen-reader and keyboard support.
-- [Describing Dynamic State](https://openphysics.github.io/Almanach/accessibility/describing-dynamic-state): Writing description content that updates as model state changes.
-- [Focus Highlights](https://openphysics.github.io/Almanach/accessibility/focus-highlights): Customizing focus highlights for focusable Nodes.
-- [Internationalized Accessible Names](https://openphysics.github.io/Almanach/accessibility/internationalized-accessible-names): Routing accessibleName and other PDOM strings through the same StringProperty translation pipeline as visible text, instead of hardcoding them in English.
-- [Keyboard Input and Hotkeys](https://openphysics.github.io/Almanach/accessibility/keyboard-input-and-hotkeys): KeyboardListener and Hotkey for custom keyboard shortcuts beyond dragging.
-- [Mobile Screen-Reader Testing Notes](https://openphysics.github.io/Almanach/accessibility/mobile-screen-reader-testing-notes): Practical notes on testing VoiceOver (iOS) and TalkBack (Android) with a sim, and the specific ways mobile screen-reader testing differs from testing on desktop.
-- [Screen-Reader Testing Checklist](https://openphysics.github.io/Almanach/accessibility/screen-reader-testing-checklist): A practical checklist for manually testing a sim's PDOM with a real screen reader instead of relying on automated checks alone.
-- [Sound Design](https://openphysics.github.io/Almanach/accessibility/sound-design): Using scenery-phet/tambo sound generators for non-speech audio feedback.
-- [The Parallel DOM (PDOM)](https://openphysics.github.io/Almanach/accessibility/pdom): How scenery renders an invisible, semantic HTML tree alongside the canvas so screen readers and keyboards can use the application.
-- [Voicing](https://openphysics.github.io/Almanach/accessibility/voicing): Speech-synthesis descriptions triggered by interaction, layered on the PDOM.
+- [Accessible Descriptions for Charts and Graphs](https://openlyceum.github.io/Almanach/accessibility/accessible-descriptions-for-charts-and-graphs): Writing PDOM description content for a bamboo chart that conveys the data's trend and key values, not just the fact that a chart exists.
+- [Alternative Input Overview](https://openlyceum.github.io/Almanach/accessibility/alternative-input-overview): How pointer, keyboard, and switch/AT input all route through the same listeners.
+- [Cognitive Accessibility Considerations](https://openlyceum.github.io/Almanach/accessibility/cognitive-accessibility-considerations): Reducing cognitive load - clear language, consistent layout, and avoiding unnecessary complexity or timers - as an accessibility axis distinct from screen-reader and keyboard support.
+- [Describing Dynamic State](https://openlyceum.github.io/Almanach/accessibility/describing-dynamic-state): Writing description content that updates as model state changes.
+- [Focus Highlights](https://openlyceum.github.io/Almanach/accessibility/focus-highlights): Customizing focus highlights for focusable Nodes.
+- [Internationalized Accessible Names](https://openlyceum.github.io/Almanach/accessibility/internationalized-accessible-names): Routing accessibleName and other PDOM strings through the same StringProperty translation pipeline as visible text, instead of hardcoding them in English.
+- [Keyboard Input and Hotkeys](https://openlyceum.github.io/Almanach/accessibility/keyboard-input-and-hotkeys): KeyboardListener and Hotkey for custom keyboard shortcuts beyond dragging.
+- [Mobile Screen-Reader Testing Notes](https://openlyceum.github.io/Almanach/accessibility/mobile-screen-reader-testing-notes): Practical notes on testing VoiceOver (iOS) and TalkBack (Android) with a sim, and the specific ways mobile screen-reader testing differs from testing on desktop.
+- [Screen-Reader Testing Checklist](https://openlyceum.github.io/Almanach/accessibility/screen-reader-testing-checklist): A practical checklist for manually testing a sim's PDOM with a real screen reader instead of relying on automated checks alone.
+- [Sound Design](https://openlyceum.github.io/Almanach/accessibility/sound-design): Using scenery-phet/tambo sound generators for non-speech audio feedback.
+- [The Parallel DOM (PDOM)](https://openlyceum.github.io/Almanach/accessibility/pdom): How scenery renders an invisible, semantic HTML tree alongside the canvas so screen readers and keyboards can use the application.
+- [Voicing](https://openlyceum.github.io/Almanach/accessibility/voicing): Speech-synthesis descriptions triggered by interaction, layered on the PDOM.
 
 ## Examples
 
-- [A 3D Scene with Mobius](https://openphysics.github.io/Almanach/examples/3d-scene-with-mobius): A worked example setting up a basic mobius 3D scene and camera two ways - a full-screen isometric stage via MobiusScreenView, and a fixed-size viewport via ThreeNode - built entirely from already-documented mobius classes.
-- [A Chart-Driven Simulation with Bamboo](https://openphysics.github.io/Almanach/examples/chart-driven-simulation-with-bamboo): A worked mini-sim where a model Property drives a live bamboo LinePlot through a ChartTransform, with an accessible description that tracks the trend.
-- [A Full Accessible Multi-Screen Sim](https://openphysics.github.io/Almanach/examples/full-accessible-multi-screen-sim): Threading PDOM, keyboard, and Voicing support through every screen of a multi-screen sim from the first line of code, instead of retrofitting it later.
-- [A Game-Style Sim with Vegas Scoring](https://openphysics.github.io/Almanach/examples/game-style-sim-with-vegas-scoring): A worked example combining vegas's LevelSelectionButton, ScoreDisplayNumberAndStar, GameAudioPlayer, and AllLevelsCompletedNode into a minimal level-selection and gameplay screen.
-- [A Sim Using Cookbook Recipes End-to-End](https://openphysics.github.io/Almanach/examples/sim-using-cookbook-recipes-end-to-end): A worked mini-scenario combining four cookbook recipes - a bounded draggable, grid snapping, a sound effect on interaction, and a hover tooltip - into one coherent grid-placement tool.
-- [A Sound-Rich Simulation with Tambo](https://openphysics.github.io/Almanach/examples/sound-rich-simulation-with-tambo): A worked example wiring SoundClip, PitchedPopGenerator, and sharedSoundPlayers to several distinct interaction points in one small sim.
-- [Accessible Control Panel Example](https://openphysics.github.io/Almanach/examples/accessible-control-panel-example): A fully accessible control panel combining sun components with PDOM.
-- [Building a Two-Screen Simulation](https://openphysics.github.io/Almanach/examples/building-a-two-screen-simulation): Full example wiring two Screens with shared and per-screen model code.
-- [Demo Simulation Walkthrough](https://openphysics.github.io/Almanach/examples/demo-simulation-walkthrough): Annotated tour of a minimal end-to-end demo sim.
-- [Migrating a Legacy Sim to RichDragListener](https://openphysics.github.io/Almanach/examples/migrating-to-rich-drag-listener): A before/after walkthrough of replacing a pointer-only DragListener with RichDragListener to add keyboard dragging without restructuring the model.
-- [Scenery Layout Examples](https://openphysics.github.io/Almanach/examples/scenery-layout-examples): Worked FlowBox/GridBox layouts for common UI arrangements.
-- [Standalone Scenery App Example](https://openphysics.github.io/Almanach/examples/standalone-scenery-app-example): Using scenery as a standalone rendering library outside the joist shell.
-- [Three.js Integration](https://openphysics.github.io/Almanach/examples/three-js-integration): Embedding a Three.js WebGL scene inside a scenery Node.
+- [A 3D Scene with Mobius](https://openlyceum.github.io/Almanach/examples/3d-scene-with-mobius): A worked example setting up a basic mobius 3D scene and camera two ways - a full-screen isometric stage via MobiusScreenView, and a fixed-size viewport via ThreeNode - built entirely from already-documented mobius classes.
+- [A Chart-Driven Simulation with Bamboo](https://openlyceum.github.io/Almanach/examples/chart-driven-simulation-with-bamboo): A worked mini-sim where a model Property drives a live bamboo LinePlot through a ChartTransform, with an accessible description that tracks the trend.
+- [A Full Accessible Multi-Screen Sim](https://openlyceum.github.io/Almanach/examples/full-accessible-multi-screen-sim): Threading PDOM, keyboard, and Voicing support through every screen of a multi-screen sim from the first line of code, instead of retrofitting it later.
+- [A Game-Style Sim with Vegas Scoring](https://openlyceum.github.io/Almanach/examples/game-style-sim-with-vegas-scoring): A worked example combining vegas's LevelSelectionButton, ScoreDisplayNumberAndStar, GameAudioPlayer, and AllLevelsCompletedNode into a minimal level-selection and gameplay screen.
+- [A Sim Using Cookbook Recipes End-to-End](https://openlyceum.github.io/Almanach/examples/sim-using-cookbook-recipes-end-to-end): A worked mini-scenario combining four cookbook recipes - a bounded draggable, grid snapping, a sound effect on interaction, and a hover tooltip - into one coherent grid-placement tool.
+- [A Sound-Rich Simulation with Tambo](https://openlyceum.github.io/Almanach/examples/sound-rich-simulation-with-tambo): A worked example wiring SoundClip, PitchedPopGenerator, and sharedSoundPlayers to several distinct interaction points in one small sim.
+- [Accessible Control Panel Example](https://openlyceum.github.io/Almanach/examples/accessible-control-panel-example): A fully accessible control panel combining sun components with PDOM.
+- [Building a Two-Screen Simulation](https://openlyceum.github.io/Almanach/examples/building-a-two-screen-simulation): Full example wiring two Screens with shared and per-screen model code.
+- [Demo Simulation Walkthrough](https://openlyceum.github.io/Almanach/examples/demo-simulation-walkthrough): Annotated tour of a minimal end-to-end demo sim.
+- [Migrating a Legacy Sim to RichDragListener](https://openlyceum.github.io/Almanach/examples/migrating-to-rich-drag-listener): A before/after walkthrough of replacing a pointer-only DragListener with RichDragListener to add keyboard dragging without restructuring the model.
+- [Scenery Layout Examples](https://openlyceum.github.io/Almanach/examples/scenery-layout-examples): Worked FlowBox/GridBox layouts for common UI arrangements.
+- [Standalone Scenery App Example](https://openlyceum.github.io/Almanach/examples/standalone-scenery-app-example): Using scenery as a standalone rendering library outside the joist shell.
+- [Three.js Integration](https://openlyceum.github.io/Almanach/examples/three-js-integration): Embedding a Three.js WebGL scene inside a scenery Node.
 
 ## Cookbook
 
-- [A Colorblind-Safe Palette](https://openphysics.github.io/Almanach/cookbook/colorblind-safe-palette): Practical guidance and a worked ProfileColorProperty palette that stays distinguishable under common color-vision deficiencies.
-- [A Custom Focus Highlight Shape](https://openphysics.github.io/Almanach/cookbook/custom-focus-highlight-shape): Overriding a Node's default rectangular focus highlight with a custom kite Shape via HighlightPath.
-- [A Custom Slider Thumb and Track](https://openphysics.github.io/Almanach/cookbook/custom-slider-thumb-and-track): Replacing HSlider's default thumb/track Nodes with custom artwork via the thumbNode/trackNode options.
-- [A Resizable/Collapsible Panel](https://openphysics.github.io/Almanach/cookbook/resizable-collapsible-panel): Combining AccordionBox and Panel so a control group can be collapsed down to just its title bar.
-- [A Simple Score/Level-Selection Screen](https://openphysics.github.io/Almanach/cookbook/simple-score-and-level-selection-screen): Combining vegas's LevelSelectionButton with a score display into a minimal level-selection screen.
-- [A Tooltip-Style Hover Node](https://openphysics.github.io/Almanach/cookbook/tooltip-style-hover-node): Showing and hiding a small info Node on pointer-over using scenery's enter/exit input events.
-- [Adding a Custom Sound Effect on Interaction](https://openphysics.github.io/Almanach/cookbook/custom-sound-effect-on-interaction): Wiring a tambo SoundClip to a button press and to a Property change, registered through soundManager.
-- [Adding a Screen to an Existing Multi-Screen Sim](https://openphysics.github.io/Almanach/cookbook/adding-a-screen-to-an-existing-multi-screen-sim): The concrete steps to add a new Screen to an existing Sim's screens array, without disturbing the existing screens.
-- [Animating a Property Value on a Timer](https://openphysics.github.io/Almanach/cookbook/animating-a-property-value-on-a-timer): Using twixt's Animation to tween a NumberProperty smoothly from one value to another instead of jumping instantly.
-- [Binding a Bamboo Chart Axis to Live Model Data](https://openphysics.github.io/Almanach/cookbook/binding-a-bamboo-chart-axis-to-live-data): Wiring a bamboo ChartTransform's modelXRange to a model Property so the visible range tracks live, growing data.
-- [Building a Custom ScreenIcon](https://openphysics.github.io/Almanach/cookbook/building-a-custom-screen-icon): Composing a Node into a ScreenIcon for use as a Screen's home-screen or navigation-bar icon.
-- [Debugging a Layout That Won't Auto-Size](https://openphysics.github.io/Almanach/cookbook/debugging-a-layout-that-wont-auto-size): A troubleshooting checklist for FlowBox/GridBox children that refuse to stretch or shrink as expected.
-- [Detecting Touch vs. Mouse vs. Keyboard Input](https://openphysics.github.io/Almanach/cookbook/detecting-touch-mouse-keyboard-input): Branching interaction behavior on the input modality using a SceneryEvent's Pointer type or type-specific listener callbacks.
-- [Fuzz-Testing a Simulation Locally](https://openphysics.github.io/Almanach/cookbook/fuzz-testing-a-simulation-locally): Using the ?fuzz query parameter (and its variants) during local development to catch input-handling bugs before release.
-- [Keyboard Shortcuts on a Custom Node](https://openphysics.github.io/Almanach/cookbook/keyboard-shortcuts-on-a-custom-node): Attaching a KeyboardListener to a focusable custom Node to add a hotkey beyond dragging.
-- [Lazily Creating an Expensive Node](https://openphysics.github.io/Almanach/cookbook/lazily-creating-an-expensive-node): Deferring construction of a costly child Node until it's first needed, instead of building it eagerly at startup.
-- [Making Any Node Draggable and Bounded to an Area](https://openphysics.github.io/Almanach/cookbook/draggable-node-bounded-to-an-area): Attaching a DragListener to a Node so it writes a model positionProperty, clamped to a region with dragBoundsProperty.
-- [Placeholder Values in a Translated String](https://openphysics.github.io/Almanach/cookbook/placeholder-values-in-a-translated-string): Using PatternStringProperty to build "{{count}} items"-style strings that stay translatable and update reactively.
-- [Snapping a Draggable Node to a Grid](https://openphysics.github.io/Almanach/cookbook/snapping-a-draggable-node-to-a-grid): Using DragListener's mapPosition hook to round a dragged position onto fixed grid cells.
+- [A Colorblind-Safe Palette](https://openlyceum.github.io/Almanach/cookbook/colorblind-safe-palette): Practical guidance and a worked ProfileColorProperty palette that stays distinguishable under common color-vision deficiencies.
+- [A Custom Focus Highlight Shape](https://openlyceum.github.io/Almanach/cookbook/custom-focus-highlight-shape): Overriding a Node's default rectangular focus highlight with a custom kite Shape via HighlightPath.
+- [A Custom Slider Thumb and Track](https://openlyceum.github.io/Almanach/cookbook/custom-slider-thumb-and-track): Replacing HSlider's default thumb/track Nodes with custom artwork via the thumbNode/trackNode options.
+- [A Resizable/Collapsible Panel](https://openlyceum.github.io/Almanach/cookbook/resizable-collapsible-panel): Combining AccordionBox and Panel so a control group can be collapsed down to just its title bar.
+- [A Simple Score/Level-Selection Screen](https://openlyceum.github.io/Almanach/cookbook/simple-score-and-level-selection-screen): Combining vegas's LevelSelectionButton with a score display into a minimal level-selection screen.
+- [A Tooltip-Style Hover Node](https://openlyceum.github.io/Almanach/cookbook/tooltip-style-hover-node): Showing and hiding a small info Node on pointer-over using scenery's enter/exit input events.
+- [Adding a Custom Sound Effect on Interaction](https://openlyceum.github.io/Almanach/cookbook/custom-sound-effect-on-interaction): Wiring a tambo SoundClip to a button press and to a Property change, registered through soundManager.
+- [Adding a Screen to an Existing Multi-Screen Sim](https://openlyceum.github.io/Almanach/cookbook/adding-a-screen-to-an-existing-multi-screen-sim): The concrete steps to add a new Screen to an existing Sim's screens array, without disturbing the existing screens.
+- [Animating a Property Value on a Timer](https://openlyceum.github.io/Almanach/cookbook/animating-a-property-value-on-a-timer): Using twixt's Animation to tween a NumberProperty smoothly from one value to another instead of jumping instantly.
+- [Binding a Bamboo Chart Axis to Live Model Data](https://openlyceum.github.io/Almanach/cookbook/binding-a-bamboo-chart-axis-to-live-data): Wiring a bamboo ChartTransform's modelXRange to a model Property so the visible range tracks live, growing data.
+- [Building a Custom ScreenIcon](https://openlyceum.github.io/Almanach/cookbook/building-a-custom-screen-icon): Composing a Node into a ScreenIcon for use as a Screen's home-screen or navigation-bar icon.
+- [Debugging a Layout That Won't Auto-Size](https://openlyceum.github.io/Almanach/cookbook/debugging-a-layout-that-wont-auto-size): A troubleshooting checklist for FlowBox/GridBox children that refuse to stretch or shrink as expected.
+- [Detecting Touch vs. Mouse vs. Keyboard Input](https://openlyceum.github.io/Almanach/cookbook/detecting-touch-mouse-keyboard-input): Branching interaction behavior on the input modality using a SceneryEvent's Pointer type or type-specific listener callbacks.
+- [Fuzz-Testing a Simulation Locally](https://openlyceum.github.io/Almanach/cookbook/fuzz-testing-a-simulation-locally): Using the ?fuzz query parameter (and its variants) during local development to catch input-handling bugs before release.
+- [Keyboard Shortcuts on a Custom Node](https://openlyceum.github.io/Almanach/cookbook/keyboard-shortcuts-on-a-custom-node): Attaching a KeyboardListener to a focusable custom Node to add a hotkey beyond dragging.
+- [Lazily Creating an Expensive Node](https://openlyceum.github.io/Almanach/cookbook/lazily-creating-an-expensive-node): Deferring construction of a costly child Node until it's first needed, instead of building it eagerly at startup.
+- [Making Any Node Draggable and Bounded to an Area](https://openlyceum.github.io/Almanach/cookbook/draggable-node-bounded-to-an-area): Attaching a DragListener to a Node so it writes a model positionProperty, clamped to a region with dragBoundsProperty.
+- [Placeholder Values in a Translated String](https://openlyceum.github.io/Almanach/cookbook/placeholder-values-in-a-translated-string): Using PatternStringProperty to build "{{count}} items"-style strings that stay translatable and update reactively.
+- [Snapping a Draggable Node to a Grid](https://openlyceum.github.io/Almanach/cookbook/snapping-a-draggable-node-to-a-grid): Using DragListener's mapPosition hook to round a dragged position onto fixed grid cells.
 
 ## Meta
 
-- [Authoring Guide](https://openphysics.github.io/Almanach/meta/authoring-guide): Conventions for adding documents to Almanach - folder taxonomy, required frontmatter schema, and how the generated indexes work.
-- [FAQ](https://openphysics.github.io/Almanach/meta/faq): Answers to the questions a newcomer to Almanach or to SceneryStack itself would plausibly ask first.
-- [Glossary](https://openphysics.github.io/Almanach/meta/glossary): Alphabetical definitions of SceneryStack and PhET-specific terms used throughout Almanach, each linked to the page that covers it in depth.
-- [Page Template](https://openphysics.github.io/Almanach/meta/page-template): A copy-pasteable frontmatter and section skeleton for authors starting a new page.
-- [Roadmap](https://openphysics.github.io/Almanach/meta/roadmap): What Almanach currently covers, the taxonomy behind that coverage, and the concrete work that remains open.
-- [SceneryStack Version Compatibility Notes](https://openphysics.github.io/Almanach/meta/scenerystack-version-compatibility): Which scenerystack package version Almanach's content was checked against, and when a page's status/sourceRefs should be revisited as SceneryStack releases new versions.
+- [Authoring Guide](https://openlyceum.github.io/Almanach/meta/authoring-guide): Conventions for adding documents to Almanach - folder taxonomy, required frontmatter schema, and how the generated indexes work.
+- [FAQ](https://openlyceum.github.io/Almanach/meta/faq): Answers to the questions a newcomer to Almanach or to SceneryStack itself would plausibly ask first.
+- [Glossary](https://openlyceum.github.io/Almanach/meta/glossary): Alphabetical definitions of SceneryStack and PhET-specific terms used throughout Almanach, each linked to the page that covers it in depth.
+- [Page Template](https://openlyceum.github.io/Almanach/meta/page-template): A copy-pasteable frontmatter and section skeleton for authors starting a new page.
+- [Roadmap](https://openlyceum.github.io/Almanach/meta/roadmap): What Almanach currently covers, the taxonomy behind that coverage, and the concrete work that remains open.
+- [SceneryStack Version Compatibility Notes](https://openlyceum.github.io/Almanach/meta/scenerystack-version-compatibility): Which scenerystack package version Almanach's content was checked against, and when a page's status/sourceRefs should be revisited as SceneryStack releases new versions.
