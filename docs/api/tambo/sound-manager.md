@@ -18,7 +18,7 @@ sourceRefs:
 
 # soundManager
 
-`soundManager` (from `scenerystack/tambo`) is a singleton — not a class you instantiate — that every tambo sound generator ultimately connects through. It owns the shared `AudioContext` signal chain (a dynamics compressor limiter, a convolver-based reverb send, per-category gain nodes, and a "ducking" gain stage), and exposes the register/unregister API that individual `SoundGenerator` instances (like `SoundClip` and `PitchedPopGenerator`) use to reach the speakers. A sim must call `soundManager.initialize(...)` once before any sound generator can be added; until then, `addSoundGenerator` calls are queued and flushed automatically on initialization.
+`soundManager` (from `scenerystack/tambo`) is a singleton — not a class you instantiate — that every tambo sound generator ultimately connects through. It owns the shared `AudioContext` signal chain (a dynamics compressor limiter, a convolver-based reverb send, per-category gain nodes, and a "ducking" gain stage), and exposes the register/unregister API that individual `SoundGenerator` instances (like `SoundClip` and `PitchedPopGenerator`) use to reach the speakers. `Sim` calls `soundManager.initialize(...)` once when `audioOptions.supportsSound` is true; until then, `addSoundGenerator` calls are queued and flushed automatically on initialization. Playback still starts muted unless `init({ supportsSound: true })` defaults `?supportsSound`, the initial value of `enabledProperty`. Set both flags. See [Working with Sound](/guides/working-with-sound).
 
 ```ts
 import { soundManager } from 'scenerystack/tambo';

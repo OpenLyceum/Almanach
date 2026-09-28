@@ -20,7 +20,7 @@ sourceRefs:
 Non-speech sound ("sonification") is a third accessibility channel alongside the [PDOM](/accessibility/pdom) and [Voicing](/accessibility/voicing): short audio cues that confirm an interaction happened or reflect continuous state, independent of whether the user is looking at the screen or using a screen reader. `tambo` (`scenerystack/tambo`) is the sound-generation library used for this; it registers individual **sound generators** with a single global `soundManager`, which owns overall enable/disable, per-category gain, and visibility-based muting.
 
 ::: tip soundManager is a ready-made singleton
-`soundManager` (and the `sharedSoundPlayers` registry built on top of it) is instantiated once per module and registered by `tambo` itself — a simulation doesn't construct or initialize it; `joist`'s sim-lifecycle code enables it based on the `supportsSound`/`extraSoundInitiallyEnabled` query parameters. View code just imports the singleton and calls `addSoundGenerator`/`get` on it, as below.
+`soundManager` (and the `sharedSoundPlayers` registry built on top of it) is instantiated once per module and registered by `tambo` itself — a simulation doesn't construct it. `Sim` calls `soundManager.initialize()` when `audioOptions.supportsSound` is true, and `soundManager.enabledProperty` starts from the `?supportsSound` query parameter, whose default is `init({ supportsSound: true })` in `src/init.ts`. Set both. View code just imports the singleton and calls `addSoundGenerator`/`get` on it, as below. See [Working with Sound](/guides/working-with-sound).
 :::
 
 ## Reuse a shared sound player for common UI sounds

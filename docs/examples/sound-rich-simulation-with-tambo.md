@@ -26,11 +26,22 @@ The scenario: a draggable ball on a number line, where dragging plays a pitch th
 
 ## Enabling sound for the sim
 
-Sound is off unless a `PreferencesModel` declares support for it — this is a `Sim`-level setting, not something each sound generator configures itself:
+Sound is off unless both sound flags are `true`. They are sim-level settings, not something each sound generator configures itself:
+
+- `init({ supportsSound: true })` in `src/init.ts` defaults `?supportsSound`, which is the initial value of `soundManager.enabledProperty` and what keeps the navigation-bar speaker enabled.
+- `audioOptions.supportsSound: true` makes `Sim` call `soundManager.initialize()` and show Audio preferences.
+
+Either flag alone still launches. `audioOptions` alone leaves clips muted and the speaker disabled. `init()` alone does initialize tambo (the preferences option defaults from the query parameter), but set both so they cannot drift. See [Working with Sound](/guides/working-with-sound).
 
 ```ts
+import { init } from 'scenerystack/init';
 import { Sim, onReadyToLaunch, PreferencesModel } from 'scenerystack/sim';
 import { Property } from 'scenerystack/axon';
+
+init( {
+  // ...name, version, splashDataURI
+  supportsSound: true
+} );
 
 const preferencesModel = new PreferencesModel( {
   audioOptions: {

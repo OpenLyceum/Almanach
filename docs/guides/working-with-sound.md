@@ -6,6 +6,7 @@ tags: [tambo, sound, audio]
 status: verified
 related:
   - /accessibility/sound-design
+  - /guides/preferences-and-feature-flags
   - /guides/scenery-basics
   - /patterns/dispose-and-memory-management
 prerequisites:
@@ -18,6 +19,36 @@ navOrder: 10
 # Working with Sound (tambo Overview)
 
 `tambo` (`scenerystack/tambo`) is SceneryStack's sound-generation library: instead of every part of a simulation calling into the Web Audio API directly, each sound-producing thing in the sim is a small **sound generator** object, and a single global **`soundManager`** owns the actual audio graph — enabling/disabling sound globally, mixing generators together, applying per-category gain, and connecting the result to the browser's audio output. This page is a subsystem-level tour of that architecture; for using sound specifically as an accessibility channel (sonification alongside Voicing and the PDOM), see [Sound Design](/accessibility/sound-design).
+
+## Turning sound on
+
+Sound stays off until two flags are both `true`. They are easy to treat as duplicates, and a sim that sets only one of them still launches — clips stay muted, or the navigation-bar speaker is disabled.
+
+| Flag | Where | What it actually does |
+| --- | --- | --- |
+| `supportsSound: true` | `init()` in `src/init.ts` | Defaults the `?supportsSound` query parameter. That value is the initial state of `soundManager.enabledProperty`, so playback starts unmuted. It also keeps the navigation-bar speaker enabled. |
+| `supportsSound: true` | `PreferencesModel` `audioOptions` in `src/main.ts` | Makes `Sim` call `soundManager.initialize()` and offer Audio preferences. This option *defaults* from the query parameter, so `init()` alone is enough to initialize tambo — but `audioOptions` alone leaves `enabledProperty` at `false`. |
+
+```ts
+import { init } from 'scenerystack/init';
+
+init( {
+  // ...name, version, splashDataURI
+  supportsSound: true
+} );
+```
+
+```ts
+import { PreferencesModel } from 'scenerystack/sim';
+
+const preferencesModel = new PreferencesModel( {
+  audioOptions: {
+    supportsSound: true
+  }
+} );
+```
+
+Set them to the same value. A sim with no sound sets neither; `false` is the default. Write `audioOptions.supportsSound: false` only when that `audioOptions` object exists for another reason (voicing or custom audio controls) and sonification should stay off — and leave `init()` unset in that case. When sound is the only audio feature, Preferences hides its own sound toggle and routes mute through the navigation-bar speaker, which cannot unmute a sim whose `enabledProperty` started `false`.
 
 ## soundManager: the mixer
 

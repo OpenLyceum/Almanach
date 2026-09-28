@@ -37,6 +37,8 @@ Other `SoundGenerator` subclasses exist in the real package (`NoiseGenerator`, `
 
 ## Enabled-state gating: why a registered sound might still be silent
 
+Before any of the per-generator gates below, the sim has to turn sound on in two places: `init({ supportsSound: true })` (so `soundManager.enabledProperty` starts `true` and the navigation-bar speaker stays enabled) and `audioOptions.supportsSound: true` (so `Sim` calls `soundManager.initialize()`). See [Working with Sound](/guides/working-with-sound).
+
 Every `SoundGenerator` computes a `fullyEnabledProperty` by combining several signals — not just its own on/off switch:
 
 1. `soundManager.enabledProperty` — the sim-wide sound master switch.

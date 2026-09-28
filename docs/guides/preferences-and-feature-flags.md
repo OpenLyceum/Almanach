@@ -8,6 +8,7 @@ related:
   - /getting-started/your-first-simulation
   - /guides/translation-and-localization
   - /getting-started/running-and-building-a-simulation
+  - /guides/working-with-sound
 prerequisites:
   - /getting-started/your-first-simulation
 sourceRefs:
@@ -54,6 +55,10 @@ onReadyToLaunch( () => {
 | `localizationOptions` | Locale switching, region-and-culture selection |
 
 If none of these `Options` are supplied, the corresponding Preferences tab simply doesn't appear — the dialog only shows tabs relevant to what the simulation actually supports, so passing an empty `new PreferencesModel()` (the `Sim` default) yields a minimal dialog.
+
+::: warning `audioOptions.supportsSound` does not unmute playback
+`supportsSound` on `PreferencesModel` initializes tambo and shows Audio preferences. The navigation-bar speaker and `soundManager.enabledProperty` start from the `?supportsSound` query parameter, whose default comes from `init({ supportsSound: true })` in `src/init.ts`. Set both flags to the same value. `audioOptions` alone leaves every clip muted and disables the speaker button; `init()` alone does initialize tambo, because this option defaults from that query parameter, but declare it in `audioOptions` too so the two sites cannot drift. A sim with no sound sets neither. See [Working with Sound](/guides/working-with-sound).
+:::
 
 ## Query parameters
 

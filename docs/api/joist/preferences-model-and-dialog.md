@@ -37,6 +37,10 @@ onReadyToLaunch( () => {
 } );
 ```
 
+::: warning Sound needs a matching `init()` flag
+`audioOptions.supportsSound` initializes tambo and shows the Audio tab. It does not unmute playback. Also pass `supportsSound: true` to `init()` in `src/init.ts`; that is the default of `?supportsSound`, which seeds `soundManager.enabledProperty` and keeps the navigation-bar speaker enabled. Set both to the same value. See [Working with Sound](/guides/working-with-sound).
+:::
+
 ## `PreferencesModel`
 
 ### Constructor
