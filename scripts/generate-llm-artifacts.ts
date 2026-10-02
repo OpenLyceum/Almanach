@@ -222,17 +222,32 @@ for ( const page of pages ) {
 fs.writeFileSync( path.join( OUT_DIR, 'llms-full.txt' ), full );
 
 // ---------- manifest.json ----------
+const manifestPath = path.join( OUT_DIR, 'manifest.json' );
+const documents = pages.map( ( { content, ...metadata } ) => ( {
+  ...metadata,
+  url: `${SITE_URL}${metadata.path}`
+} ) );
+
+// Keep the previous timestamp when nothing else changed, so regenerating an
+// up-to-date tree leaves the committed artifacts untouched (and CI can fail on
+// any difference).
+const body = { site: SITE_URL, title: SITE_TITLE, description: SITE_SUMMARY, documentCount: pages.length, documents };
+let generated = new Date().toISOString();
+if ( fs.existsSync( manifestPath ) ) {
+  const { generated: previous, ...previousBody } = JSON.parse( fs.readFileSync( manifestPath, 'utf8' ) );
+  if ( typeof previous === 'string' && JSON.stringify( previousBody ) === JSON.stringify( body ) ) {
+    generated = previous;
+  }
+}
+
 const manifest = {
   site: SITE_URL,
   title: SITE_TITLE,
   description: SITE_SUMMARY,
-  generated: new Date().toISOString(),
+  generated,
   documentCount: pages.length,
-  documents: pages.map( ( { content, ...metadata } ) => ( {
-    ...metadata,
-    url: `${SITE_URL}${metadata.path}`
-  } ) )
+  documents
 };
-fs.writeFileSync( path.join( OUT_DIR, 'manifest.json' ), JSON.stringify( manifest, null, 2 ) + '\n' );
+fs.writeFileSync( manifestPath, JSON.stringify( manifest, null, 2 ) + '\n' );
 
 console.log( `Validated ${pages.length} documents. Wrote llms.txt, llms-full.txt, manifest.json to docs/public/.` );

@@ -1739,6 +1739,36 @@ Category: Guides | Tags: tambo, sound, audio | Status: verified
 
 `tambo` (`scenerystack/tambo`) is SceneryStack's sound-generation library: instead of every part of a simulation calling into the Web Audio API directly, each sound-producing thing in the sim is a small **sound generator** object, and a single global **`soundManager`** owns the actual audio graph — enabling/disabling sound globally, mixing generators together, applying per-category gain, and connecting the result to the browser's audio output. This page is a subsystem-level tour of that architecture; for using sound specifically as an accessibility channel (sonification alongside Voicing and the PDOM), see [Sound Design](/accessibility/sound-design).
 
+## Turning sound on
+
+Sound stays off until two flags are both `true`. They are easy to treat as duplicates, and a sim that sets only one of them still launches — clips stay muted, or the navigation-bar speaker is disabled.
+
+| Flag | Where | What it actually does |
+| --- | --- | --- |
+| `supportsSound: true` | `init()` in `src/init.ts` | Defaults the `?supportsSound` query parameter. That value is the initial state of `soundManager.enabledProperty`, so playback starts unmuted. It also keeps the navigation-bar speaker enabled. |
+| `supportsSound: true` | `PreferencesModel` `audioOptions` in `src/main.ts` | Makes `Sim` call `soundManager.initialize()` and offer Audio preferences. This option *defaults* from the query parameter, so `init()` alone is enough to initialize tambo — but `audioOptions` alone leaves `enabledProperty` at `false`. |
+
+```ts
+import { init } from 'scenerystack/init';
+
+init( {
+  // ...name, version, splashDataURI
+  supportsSound: true
+} );
+```
+
+```ts
+import { PreferencesModel } from 'scenerystack/sim';
+
+const preferencesModel = new PreferencesModel( {
+  audioOptions: {
+    supportsSound: true
+  }
+} );
+```
+
+Set them to the same value. A sim with no sound sets neither; `false` is the default. Write `audioOptions.supportsSound: false` only when that `audioOptions` object exists for another reason (voicing or custom audio controls) and sonification should stay off — and leave `init()` unset in that case. When sound is the only audio feature, Preferences hides its own sound toggle and routes mute through the navigation-bar speaker, which cannot unmute a sim whose `enabledProperty` started `false`.
+
 ## soundManager: the mixer
 
 `soundManager` is a singleton — you don't construct it, you register generators with it. Conceptually it's the mixing desk: every sound generator you create gets `add`ed to it once, and from then on `soundManager` controls whether it's audible, how loud, and through which category-level gain it's routed:
@@ -2272,6 +2302,10 @@ onReadyToLaunch( () => {
 | `localizationOptions` | Locale switching, region-and-culture selection |
 
 If none of these `Options` are supplied, the corresponding Preferences tab simply doesn't appear — the dialog only shows tabs relevant to what the simulation actually supports, so passing an empty `new PreferencesModel()` (the `Sim` default) yields a minimal dialog.
+
+::: warning `audioOptions.supportsSound` does not unmute playback
+`supportsSound` on `PreferencesModel` initializes tambo and shows Audio preferences. The navigation-bar speaker and `soundManager.enabledProperty` start from the `?supportsSound` query parameter, whose default comes from `init({ supportsSound: true })` in `src/init.ts`. Set both flags to the same value. `audioOptions` alone leaves every clip muted and disables the speaker button; `init()` alone does initialize tambo, because this option defaults from that query parameter, but declare it in `audioOptions` too so the two sites cannot drift. A sim with no sound sets neither. See [Working with Sound](/guides/working-with-sound).
+:::
 
 ## Query parameters
 
@@ -6273,6 +6307,10 @@ onReadyToLaunch( () => {
   sim.start(); // Sim wires up the Preferences button; PreferencesDialog is built lazily on first click
 } );
 ```
+
+::: warning Sound needs a matching `init()` flag
+`audioOptions.supportsSound` initializes tambo and shows the Audio tab. It does not unmute playback. Also pass `supportsSound: true` to `init()` in `src/init.ts`; that is the default of `?supportsSound`, which seeds `soundManager.enabledProperty` and keeps the navigation-bar speaker enabled. Set both to the same value. See [Working with Sound](/guides/working-with-sound).
+:::
 
 ## `PreferencesModel`
 
@@ -19923,6 +19961,8 @@ Other `SoundGenerator` subclasses exist in the real package (`NoiseGenerator`, `
 
 ## Enabled-state gating: why a registered sound might still be silent
 
+Before any of the per-generator gates below, the sim has to turn sound on in two places: `init({ supportsSound: true })` (so `soundManager.enabledProperty` starts `true` and the navigation-bar speaker stays enabled) and `audioOptions.supportsSound: true` (so `Sim` calls `soundManager.initialize()`). See [Working with Sound](/guides/working-with-sound).
+
 Every `SoundGenerator` computes a `fullyEnabledProperty` by combining several signals — not just its own on/off switch:
 
 1. `soundManager.enabledProperty` — the sim-wide sound master switch.
@@ -20134,7 +20174,7 @@ Category: API | Tags: tambo, soundManager, sound, singleton, WebAudio | Status: 
 
 # soundManager
 
-`soundManager` (from `scenerystack/tambo`) is a singleton — not a class you instantiate — that every tambo sound generator ultimately connects through. It owns the shared `AudioContext` signal chain (a dynamics compressor limiter, a convolver-based reverb send, per-category gain nodes, and a "ducking" gain stage), and exposes the register/unregister API that individual `SoundGenerator` instances (like `SoundClip` and `PitchedPopGenerator`) use to reach the speakers. A sim must call `soundManager.initialize(...)` once before any sound generator can be added; until then, `addSoundGenerator` calls are queued and flushed automatically on initialization.
+`soundManager` (from `scenerystack/tambo`) is a singleton — not a class you instantiate — that every tambo sound generator ultimately connects through. It owns the shared `AudioContext` signal chain (a dynamics compressor limiter, a convolver-based reverb send, per-category gain nodes, and a "ducking" gain stage), and exposes the register/unregister API that individual `SoundGenerator` instances (like `SoundClip` and `PitchedPopGenerator`) use to reach the speakers. `Sim` calls `soundManager.initialize(...)` once when `audioOptions.supportsSound` is true; until then, `addSoundGenerator` calls are queued and flushed automatically on initialization. Playback still starts muted unless `init({ supportsSound: true })` defaults `?supportsSound`, the initial value of `enabledProperty`. Set both flags. See [Working with Sound](/guides/working-with-sound).
 
 ```ts
 import { soundManager } from 'scenerystack/tambo';
@@ -25079,7 +25119,7 @@ Category: Accessibility | Tags: tambo, sound, accessibility | Status: verified
 Non-speech sound ("sonification") is a third accessibility channel alongside the [PDOM](/accessibility/pdom) and [Voicing](/accessibility/voicing): short audio cues that confirm an interaction happened or reflect continuous state, independent of whether the user is looking at the screen or using a screen reader. `tambo` (`scenerystack/tambo`) is the sound-generation library used for this; it registers individual **sound generators** with a single global `soundManager`, which owns overall enable/disable, per-category gain, and visibility-based muting.
 
 ::: tip soundManager is a ready-made singleton
-`soundManager` (and the `sharedSoundPlayers` registry built on top of it) is instantiated once per module and registered by `tambo` itself — a simulation doesn't construct or initialize it; `joist`'s sim-lifecycle code enables it based on the `supportsSound`/`extraSoundInitiallyEnabled` query parameters. View code just imports the singleton and calls `addSoundGenerator`/`get` on it, as below.
+`soundManager` (and the `sharedSoundPlayers` registry built on top of it) is instantiated once per module and registered by `tambo` itself — a simulation doesn't construct it. `Sim` calls `soundManager.initialize()` when `audioOptions.supportsSound` is true, and `soundManager.enabledProperty` starts from the `?supportsSound` query parameter, whose default is `init({ supportsSound: true })` in `src/init.ts`. Set both. View code just imports the singleton and calls `addSoundGenerator`/`get` on it, as below. See [Working with Sound](/guides/working-with-sound).
 :::
 
 ## Reuse a shared sound player for common UI sounds
@@ -26185,11 +26225,22 @@ The scenario: a draggable ball on a number line, where dragging plays a pitch th
 
 ## Enabling sound for the sim
 
-Sound is off unless a `PreferencesModel` declares support for it — this is a `Sim`-level setting, not something each sound generator configures itself:
+Sound is off unless both sound flags are `true`. They are sim-level settings, not something each sound generator configures itself:
+
+- `init({ supportsSound: true })` in `src/init.ts` defaults `?supportsSound`, which is the initial value of `soundManager.enabledProperty` and what keeps the navigation-bar speaker enabled.
+- `audioOptions.supportsSound: true` makes `Sim` call `soundManager.initialize()` and show Audio preferences.
+
+Either flag alone still launches. `audioOptions` alone leaves clips muted and the speaker disabled. `init()` alone does initialize tambo (the preferences option defaults from the query parameter), but set both so they cannot drift. See [Working with Sound](/guides/working-with-sound).
 
 ```ts
+import { init } from 'scenerystack/init';
 import { Sim, onReadyToLaunch, PreferencesModel } from 'scenerystack/sim';
 import { Property } from 'scenerystack/axon';
+
+init( {
+  // ...name, version, splashDataURI
+  supportsSound: true
+} );
 
 const preferencesModel = new PreferencesModel( {
   audioOptions: {

@@ -8,6 +8,10 @@ on:
 
 jobs:
   build:
+    # A branch push and its pull request would otherwise run the same commit
+    # twice; pull_request runs are kept only for forks, whose pushes never
+    # trigger this repo's workflows.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,6 +28,13 @@ jobs:
 
       - name: Validate frontmatter and generate LLM artifacts
         run: npm run generate
+
+      - name: Check committed LLM artifacts are up to date
+        run: |
+          if ! git diff --exit-code --stat docs/public; then
+            echo "::error::docs/public is stale. Run 'npm run generate' and commit the result."
+            exit 1
+          fi
 
       - name: Check demo registry
         run: npm run demos:check

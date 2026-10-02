@@ -37,6 +37,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # build covers the demos but not scripts/ or .vitepress/*.ts, and ci.yml
+      # does not run on main.
+      - name: Type-check
+        run: npm run typecheck
+
       - name: Build site
         run: npm run build
 

@@ -14,9 +14,13 @@ npm run dev        # local dev server with live reload
 | Script | What it does |
 | --- | --- |
 | `npm run dev` | Start the VitePress dev server |
-| `npm run generate` | Validate all frontmatter and regenerate the LLM artifacts in `docs/public/` |
-| `npm run build` | `generate` + full static site build (fails on schema violations or dead links) |
+| `npm run generate` | Validate all frontmatter and regenerate the LLM artifacts in `docs/public/` (a no-op when nothing changed; CI fails if the committed copies are stale) |
+| `npm run build` | `generate` + `demos:check` + `demos:typecheck` + full static site build (fails on schema violations or dead links) |
 | `npm run preview` | Serve the built site locally |
+| `npm run typecheck` | Type-check `scripts/` and `docs/.vitepress/` |
+| `npm run demos:check` | Check every demo is registered and matches its doc page |
+| `npm run demos:typecheck` | Type-check the demo sources |
+| `npm run coverage:status` | Report page counts per category and library, frontmatter status, and cross-link gaps |
 | `npm run check:pages` | Load every built page in headless Chromium and report console errors, warnings, and failed requests (add `--strict` to fail on warnings). CI and the deploy workflow run this as a gate |
 
 ## For LLM agents
@@ -33,4 +37,4 @@ See the [Authoring Guide](docs/meta/authoring-guide.md): drop a Markdown file wi
 
 ## Deployment
 
-Pushes to `main` build and deploy the site to GitHub Pages via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) 
+Pushes to `main` build and deploy the site to GitHub Pages via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). 
