@@ -29496,7 +29496,7 @@ Category: Meta | Tags: roadmap, planning, contributing, conventions | Status: co
 
 # Roadmap
 
-Almanach covers 19 simulation-author-facing `scenerystack/*` libraries across 9 top-level categories (`getting-started`, `guides`, `api`, `patterns`, `styling`, `accessibility`, `examples`, `cookbook`, `meta`) — 423 pages as of this writing. Run `npm run coverage:status` at any time for a live count broken down by category/library and frontmatter `status`.
+Almanach covers 19 simulation-author-facing `scenerystack/*` libraries across 9 top-level categories (`getting-started`, `guides`, `api`, `patterns`, `styling`, `accessibility`, `examples`, `cookbook`, `meta`) — more than 400 pages. Run `npm run coverage:status` for the live count broken down by category/library and frontmatter `status`.
 
 **This document does not itself write the content.** It explains the taxonomy so a new page lands in the right place, and lists the concrete work still open so a contributor (human or agent) can pick something up instead of guessing.
 
@@ -29525,11 +29525,11 @@ There is no separate checklist to tick — progress is read directly from frontm
 
 ## Open work
 
-- **Independent verification pass**: 182 pages are `status: complete` but haven't yet had an independent pass cross-check their technical claims against real SceneryStack source (`status: verified`). Highest concentrations: `api/scenery-phet/*`, `api/sun/*`, and `cookbook/*`. `npm run coverage:status` prints the live count — pick a library folder or category cluster and verify 5–10 pages at a time.
+- **Independent verification pass**: many pages are `status: complete` but haven't yet had an independent pass cross-check their technical claims against real SceneryStack source (`status: verified`). Highest concentrations: `api/scenery-phet/*`, `api/sun/*`, and `cookbook/*`. `npm run coverage:status` prints the live count — pick a library folder or category cluster and verify 5–10 pages at a time.
 - **Cross-link gaps**: `npm run coverage:status` reports live counts for pages missing `prerequisites` or `sourceRefs` (most remaining `sourceRefs` gaps are `meta/*` pages, which intentionally don't cite SceneryStack source). `related` is fully populated across the tree.
 - **Re-verification against newer `scenerystack` releases**: Almanach's content was checked against `scenerystack@3.0.0`; see [SceneryStack Version Compatibility Notes](/meta/scenerystack-version-compatibility) for what to do once a newer major version ships.
 - **Deeper class-level coverage**: each in-scope library has more real exports than Almanach documents (internal helpers and asset modules aside). Find genuine gaps by introspecting the installed package (read its `src/<lib>.ts` barrel file, or inspect https://scenerystack.org/reference/) and cross-checking against what's already documented before adding a page.
-- The 5 `meta/*` pages (`authoring-guide`, `faq`, `glossary`, `page-template`, this file) stay at `complete` rather than `verified` — that status is about checking claims against SceneryStack source, which doesn't apply to pages that are about Almanach itself.
+- The `meta/*` pages (`authoring-guide`, `faq`, `glossary`, `page-template`, `scenerystack-version-compatibility`, this file) stay at `complete` rather than `verified` — that status is about checking claims against SceneryStack source, which doesn't apply to pages that are about Almanach itself.
 
 
 ========================================================================

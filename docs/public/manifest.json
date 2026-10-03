@@ -2,7 +2,7 @@
   "site": "https://openlyceum.github.io/Almanach",
   "title": "Almanach — SceneryStack Knowledge Base",
   "description": "A file-based knowledge base of SceneryStack knowledge: API guides, software patterns, styling, and accessibility conventions for building interactive simulations. Every page is plain Markdown with structured frontmatter.",
-  "generated": "2026-10-02T14:14:49.639Z",
+  "generated": "2026-10-03T16:27:17.738Z",
   "documentCount": 418,
   "documents": [
     {
@@ -11986,7 +11986,7 @@
       ],
       "prerequisites": [],
       "sourceRefs": [],
-      "wordCount": 737,
+      "wordCount": 732,
       "url": "https://openlyceum.github.io/Almanach/meta/roadmap"
     },
     {
