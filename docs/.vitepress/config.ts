@@ -52,7 +52,8 @@ export default defineConfig( {
     outline: 'deep',
 
     footer: {
-      message: 'Machine-readable indexes: <a href="/Almanach/llms.txt">llms.txt</a> · <a href="/Almanach/llms-full.txt">llms-full.txt</a> · <a href="/Almanach/manifest.json">manifest.json</a>'
+      // Built from BASE so the links also resolve under `npm run dev` (base "/").
+      message: `Machine-readable indexes: <a href="${BASE}llms.txt">llms.txt</a> · <a href="${BASE}llms-full.txt">llms-full.txt</a> · <a href="${BASE}manifest.json">manifest.json</a>`
     }
   }
 } );

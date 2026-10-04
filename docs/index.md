@@ -4,7 +4,7 @@ title: Almanach
 
 # Almanach
 
-API guides, software patterns, styling, and accessibility conventions for building interactive [SceneryStack](https://scenerystack.org) simulations — 420 pages, browsable here or ingestible by LLM agents.
+API guides, software patterns, styling, and accessibility conventions for building interactive [SceneryStack](https://scenerystack.org) simulations — more than 400 pages, browsable here or ingestible by LLM agents.
 
 Use the sidebar to navigate the full knowledge base, or jump into a section below.
 

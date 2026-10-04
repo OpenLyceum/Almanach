@@ -1,7 +1,10 @@
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { createServer, type Server } from 'node:http';
+import { join, extname } from 'node:path';
 import { chromium } from 'playwright';
-import { createServer } from 'http';
-import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
-import { join, extname } from 'path';
+
+type Issue = { type: string; text: string };
+type PageResult = { name: string; url: string; issues: Issue[] };
 
 const DIST = 'docs/.vitepress/dist';
 const BASE = process.env.VITEPRESS_BASE ?? '/Almanach/';
@@ -9,7 +12,7 @@ const STRICT = process.argv.includes('--strict');
 const CONCURRENCY = 4;
 const PORT_START = 4173;
 
-const MIME = {
+const MIME: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'application/javascript',
   '.mjs': 'application/javascript',
@@ -35,7 +38,7 @@ if (!existsSync(DIST)) {
   process.exit(2);
 }
 
-const collectHtmlFiles = (dir, acc = []) => {
+const collectHtmlFiles = (dir: string, acc: string[] = []): string[] => {
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) collectHtmlFiles(full, acc);
@@ -44,12 +47,12 @@ const collectHtmlFiles = (dir, acc = []) => {
   return acc;
 };
 
-const startServer = async () => {
+const startServer = async (): Promise<{ server: Server; port: number }> => {
   for (let port = PORT_START; port < PORT_START + 20; port++) {
     const server = createServer((req, res) => {
       let url;
       try {
-        url = decodeURIComponent(req.url.split('?')[0]);
+        url = decodeURIComponent((req.url ?? '/').split('?')[0] ?? '/');
       } catch {
         res.writeHead(400);
         res.end();
@@ -68,9 +71,9 @@ const startServer = async () => {
       res.end(readFileSync(filePath));
     });
     try {
-      await new Promise((resolve, reject) => {
+      await new Promise<void>((resolve, reject) => {
         server.once('error', reject);
-        server.listen(port, resolve);
+        server.listen(port, () => resolve());
       });
       return { server, port };
     } catch {
@@ -91,14 +94,14 @@ process.stderr.write(`Checking ${pages.length} pages at http://localhost:${port}
 
 const browser = await chromium.launch({ args: ['--no-sandbox'] });
 const context = await browser.newContext();
-const results = [];
+const results: PageResult[] = [];
 let done = 0;
 
-const checkPage = async ({ url, name }) => {
+const checkPage = async ({ url, name }: { url: string; name: string }): Promise<PageResult> => {
   const page = await context.newPage();
-  const seen = new Set();
-  const issues = [];
-  const record = (type, text) => {
+  const seen = new Set<string>();
+  const issues: Issue[] = [];
+  const record = (type: string, text: string): void => {
     const key = `${type}:${text}`;
     if (seen.has(key)) return;
     seen.add(key);
@@ -127,7 +130,7 @@ const checkPage = async ({ url, name }) => {
     await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
     await page.waitForTimeout(750);
   } catch (e) {
-    record('navigation', e.message);
+    record('navigation', e instanceof Error ? e.message : String(e));
   }
 
   await page.close();
@@ -148,10 +151,10 @@ const workers = Array.from({ length: Math.min(CONCURRENCY, pages.length) }, asyn
 await Promise.all(workers);
 
 await browser.close();
-await new Promise(resolve => server.close(resolve));
+await new Promise<void>(resolve => server.close(() => resolve()));
 
 const withIssues = results.filter(r => r.issues.length > 0);
-const counts = {};
+const counts: Record<string, number> = {};
 for (const r of withIssues) {
   for (const i of r.issues) counts[i.type] = (counts[i.type] ?? 0) + 1;
 }

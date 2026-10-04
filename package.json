@@ -16,7 +16,7 @@
     "dev": "VITEPRESS_BASE=/ vitepress dev docs",
     "build": "npm run generate && npm run demos:check && npm run demos:typecheck && vitepress build docs",
     "preview": "vitepress preview docs",
-    "check:pages": "node check-pages.mjs",
+    "check:pages": "tsx scripts/check-pages.ts",
     "generate": "tsx scripts/generate-llm-artifacts.ts",
     "demos:check": "tsx scripts/check-demos.ts",
     "demos:typecheck": "tsc --noEmit -p tsconfig.demos.json",

@@ -2,7 +2,7 @@
   "site": "https://openlyceum.github.io/Almanach",
   "title": "Almanach — SceneryStack Knowledge Base",
   "description": "A file-based knowledge base of SceneryStack knowledge: API guides, software patterns, styling, and accessibility conventions for building interactive simulations. Every page is plain Markdown with structured frontmatter.",
-  "generated": "2026-08-19T14:27:39.680Z",
+  "generated": "2026-10-03T16:27:17.738Z",
   "documentCount": 418,
   "documents": [
     {
@@ -576,6 +576,7 @@
       "status": "verified",
       "related": [
         "/accessibility/sound-design",
+        "/guides/preferences-and-feature-flags",
         "/guides/scenery-basics",
         "/patterns/dispose-and-memory-management"
       ],
@@ -586,7 +587,7 @@
         "https://www.npmjs.com/package/scenerystack"
       ],
       "navOrder": 10,
-      "wordCount": 894,
+      "wordCount": 1141,
       "url": "https://openlyceum.github.io/Almanach/guides/working-with-sound"
     },
     {
@@ -787,7 +788,8 @@
       "related": [
         "/getting-started/your-first-simulation",
         "/guides/translation-and-localization",
-        "/getting-started/running-and-building-a-simulation"
+        "/getting-started/running-and-building-a-simulation",
+        "/guides/working-with-sound"
       ],
       "prerequisites": [
         "/getting-started/your-first-simulation"
@@ -796,7 +798,7 @@
         "https://www.npmjs.com/package/scenerystack"
       ],
       "navOrder": 17,
-      "wordCount": 581,
+      "wordCount": 673,
       "url": "https://openlyceum.github.io/Almanach/guides/preferences-and-feature-flags"
     },
     {
@@ -2615,7 +2617,7 @@
       "sourceRefs": [
         "https://www.npmjs.com/package/scenerystack"
       ],
-      "wordCount": 665,
+      "wordCount": 720,
       "url": "https://openlyceum.github.io/Almanach/api/joist/preferences-model-and-dialog"
     },
     {
@@ -8672,7 +8674,7 @@
       "sourceRefs": [
         "https://www.npmjs.com/package/scenerystack"
       ],
-      "wordCount": 580,
+      "wordCount": 622,
       "url": "https://openlyceum.github.io/Almanach/api/tambo/sound-generation-guide"
     },
     {
@@ -8787,7 +8789,7 @@
       "sourceRefs": [
         "https://www.npmjs.com/package/scenerystack"
       ],
-      "wordCount": 521,
+      "wordCount": 539,
       "url": "https://openlyceum.github.io/Almanach/api/tambo/sound-manager"
     },
     {
@@ -10857,7 +10859,7 @@
         "https://www.npmjs.com/package/scenerystack",
         "https://scenerystack.org/reference/"
       ],
-      "wordCount": 550,
+      "wordCount": 567,
       "url": "https://openlyceum.github.io/Almanach/accessibility/sound-design"
     },
     {
@@ -11116,7 +11118,7 @@
       "sourceRefs": [
         "https://www.npmjs.com/package/scenerystack"
       ],
-      "wordCount": 1029,
+      "wordCount": 1114,
       "url": "https://openlyceum.github.io/Almanach/examples/sound-rich-simulation-with-tambo"
     },
     {
@@ -11984,7 +11986,7 @@
       ],
       "prerequisites": [],
       "sourceRefs": [],
-      "wordCount": 737,
+      "wordCount": 732,
       "url": "https://openlyceum.github.io/Almanach/meta/roadmap"
     },
     {

@@ -37,8 +37,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # build covers the demos but not scripts/ or .vitepress/*.ts, and ci.yml
+      # does not run on main.
+      - name: Type-check
+        run: npm run typecheck
+
       - name: Build site
         run: npm run build
+
+      # build regenerates docs/public, so the deployed site is always current;
+      # a direct push to main can still leave the committed copies (which agents
+      # read from the repo) behind. Flag it without blocking the deploy.
+      - name: Check committed LLM artifacts are up to date
+        run: |
+          if ! git diff --exit-code --stat docs/public; then
+            echo "::warning::docs/public on main is stale. Run 'npm run generate' and commit the result."
+          fi
 
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
