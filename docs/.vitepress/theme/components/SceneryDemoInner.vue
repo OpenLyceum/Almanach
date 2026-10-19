@@ -21,7 +21,8 @@ type DisplayInstance = {
   domElement: HTMLElement;
   initializeEvents: () => void;
   updateDisplay: () => void;
-  updateOnRequestAnimationFrame: ( callback?: ( ( dt: number ) => void ) | null ) => void;
+  updateOnRequestAnimationFrame: ( callback?: ( dt: number ) => void ) => void;
+  cancelUpdateOnRequestAnimationFrame: () => void;
   dispose: () => void;
 };
 
@@ -52,7 +53,12 @@ onMounted( async () => {
     display = new scenery.Display( rootNode, {
       width,
       height,
-      backgroundColor: '#f5f5f5'
+      backgroundColor: '#f5f5f5',
+
+      // Listen on the demo's own element, not the window. In window mode Scenery captures every pointerdown on
+      // the page to document.body (retargeting link clicks so VitePress never navigates) and disables text
+      // selection document-wide.
+      listenToOnlyElement: true
     } );
 
     isLoading.value = false;
@@ -70,7 +76,7 @@ onMounted( async () => {
 } );
 
 onBeforeUnmount( () => {
-  display?.updateOnRequestAnimationFrame( null );
+  display?.cancelUpdateOnRequestAnimationFrame();
   disposeDemo?.();
   display?.dispose();
   display = null;
