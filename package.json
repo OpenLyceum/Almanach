@@ -10,7 +10,7 @@
     "url": "https://github.com/OpenLyceum/Almanach.git"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=26"
   },
   "scripts": {
     "dev": "VITEPRESS_BASE=/ vitepress dev docs",
@@ -24,7 +24,7 @@
     "coverage:status": "tsx scripts/coverage-status.ts"
   },
   "devDependencies": {
-    "@types/node": "^24.13.3",
+    "@types/node": "^26.6.6",
     "gray-matter": "^4.0.3",
     "playwright": "^1.62.1",
     "scenerystack": "3.0.0",
@@ -35,5 +35,12 @@
   "overrides": {
     "lodash": "^4.18.0",
     "three": "^0.125.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=26",
+      "onFail": "error"
+    }
   }
 }
