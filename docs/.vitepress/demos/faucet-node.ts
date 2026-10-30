@@ -1,7 +1,7 @@
 import { BooleanProperty, NumberProperty } from 'scenerystack/axon';
 import { Text, VBox } from 'scenerystack/scenery';
 import { FaucetNode } from 'scenerystack/scenery-phet';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

@@ -2,7 +2,7 @@ import { Range, Vector2 } from 'scenerystack/dot';
 import { Node, VBox } from 'scenerystack/scenery';
 import { TextPushButton } from 'scenerystack/sun';
 import { CanvasLinePlot, ChartCanvasNode, ChartRectangle, ChartTransform } from 'scenerystack/bamboo';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

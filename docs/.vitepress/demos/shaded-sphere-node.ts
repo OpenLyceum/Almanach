@@ -3,7 +3,7 @@ import { Bounds2, Range, Dimension2 } from 'scenerystack/dot';
 import { HSlider } from 'scenerystack/sun';
 import { ShadedRectangle, ShadedSphereNode } from 'scenerystack/scenery-phet';
 import { HBox, Node, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 420;

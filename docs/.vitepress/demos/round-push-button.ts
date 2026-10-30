@@ -2,7 +2,7 @@ import { NumberProperty } from 'scenerystack/axon';
 import { RoundPushButton } from 'scenerystack/sun';
 import { Path, Text, VBox } from 'scenerystack/scenery';
 import { Shape } from 'scenerystack/kite';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 300;

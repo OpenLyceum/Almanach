@@ -2,7 +2,7 @@ import { Range, Dimension2 } from 'scenerystack/dot';
 import { HSlider } from 'scenerystack/sun';
 import { ParametricSpringNode } from 'scenerystack/scenery-phet';
 import { HBox, Node, Text, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 440;

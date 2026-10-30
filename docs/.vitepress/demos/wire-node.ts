@@ -2,7 +2,7 @@ import { Property } from 'scenerystack/axon';
 import { Vector2 } from 'scenerystack/dot';
 import { WireNode } from 'scenerystack/scenery-phet';
 import { Circle, Node } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 360;

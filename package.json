@@ -16,19 +16,18 @@
     "dev": "VITEPRESS_BASE=/ vitepress dev docs",
     "build": "npm run generate && npm run demos:check && npm run demos:typecheck && vitepress build docs",
     "preview": "vitepress preview docs",
-    "check:pages": "tsx scripts/check-pages.ts",
-    "generate": "tsx scripts/generate-llm-artifacts.ts",
-    "demos:check": "tsx scripts/check-demos.ts",
+    "check:pages": "node scripts/check-pages.ts",
+    "generate": "node scripts/generate-llm-artifacts.ts",
+    "demos:check": "node scripts/check-demos.ts",
     "demos:typecheck": "tsc --noEmit -p tsconfig.demos.json",
     "typecheck": "tsc --noEmit",
-    "coverage:status": "tsx scripts/coverage-status.ts"
+    "coverage:status": "node scripts/coverage-status.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
     "gray-matter": "^4.0.3",
     "playwright": "^1.62.1",
     "scenerystack": "3.0.0",
-    "tsx": "^4.23.1",
     "typescript": "^7.0.2",
     "vitepress": "^2.0.0-alpha.20"
   },

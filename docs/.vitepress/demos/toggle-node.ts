@@ -8,7 +8,7 @@ import {
   type AquaRadioButtonGroupItem
 } from 'scenerystack/sun';
 import { Circle, Node, Rectangle, Text, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 300;

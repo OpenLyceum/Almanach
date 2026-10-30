@@ -2,7 +2,7 @@ import { Property } from 'scenerystack/axon';
 import { Text, VBox } from 'scenerystack/scenery';
 import { TextPushButton } from 'scenerystack/sun';
 import { CH4Node, CO2Node, H2ONode, NH3Node } from 'scenerystack/nitroglycerin';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

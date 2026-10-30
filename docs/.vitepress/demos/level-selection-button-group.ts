@@ -3,7 +3,7 @@ import { LevelSelectionButtonGroup, type LevelSelectionButtonGroupItem } from 's
 import { PhetFont } from 'scenerystack/scenery-phet';
 import { Text, VBox } from 'scenerystack/scenery';
 import { Tandem } from 'scenerystack/tandem';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 440;

@@ -4,7 +4,7 @@ import { ModelViewTransform2 } from 'scenerystack/phetcommon';
 import { HSlider } from 'scenerystack/sun';
 import { GridNode } from 'scenerystack/scenery-phet';
 import { Node, Text, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 360;

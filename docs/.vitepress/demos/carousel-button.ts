@@ -1,7 +1,7 @@
 import { Dimension2 } from 'scenerystack/dot';
 import { Node, Rectangle } from 'scenerystack/scenery';
 import { Carousel, type CarouselItem } from 'scenerystack/sun';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

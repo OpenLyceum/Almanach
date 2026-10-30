@@ -2,7 +2,7 @@ import { Range } from 'scenerystack/dot';
 import { Orientation } from 'scenerystack/phet-core';
 import { Node } from 'scenerystack/scenery';
 import { AxisArrowNode, AxisLine, ChartRectangle, ChartTransform, TickMarkSet } from 'scenerystack/bamboo';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 380;

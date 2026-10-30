@@ -2,7 +2,7 @@ import { Property } from 'scenerystack/axon';
 import { RectangularRadioButton, RectangularRadioButtonGroup, type RectangularRadioButtonGroupItem } from 'scenerystack/sun';
 import { Circle, Node, Path, Rectangle, Text, VBox } from 'scenerystack/scenery';
 import { Shape } from 'scenerystack/kite';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 340;

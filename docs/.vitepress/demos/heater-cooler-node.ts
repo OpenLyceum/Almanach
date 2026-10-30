@@ -2,7 +2,7 @@ import { NumberProperty } from 'scenerystack/axon';
 import { Range } from 'scenerystack/dot';
 import { Text, VBox } from 'scenerystack/scenery';
 import { HeaterCoolerNode } from 'scenerystack/scenery-phet';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

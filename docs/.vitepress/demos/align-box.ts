@@ -2,7 +2,7 @@ import { Property } from 'scenerystack/axon';
 import { Bounds2 } from 'scenerystack/dot';
 import { VerticalAquaRadioButtonGroup, type AquaRadioButtonGroupItem } from 'scenerystack/sun';
 import { AlignBox, HBox, Node, Rectangle, Text } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 440;

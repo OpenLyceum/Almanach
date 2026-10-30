@@ -2,7 +2,7 @@ import { NumberProperty } from 'scenerystack/axon';
 import { Dimension2, Range } from 'scenerystack/dot';
 import { HSlider } from 'scenerystack/sun';
 import { Node, Rectangle, Text, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

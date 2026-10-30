@@ -3,7 +3,7 @@ import { Vector2 } from 'scenerystack/dot';
 import { ModelViewTransform2 } from 'scenerystack/phetcommon';
 import { GridCheckbox, GridNode } from 'scenerystack/scenery-phet';
 import { Node, Rectangle, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 320;

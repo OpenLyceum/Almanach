@@ -3,7 +3,7 @@ import { Dimension2, Range } from 'scenerystack/dot';
 import { HBox, VBox, Text } from 'scenerystack/scenery';
 import { HSlider } from 'scenerystack/sun';
 import { ThermometerNode } from 'scenerystack/scenery-phet';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;

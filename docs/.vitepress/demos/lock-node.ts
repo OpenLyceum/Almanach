@@ -2,7 +2,7 @@ import { BooleanProperty } from 'scenerystack/axon';
 import { LockNode } from 'scenerystack/scenery-phet';
 import { RectangularPushButton } from 'scenerystack/sun';
 import { Node, Text, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 320;

@@ -1,7 +1,7 @@
 import { BooleanProperty } from 'scenerystack/axon';
 import { VerticalCheckboxGroup, type VerticalCheckboxGroupItem } from 'scenerystack/sun';
 import { Text, VBox } from 'scenerystack/scenery';
-import { centerInDisplay } from './shared/center-in-display.js';
+import { centerInDisplay } from './shared/center-in-display.ts';
 import type { DemoModule } from './types.js';
 
 export const width = 400;
