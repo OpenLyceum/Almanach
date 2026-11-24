@@ -425,7 +425,7 @@ Full content of every page is available at https://openlyceum.github.io/Almanach
 - [Multi-Screen Sim Structure](https://openlyceum.github.io/Almanach/patterns/multi-screen-sim-structure): Structuring model/view code across multiple Screens in one Sim.
 - [The Options Pattern](https://openlyceum.github.io/Almanach/patterns/options-pattern): The options-object convention for configuring Nodes and components.
 - [Query Parameters Pattern](https://openlyceum.github.io/Almanach/patterns/query-parameters-pattern): Using query parameters to drive optional/debug behavior.
-- [State Persistence and Save/Restore Patterns](https://openlyceum.github.io/Almanach/patterns/state-persistence-and-save-restore-patterns): Structuring model state as enumerable Properties so it can be saved and restored by a simulation's own save/load feature.
+- [State Persistence and Save/Restore Patterns](https://openlyceum.github.io/Almanach/patterns/state-persistence-and-save-restore-patterns): Capturing the model state needed to resume a simulation and restoring it before notifying observers.
 - [Command/Undo Pattern for Interactive Sims](https://openlyceum.github.io/Almanach/patterns/command-undo-pattern): Structuring a reversible user action as a command object with do/undo so a simulation can support undo, if it needs to - built on the same Property-based state that reset() and dispose() already rely on.
 - [Feature Flags and Preferences Pattern](https://openlyceum.github.io/Almanach/patterns/feature-flags-and-preferences-pattern): The narrow convention of gating an in-development or optional feature behind a single, consistently-named boolean Property.
 

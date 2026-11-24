@@ -2206,7 +2206,7 @@ Category: Guides | Tags: joist, Sim, Screen, lifecycle, animation-loop | Status:
 
 # Sim Lifecycle and Startup Sequence
 
-Every SceneryStack simulation goes through the same handful of phases between the page loading and the animation loop running steadily at 60fps. Knowing the real order — not just "it starts" — matters for questions like "why isn't my model constructed yet" or "why did this listener fire before the thing it depends on existed."
+SceneryStack loads startup resources, constructs the simulation, initializes its screens, and starts the browser animation loop. The order determines when screen models are available and what state a frame callback can read.
 
 ## Phase 1: asset loading, via `onReadyToLaunch`
 
@@ -2221,7 +2221,7 @@ onReadyToLaunch( () => {
 } );
 ```
 
-Nothing in the scene graph is safe to build before this callback fires — a `Text` Node created too early could measure its bounds against a font that hasn't finished loading, and a string Property could briefly hold an untranslated fallback. This is why every [`Screen`](/api/joist/screen)'s model/view factories are deferred functions rather than eagerly-run code: they're only invoked once `Sim` decides a screen is actually needed, which is always after this phase has completed.
+Create UI that depends on startup assets inside this callback or in a screen factory. For example, a `Text` node created before its font is ready can initially measure bounds using a fallback font. Each [`Screen`](/api/joist/screen) stores factories that `Sim.start()` calls during initialization.
 
 ## Phase 2: `new Sim(...)` construction
 
@@ -2229,23 +2229,23 @@ Constructing `Sim` itself does relatively little work: it records the list of `S
 
 ## Phase 3: `sim.start()` — screen initialization
 
-Calling `start()` is what actually triggers construction. `Sim` initializes screens (by default, every screen eagerly rather than only the one first shown — see [`detachInactiveScreenViews`](/api/joist/sim) for the option that keeps inactive screens' views out of the scene graph once built), calling each `Screen`'s `createModel()` and then `createView( model )` in turn. `Sim.isConstructionCompleteProperty` becomes `true` once this has finished for every screen — code that needs to know "has everything actually been built yet" (some PhET-iO tooling, in particular) waits on that Property rather than assuming construction is synchronous with `start()` returning.
+Calling `start()` schedules initialization of every screen in the simulation's selected screen set. Each screen's model is created before its view. `sim.isConstructionCompleteProperty.value` becomes `true` after initialization finishes. The [`detachInactiveScreenViews`](/api/joist/sim) option controls which views are attached to the scene graph after they are created.
 
-Once construction finishes, `start()` begins the `requestAnimationFrame` loop described below. `selectedScreenProperty` is set (to the `HomeScreen` for a fresh multi-screen sim, or the single screen for a one-screen sim, unless a query parameter like `?screens=2` requests a specific starting screen) as part of this same phase.
+The constructor sets `selectedScreenProperty` using the screen configuration and query parameters. Once construction finishes, `start()` begins the `requestAnimationFrame` loop.
 
 ## Phase 4: the running animation loop
 
-Once started, a `Sim` drives one `requestAnimationFrame`-based loop for the lifetime of the page. Each frame:
+Once started, a `Sim` drives a `requestAnimationFrame` loop. A simulation step runs in this order.
 
-1. The browser calls the loop's callback with an elapsed time; `Sim` computes `dt` (elapsed seconds, capped per-screen by that `Screen`'s `maxDT` option to avoid a huge jump after e.g. a backgrounded tab resumes).
-2. `Sim` steps the currently-selected screen's model (if it has a `step( dt )` method) and then its [`ScreenView`](/api/joist/screen-view)'s own `step( dt )` — only the active screen steps; a screen the user isn't looking at does no per-frame work.
-3. `stepTimer` (from `scenerystack/axon`) emits `dt`, firing anything scheduled via `stepTimer.setTimeout`/`setInterval` whose accumulated time has elapsed — see [Timer, animationFrameTimer, and stepTimer](/api/axon/timer) for how this differs from `animationFrameTimer`, which fires every frame independent of which screen (or whether any screen) is active.
-4. The [`Display`](/api/scenery/display) underlying the sim repaints, syncing any Node whose visual state changed as a result of the above back to actual pixels — this is the same `updateDisplay()`/`updateOnRequestAnimationFrame()` mechanism described in [Scenery Basics](/guides/scenery-basics), just already wired up for you by `Sim` rather than something you drive yourself.
+1. `Sim` computes `dt` in seconds, applies the simulation's speed multiplier, and caps it at the selected screen's `maxDT`.
+2. `stepTimer` emits `dt` and runs due callbacks. These callbacks run before the model advances for this step.
+3. `Sim` calls the selected screen model's `step( dt )` when it has one and `dt` is nonzero.
+4. `Sim` steps the [`Display`](/api/scenery/display), calls the selected [`ScreenView`](/api/joist/screen-view)'s `step( dt )`, then updates the display to render the result.
 
-Model and view `step` functions are the only place per-frame model mutation should happen — a `Property` set directly from an input listener (a drag, a slider) is fine and expected, but time-based motion (an object coasting, an animation easing toward a target) belongs in `step(dt)`, driven by the loop above, not in a `setInterval` or a listener that assumes a fixed frame rate.
+Advance time-based model state in the model's `step( dt )`. Use the view's `step( dt )` for visual updates that need the new model state. Joist calls both methods separately, so forwarding the view's step to the model would advance the model twice. Input listeners can still update model state in response to user actions.
 
-::: tip `activeProperty` pauses the loop's effects, not the loop itself
-Setting `sim.activeProperty = false` doesn't stop `requestAnimationFrame` from firing — `Sim` keeps receiving frames, but skips stepping the model/view while inactive, which is what "pausing" a sim actually means at this layer. This is distinct from `browserTabVisibleProperty`, which reflects whether the browser tab itself is visible and is one of the inputs `Sim` uses to decide whether to set `activeProperty` automatically.
+::: tip Sim activity and frame callbacks
+Set `sim.activeProperty.value = false` to suspend automatic simulation steps. Joist still requests browser animation frames and emits `animationFrameTimer` when they run. `browserTabVisibleProperty` separately reports the tab's visibility.
 :::
 
 ## Where to go next
@@ -2401,7 +2401,7 @@ No single kind of test catches every class of bug in a SceneryStack simulation. 
 | --- | --- | --- | --- |
 | Unit-testing model logic headlessly | Physics/logic bugs, regressions in `step()`, incorrect `reset()` | Cheapest — no browser, milliseconds per test | Every commit, in CI |
 | Manual QA passes | Visual bugs, UX confusion, accessibility gaps, "does this feel right" | Most expensive — a person's time | Before a release, after major feature work |
-| Automated fuzz-testing (`?fuzz`) | Crashes and exceptions from unexpected/rapid input sequences no one thought to test by hand | Cheap to run, requires a browser | Regularly in CI or ahead of a release |
+| Automated fuzz-testing (`?fuzz`, `?fuzzBoard`) | Crashes and exceptions from unexpected or rapid input sequences | Cheap to run, requires a browser | Regularly in CI or ahead of a release |
 
 None of the three substitutes for the others: a model can be exhaustively unit-tested and still crash the moment a real user drags two things at once during a screen transition, and a sim can survive an hour of fuzzing without a single exception while still being confusing or ugly. Treat them as different nets, each catching what falls through the others.
 
@@ -2415,7 +2415,7 @@ Some things can only be judged by a person looking at (or listening to, or navig
 
 ## Layer 3: automated fuzz-testing
 
-Between "the model is unit-tested" and "a human clicked through it once" is a large space of input sequences nobody thought to try by hand: rapid clicking during a screen transition, dragging while a reset is in progress, opening a dialog and immediately switching screens. SceneryStack simulations have a built-in tool for probing that space automatically — appending `?fuzz` to the sim's URL drives a stream of randomized pointer and keyboard events at the running sim and reports the first uncaught exception (typically paired with `?ea` so assertions catch problems as early as possible rather than corrupting state silently). See [Fuzz-Testing a Simulation Locally](/cookbook/fuzz-testing-a-simulation-locally) for the concrete recipe — running it locally for a few minutes, and reading query-parameter-driven fuzzing in general as one more application of the [Query Parameters Pattern](/patterns/query-parameters-pattern).
+SceneryStack's built-in fuzzers exercise sequences such as rapid clicks during a screen transition or a drag during reset. Use `?fuzz&ea` for mouse and touch input, and run a separate pass with `?fuzzBoard&ea` for keyboard input. The keyboard pass requires interactive description and a focused simulation document. The `ea` flag enables assertions. See [Fuzz-Testing a Simulation Locally](/cookbook/fuzz-testing-a-simulation-locally) for the procedure.
 
 Fuzzing is a crash-finder, not a correctness-checker: it tells you the sim *didn't throw*, not that the physics is right or the UI makes sense — that's still the job of layers 1 and 2. Its value is coverage breadth at near-zero authoring cost: once wired into a CI job (see [Continuous Integration for SceneryStack Projects](/guides/continuous-integration-for-scenerystack-projects)), it runs the same randomized stress test on every push without anyone having to imagine the failing sequence in advance.
 
@@ -18805,16 +18805,21 @@ Category: API | Tags: sun, OnOffSwitch, BooleanProperty | Status: verified
 | [`BooleanRectangularToggleButton`](/api/sun/toggle-button) | A momentary-feeling control with two icon states | Play/pause, mute/unmute |
 | `OnOffSwitch` | A physical on/off switch | A single prominent power/enable toggle, sound on/off |
 
+<!-- typecheck -->
 ```ts
 import { OnOffSwitch } from 'scenerystack/sun';
 import { BooleanProperty } from 'scenerystack/axon';
+import { Tandem } from 'scenerystack/tandem';
 
 const soundEnabledProperty = new BooleanProperty( true );
 
-const soundSwitch = new OnOffSwitch( soundEnabledProperty );
+const soundSwitch = new OnOffSwitch( soundEnabledProperty, {
+  accessibleName: 'Sound',
+  tandem: Tandem.OPTIONAL
+} );
 ```
 
-Unlike `Checkbox`, `OnOffSwitch` has no separate label argument — pair it with your own `Text` (or an `HBox`/`AlignBox` layout) if you need one, and use `accessibleName` for the accessible label.
+`OnOffSwitch` takes a required options argument. Use `accessibleName` to name the control for assistive technology. For a visible label, put a `Text` node next to the switch in an `HBox`.
 
 <SceneryDemo demo="on-off-switch" />
 
@@ -21657,23 +21662,32 @@ Category: API | Tags: vegas, LevelSelectionButtonGroup, LevelSelectionButton, ga
 
 `LevelSelectionButtonGroup` (from `scenerystack/vegas`) is a `Node` that builds a whole set of [`LevelSelectionButton`](/api/vegas/level-selection-button)s from a declarative array of items, rather than you constructing and laying out each button by hand. It handles three things a level-select screen otherwise has to duplicate: instantiating one button per item, giving every button in the group a uniform `buttonWidth`/`buttonHeight`, and arranging them (a single horizontal row by default, via an internal `FlowBox`).
 
+<!-- typecheck -->
 ```ts
 import { LevelSelectionButtonGroup, type LevelSelectionButtonGroupItem } from 'scenerystack/vegas';
 import { NumberProperty } from 'scenerystack/axon';
 import { Text } from 'scenerystack/scenery';
+import { Tandem } from 'scenerystack/tandem';
 
 const level1Score = new NumberProperty( 0 );
 const level2Score = new NumberProperty( 0 );
+const selectedLevel = new NumberProperty( 0 );
 
 const items: LevelSelectionButtonGroupItem[] = [
-  { icon: new Text( '1', { fontSize: 40 } ), scoreProperty: level1Score },
-  { icon: new Text( '2', { fontSize: 40 } ), scoreProperty: level2Score }
+  {
+    icon: new Text( '1', { fontSize: 40 } ),
+    scoreProperty: level1Score,
+    options: { listener: () => { selectedLevel.value = 1; } }
+  },
+  {
+    icon: new Text( '2', { fontSize: 40 } ),
+    scoreProperty: level2Score,
+    options: { listener: () => { selectedLevel.value = 2; } }
+  }
 ];
 
 const buttonGroup = new LevelSelectionButtonGroup( items, {
-  levelSelectionButtonOptions: {
-    listener: () => { /* look up which level was pressed via buttonGroup.buttons */ }
-  },
+  tandem: Tandem.OPTIONAL,
   groupButtonWidth: 120,
   groupButtonHeight: 120,
   gameLevels: [ 1, 2 ], // value of the sim's gameLevels query parameter
@@ -21707,6 +21721,7 @@ new LevelSelectionButtonGroup( items: LevelSelectionButtonGroupItem[], providedO
 | `flowBoxOptions` | `{ orientation: 'horizontal', spacing: 10 }` | Options for the default `FlowBox` layout; ignored if `createLayoutNode` is provided |
 | `createLayoutNode` | default `FlowBox` builder | `( buttons: LevelSelectionButton[] ) => LayoutNode` — supply this for a custom arrangement (multiple rows, a grid, etc.) instead of the default single row |
 | `gameLevels` | **required** | Array of positive integers (1-based) — only buttons whose level number appears in this array are made `visible`. All buttons are still constructed (so the PhET-iO API doesn't change conditionally), just hidden. Set this from your sim's `gameLevels` query parameter |
+| `tandem` | **required** | Use `Tandem.OPTIONAL` for an uninstrumented example, or provide the group's Tandem in an instrumented sim |
 | `groupButtonWidth` / `groupButtonHeight` | — | Uniform size applied to every button via `LevelSelectionButtonOptions.buttonWidth`/`buttonHeight` |
 
 ## Public API
@@ -23231,74 +23246,65 @@ Category: Patterns | Tags: Property, state, persistence | Status: verified
 
 # State Persistence and Save/Restore Patterns
 
-::: tip Scope: save/load, not the Reset All button
-This page is about **enumerating model state** so it can be serialized and restored by a custom save/load feature. For wiring the in-sim Reset All button back to each Property's `initialValue`, see [The Reset-All Pattern](/patterns/reset-all-pattern).
-:::
+A snapshot explicitly records the model state needed to resume a simulation. Include values that affect what happens next, such as position, velocity, elapsed time, and any random generator state the model depends on. Copy mutable vectors, arrays, or records so subsequent simulation steps cannot change a saved snapshot.
 
-Any "save state now, restore it later" feature: **the model's entire mutable state is enumerable as a set of `Property` values**, with nothing important living in a local variable, a closure, or a field that isn't a `Property`. [Model-View Separation](/patterns/model-view-separation) already asks for this as an architecture rule; this page is about the save/restore consequence of following (or not following) it.
+## Capture the state the model needs to resume
 
-## Why Property-based state is what makes this mechanical
+Use Axon Properties for values that need change notifications. Ordinary fields can also belong in a snapshot. A derived value can be recomputed from the restored inputs. Hover state and other transient view details can stay in the view.
 
+## Restore the inputs before notifying observers
+
+Writing several Properties in sequence normally notifies listeners after each write. A listener that reads both position and velocity can then see values from two different snapshots. In this example, Axon defers notifications until both Property values and the elapsed time have been installed.
+
+<!-- typecheck -->
 ```ts
-class ProjectileModel {
-  public readonly angleProperty = new NumberProperty( 45 );
-  public readonly speedProperty = new NumberProperty( 10 );
-  public readonly isRunningProperty = new BooleanProperty( false );
+import { NumberProperty } from 'scenerystack/axon';
 
-  // Anything NOT expressed as a Property here (a plain field, a variable in step())
-  // is state a generic save/restore mechanism cannot see and cannot capture.
+type MotionSnapshot = {
+  position: number;
+  velocity: number;
+  elapsedTime: number;
+};
+
+class MotionModel {
+  public readonly positionProperty = new NumberProperty( 0 );
+  public readonly velocityProperty = new NumberProperty( 1 );
+  private elapsedTime = 0;
+
+  public step( dt: number ): void {
+    this.elapsedTime += dt;
+    this.positionProperty.value += this.velocityProperty.value * dt;
+  }
+
+  public captureState(): MotionSnapshot {
+    return {
+      position: this.positionProperty.value,
+      velocity: this.velocityProperty.value,
+      elapsedTime: this.elapsedTime
+    };
+  }
+
+  public restoreState( snapshot: MotionSnapshot ): void {
+    this.positionProperty.setDeferred( true );
+    this.velocityProperty.setDeferred( true );
+
+    this.positionProperty.value = snapshot.position;
+    this.velocityProperty.value = snapshot.velocity;
+    this.elapsedTime = snapshot.elapsedTime;
+
+    const notifyPosition = this.positionProperty.setDeferred( false );
+    const notifyVelocity = this.velocityProperty.setDeferred( false );
+    notifyPosition?.();
+    notifyVelocity?.();
+  }
 }
 ```
 
-Because every piece of state above is a `Property`, "capture the current state" and "restore a captured state" are both generic operations that don't need to know anything about `ProjectileModel` specifically:
+This restore method accepts a snapshot from the model. When loading from a file, validate the schema, numeric ranges, and relationships between fields before passing the snapshot to the model. If listeners perform additional work such as writing to history, coordinate that work with the restore and test the resulting state.
 
-```ts
-// Capture: walk every state Property and record its value.
-function captureState( model: ProjectileModel ) {
-  return {
-    angle: model.angleProperty.value,
-    speed: model.speedProperty.value,
-    isRunning: model.isRunningProperty.value
-  };
-}
+## Test that the restored model resumes correctly
 
-// Restore: write each value back. Every observer (view, DerivedProperty, …)
-// updates itself automatically because it was already observing the Property, not
-// a snapshot of it.
-function restoreState( model: ProjectileModel, state: ReturnType<typeof captureState> ): void {
-  model.angleProperty.value = state.angle;
-  model.speedProperty.value = state.speed;
-  model.isRunningProperty.value = state.isRunning;
-}
-```
-
-If a simulation-specific save/restore feature is needed, this is roughly what it looks like hand-rolled. Keep every piece of mutable state in a `Property` and the capture/restore loops stay generic.
-
-## What must NOT be state
-
-| Belongs in a Property (save/restore sees it) | Does not belong in a Property (deliberately invisible to save/restore) |
-| --- | --- |
-| Anything the user set or that represents the model's condition (`angleProperty`, `isRunningProperty`) | Purely derived values recomputed from other state — see below |
-| Inputs that drive a `DerivedProperty` | View-only transient state (an in-progress drag offset, a tooltip's hover flag) |
-
-A `DerivedProperty` is a special case: it *is* state a client can read, but it must never be independently restored — restoring its inputs is sufficient. Trying to hand-restore a derived value directly just means it will immediately be overwritten (or worse, drift out of sync) the next time its dependencies change.
-
-```ts
-// Don't restore this directly - restoring angleProperty is enough; heightAtLaunchProperty
-// recomputes itself from the DerivedProperty wiring set up in the constructor.
-public readonly heightAtLaunchProperty = new DerivedProperty(
-  [ this.angleProperty ],
-  angle => Math.sin( angle )
-);
-```
-
-## Reset is the smallest save/restore case
-
-`reset()` (see [The Reset-All Pattern](/patterns/reset-all-pattern)) is the degenerate case of this same idea: "restore" a fixed, known state (each Property's `initialValue`) rather than an arbitrary captured one. A model that can correctly implement `reset()` by calling `.reset()` on every one of its Properties has, by construction, already satisfied the harder requirement of being fully save/restorable — a useful design check even if you never ship a save feature.
-
-::: tip Design for save/restore even if you never build a save feature
-Keeping every piece of mutable state in a `Property` costs nothing extra to write and pays off in several ways at once: `reset()` becomes mechanical, a future undo/redo or save/load feature has something to hang its capture step on, and view code stays honest about what the model owns. The alternative — state hidden in closures or plain fields — has to be refactored out retroactively the moment any of those needs shows up.
-:::
+Capture a snapshot, advance the model, and restore it. Check both the restored values and the state after running the same next step again. A [Reset All](/patterns/reset-all-pattern) test checks a single initial state. A save/restore test should also cover states reached during an interaction.
 
 
 ========================================================================
@@ -28569,7 +28575,7 @@ Category: Cookbook | Tags: query-parameters, fuzz, testing, qa | Status: verifie
 
 **Task:** before shipping a change, you want automated confidence that no sequence of rapid, unexpected input (fast clicking, dragging mid-transition, hammering a keyboard shortcut) throws an uncaught exception — without writing a hand-crafted test for every such sequence.
 
-SceneryStack simulations have a built-in fuzzer: appending `?fuzz` to the sim's URL drives a continuous stream of randomized pointer and keyboard events at the running sim, and reports the first uncaught exception it triggers. This is [layer 3 of the testing strategy](/guides/testing-and-qa-strategy-overview) — a crash-finder, not a correctness-checker — and complements headless model tests and manual QA rather than replacing either.
+SceneryStack simulations have built-in input fuzzers. Use `?fuzz&ea` to generate mouse and touch input and `?fuzzBoard&ea` for a separate keyboard pass. These crash checks complement headless model tests and manual QA in the [testing strategy](/guides/testing-and-qa-strategy-overview).
 
 ## Running a basic fuzz pass
 
@@ -28577,7 +28583,7 @@ SceneryStack simulations have a built-in fuzzer: appending `?fuzz` to the sim's 
 http://localhost:5173/my-sim/my-sim_en.html?fuzz&ea
 ```
 
-- `fuzz` turns on the randomized input stream.
+- `fuzz` turns on randomized mouse and touch input.
 - `ea` ("enable assertions") is normally paired with it, so an invalid internal state throws immediately at the point it first goes wrong, rather than silently corrupting further state and surfacing as a confusing, unrelated exception minutes later.
 
 Let it run for a few minutes while watching the browser console; a clean run producing no console errors is the pass condition. A thrown exception's stack trace points at the code path the fuzzer happened to stumble into — that's the bug to fix, not the fuzzer's behavior to work around.
@@ -28588,13 +28594,13 @@ If a fuzz run finds a crash, narrowing which kind of input is being generated he
 
 | Parameter | Effect |
 | --- | --- |
-| `fuzz` | Randomizes all input modalities together (pointer and keyboard) |
+| `fuzz` | Randomizes mouse and touch input together |
 | `fuzzMouse` | Randomizes only simulated mouse input |
 | `fuzzTouch` | Randomizes only simulated touch input |
 | `fuzzBoard` | Randomizes only keyboard input, exercising focus movement and hotkeys instead of pointer events |
 | `fuzzRate` | Controls how frequently fuzz events are generated (higher values fire events faster) |
 
-Combine one of the modality-specific flags with `ea` the same way as the general case, e.g. `?fuzzBoard&ea` to stress-test keyboard-only interaction paths (useful right after adding a new `KeyboardListener`/`KeyboardDragListener`, to catch a hotkey that assumes some state that a rapid, out-of-order key sequence violates).
+For keyboard fuzzing, enable interactive description, open the sim with `?fuzzBoard&ea`, and keep the simulation document focused. SceneryStack generates keyboard events only while that document has focus. If you open DevTools to inspect the console, return focus to the sim for the run.
 
 ## Reproducing a fuzz-found failure
 
@@ -28609,7 +28615,7 @@ Fuzzing is randomized, so a crash found in one run may not reproduce with the sa
 | Fuzz-testing | Crashes from unexpected/rapid input sequences | This recipe, and running it in CI — see [Continuous Integration for SceneryStack Projects](/guides/continuous-integration-for-scenerystack-projects) |
 
 ::: tip Run it after any change to input handling, not just before a release
-A few minutes of `?fuzz&ea` locally, right after adding or modifying a `DragListener`/`KeyboardListener`/custom input listener, catches the class of bug fuzzing is good at — an unexpected state transition mid-interaction — while the change is still fresh in mind, rather than waiting for a pre-release fuzz pass to surface it days or weeks later.
+Run a short pass after changing an input listener. Use `?fuzz&ea` after changing pointer handling and `?fuzzBoard&ea` after changing keyboard handling. Run both passes for interactions that support both.
 :::
 
 The `fuzz`, `fuzzMouse`, `fuzzTouch`, `fuzzBoard`, `fuzzRate`, and `ea` flags are registered in SceneryStack's built-in query-parameter schema (`chipper/js/browser/initialize-globals.js` in `scenerystack@3.0.0`); `SimDisplay` reads them when driving the input and keyboard fuzzers.
@@ -29187,6 +29193,7 @@ VitePress additionally fails the build on dead Markdown links, so inline links l
 
 - **One concept per page.** Small, focused pages retrieve better — for search engines, humans, and LLM context windows alike.
 - **Lead with what and why**, then show a complete, runnable TypeScript snippet using real `scenerystack/*` imports.
+- Put `<!-- typecheck -->` on the line immediately before a self-contained `ts` fence to check that snippet against the pinned SceneryStack version. Run `npm run examples:typecheck` to check the marked snippets directly.
 - **Cross-link generously** with site-absolute paths (`/api/phetcommon/model-view-transform`), and mirror the most important links in `related` (unordered "see also") or `prerequisites` (ordered "read this first").
 - Use tables for option/method summaries and `::: tip` / `::: warning` containers for the one thing readers must not miss.
 
@@ -29200,7 +29207,7 @@ Add a live embed when the page documents an **interactive control** (button, sli
 
 ### Authoring a new demo
 
-1. Create `docs/.vitepress/demos/<demo-id>.ts` exporting `createDemo( rootNode )` and optional `width` / `height`. Omit `tandem` on components in Markdown examples. In the demo host, pass `tandem: Tandem.OPTIONAL` only when TypeScript's `PickRequired` demands it — Almanach embeds are not PhET-iO sims (see [PhET-iO and Instrumentation](/guides/phet-io-and-instrumentation)).
+1. Create `docs/.vitepress/demos/<demo-id>.ts` exporting `createDemo( rootNode )` and optional `width` / `height`. In demos and uninstrumented Markdown examples, pass `tandem: Tandem.OPTIONAL` where the component's type requires a Tandem. See [PhET-iO and Instrumentation](/guides/phet-io-and-instrumentation) for instrumented examples.
 2. Register the id in `docs/.vitepress/demos/registry.ts`.
 3. Add `<SceneryDemo demo="<demo-id>" />` to the Markdown page **after** its primary code snippet.
 4. Run `npm run demos:check` and `npm run build`.

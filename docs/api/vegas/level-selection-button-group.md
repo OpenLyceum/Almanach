@@ -19,23 +19,32 @@ sourceRefs:
 
 `LevelSelectionButtonGroup` (from `scenerystack/vegas`) is a `Node` that builds a whole set of [`LevelSelectionButton`](/api/vegas/level-selection-button)s from a declarative array of items, rather than you constructing and laying out each button by hand. It handles three things a level-select screen otherwise has to duplicate: instantiating one button per item, giving every button in the group a uniform `buttonWidth`/`buttonHeight`, and arranging them (a single horizontal row by default, via an internal `FlowBox`).
 
+<!-- typecheck -->
 ```ts
 import { LevelSelectionButtonGroup, type LevelSelectionButtonGroupItem } from 'scenerystack/vegas';
 import { NumberProperty } from 'scenerystack/axon';
 import { Text } from 'scenerystack/scenery';
+import { Tandem } from 'scenerystack/tandem';
 
 const level1Score = new NumberProperty( 0 );
 const level2Score = new NumberProperty( 0 );
+const selectedLevel = new NumberProperty( 0 );
 
 const items: LevelSelectionButtonGroupItem[] = [
-  { icon: new Text( '1', { fontSize: 40 } ), scoreProperty: level1Score },
-  { icon: new Text( '2', { fontSize: 40 } ), scoreProperty: level2Score }
+  {
+    icon: new Text( '1', { fontSize: 40 } ),
+    scoreProperty: level1Score,
+    options: { listener: () => { selectedLevel.value = 1; } }
+  },
+  {
+    icon: new Text( '2', { fontSize: 40 } ),
+    scoreProperty: level2Score,
+    options: { listener: () => { selectedLevel.value = 2; } }
+  }
 ];
 
 const buttonGroup = new LevelSelectionButtonGroup( items, {
-  levelSelectionButtonOptions: {
-    listener: () => { /* look up which level was pressed via buttonGroup.buttons */ }
-  },
+  tandem: Tandem.OPTIONAL,
   groupButtonWidth: 120,
   groupButtonHeight: 120,
   gameLevels: [ 1, 2 ], // value of the sim's gameLevels query parameter
@@ -69,6 +78,7 @@ new LevelSelectionButtonGroup( items: LevelSelectionButtonGroupItem[], providedO
 | `flowBoxOptions` | `{ orientation: 'horizontal', spacing: 10 }` | Options for the default `FlowBox` layout; ignored if `createLayoutNode` is provided |
 | `createLayoutNode` | default `FlowBox` builder | `( buttons: LevelSelectionButton[] ) => LayoutNode` — supply this for a custom arrangement (multiple rows, a grid, etc.) instead of the default single row |
 | `gameLevels` | **required** | Array of positive integers (1-based) — only buttons whose level number appears in this array are made `visible`. All buttons are still constructed (so the PhET-iO API doesn't change conditionally), just hidden. Set this from your sim's `gameLevels` query parameter |
+| `tandem` | **required** | Use `Tandem.OPTIONAL` for an uninstrumented example, or provide the group's Tandem in an instrumented sim |
 | `groupButtonWidth` / `groupButtonHeight` | — | Uniform size applied to every button via `LevelSelectionButtonOptions.buttonWidth`/`buttonHeight` |
 
 ## Public API

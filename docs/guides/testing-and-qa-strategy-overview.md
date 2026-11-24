@@ -26,7 +26,7 @@ No single kind of test catches every class of bug in a SceneryStack simulation. 
 | --- | --- | --- | --- |
 | Unit-testing model logic headlessly | Physics/logic bugs, regressions in `step()`, incorrect `reset()` | Cheapest — no browser, milliseconds per test | Every commit, in CI |
 | Manual QA passes | Visual bugs, UX confusion, accessibility gaps, "does this feel right" | Most expensive — a person's time | Before a release, after major feature work |
-| Automated fuzz-testing (`?fuzz`) | Crashes and exceptions from unexpected/rapid input sequences no one thought to test by hand | Cheap to run, requires a browser | Regularly in CI or ahead of a release |
+| Automated fuzz-testing (`?fuzz`, `?fuzzBoard`) | Crashes and exceptions from unexpected or rapid input sequences | Cheap to run, requires a browser | Regularly in CI or ahead of a release |
 
 None of the three substitutes for the others: a model can be exhaustively unit-tested and still crash the moment a real user drags two things at once during a screen transition, and a sim can survive an hour of fuzzing without a single exception while still being confusing or ugly. Treat them as different nets, each catching what falls through the others.
 
@@ -40,7 +40,7 @@ Some things can only be judged by a person looking at (or listening to, or navig
 
 ## Layer 3: automated fuzz-testing
 
-Between "the model is unit-tested" and "a human clicked through it once" is a large space of input sequences nobody thought to try by hand: rapid clicking during a screen transition, dragging while a reset is in progress, opening a dialog and immediately switching screens. SceneryStack simulations have a built-in tool for probing that space automatically — appending `?fuzz` to the sim's URL drives a stream of randomized pointer and keyboard events at the running sim and reports the first uncaught exception (typically paired with `?ea` so assertions catch problems as early as possible rather than corrupting state silently). See [Fuzz-Testing a Simulation Locally](/cookbook/fuzz-testing-a-simulation-locally) for the concrete recipe — running it locally for a few minutes, and reading query-parameter-driven fuzzing in general as one more application of the [Query Parameters Pattern](/patterns/query-parameters-pattern).
+SceneryStack's built-in fuzzers exercise sequences such as rapid clicks during a screen transition or a drag during reset. Use `?fuzz&ea` for mouse and touch input, and run a separate pass with `?fuzzBoard&ea` for keyboard input. The keyboard pass requires interactive description and a focused simulation document. The `ea` flag enables assertions. See [Fuzz-Testing a Simulation Locally](/cookbook/fuzz-testing-a-simulation-locally) for the procedure.
 
 Fuzzing is a crash-finder, not a correctness-checker: it tells you the sim *didn't throw*, not that the physics is right or the UI makes sense — that's still the job of layers 1 and 2. Its value is coverage breadth at near-zero authoring cost: once wired into a CI job (see [Continuous Integration for SceneryStack Projects](/guides/continuous-integration-for-scenerystack-projects)), it runs the same randomized stress test on every push without anyone having to imagine the failing sequence in advance.
 

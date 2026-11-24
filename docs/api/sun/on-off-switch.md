@@ -24,16 +24,21 @@ sourceRefs:
 | [`BooleanRectangularToggleButton`](/api/sun/toggle-button) | A momentary-feeling control with two icon states | Play/pause, mute/unmute |
 | `OnOffSwitch` | A physical on/off switch | A single prominent power/enable toggle, sound on/off |
 
+<!-- typecheck -->
 ```ts
 import { OnOffSwitch } from 'scenerystack/sun';
 import { BooleanProperty } from 'scenerystack/axon';
+import { Tandem } from 'scenerystack/tandem';
 
 const soundEnabledProperty = new BooleanProperty( true );
 
-const soundSwitch = new OnOffSwitch( soundEnabledProperty );
+const soundSwitch = new OnOffSwitch( soundEnabledProperty, {
+  accessibleName: 'Sound',
+  tandem: Tandem.OPTIONAL
+} );
 ```
 
-Unlike `Checkbox`, `OnOffSwitch` has no separate label argument — pair it with your own `Text` (or an `HBox`/`AlignBox` layout) if you need one, and use `accessibleName` for the accessible label.
+`OnOffSwitch` takes a required options argument. Use `accessibleName` to name the control for assistive technology. For a visible label, put a `Text` node next to the switch in an `HBox`.
 
 <SceneryDemo demo="on-off-switch" />
 

@@ -19,7 +19,7 @@ sourceRefs:
 
 **Task:** before shipping a change, you want automated confidence that no sequence of rapid, unexpected input (fast clicking, dragging mid-transition, hammering a keyboard shortcut) throws an uncaught exception — without writing a hand-crafted test for every such sequence.
 
-SceneryStack simulations have a built-in fuzzer: appending `?fuzz` to the sim's URL drives a continuous stream of randomized pointer and keyboard events at the running sim, and reports the first uncaught exception it triggers. This is [layer 3 of the testing strategy](/guides/testing-and-qa-strategy-overview) — a crash-finder, not a correctness-checker — and complements headless model tests and manual QA rather than replacing either.
+SceneryStack simulations have built-in input fuzzers. Use `?fuzz&ea` to generate mouse and touch input and `?fuzzBoard&ea` for a separate keyboard pass. These crash checks complement headless model tests and manual QA in the [testing strategy](/guides/testing-and-qa-strategy-overview).
 
 ## Running a basic fuzz pass
 
@@ -27,7 +27,7 @@ SceneryStack simulations have a built-in fuzzer: appending `?fuzz` to the sim's 
 http://localhost:5173/my-sim/my-sim_en.html?fuzz&ea
 ```
 
-- `fuzz` turns on the randomized input stream.
+- `fuzz` turns on randomized mouse and touch input.
 - `ea` ("enable assertions") is normally paired with it, so an invalid internal state throws immediately at the point it first goes wrong, rather than silently corrupting further state and surfacing as a confusing, unrelated exception minutes later.
 
 Let it run for a few minutes while watching the browser console; a clean run producing no console errors is the pass condition. A thrown exception's stack trace points at the code path the fuzzer happened to stumble into — that's the bug to fix, not the fuzzer's behavior to work around.
@@ -38,13 +38,13 @@ If a fuzz run finds a crash, narrowing which kind of input is being generated he
 
 | Parameter | Effect |
 | --- | --- |
-| `fuzz` | Randomizes all input modalities together (pointer and keyboard) |
+| `fuzz` | Randomizes mouse and touch input together |
 | `fuzzMouse` | Randomizes only simulated mouse input |
 | `fuzzTouch` | Randomizes only simulated touch input |
 | `fuzzBoard` | Randomizes only keyboard input, exercising focus movement and hotkeys instead of pointer events |
 | `fuzzRate` | Controls how frequently fuzz events are generated (higher values fire events faster) |
 
-Combine one of the modality-specific flags with `ea` the same way as the general case, e.g. `?fuzzBoard&ea` to stress-test keyboard-only interaction paths (useful right after adding a new `KeyboardListener`/`KeyboardDragListener`, to catch a hotkey that assumes some state that a rapid, out-of-order key sequence violates).
+For keyboard fuzzing, enable interactive description, open the sim with `?fuzzBoard&ea`, and keep the simulation document focused. SceneryStack generates keyboard events only while that document has focus. If you open DevTools to inspect the console, return focus to the sim for the run.
 
 ## Reproducing a fuzz-found failure
 
@@ -59,7 +59,7 @@ Fuzzing is randomized, so a crash found in one run may not reproduce with the sa
 | Fuzz-testing | Crashes from unexpected/rapid input sequences | This recipe, and running it in CI — see [Continuous Integration for SceneryStack Projects](/guides/continuous-integration-for-scenerystack-projects) |
 
 ::: tip Run it after any change to input handling, not just before a release
-A few minutes of `?fuzz&ea` locally, right after adding or modifying a `DragListener`/`KeyboardListener`/custom input listener, catches the class of bug fuzzing is good at — an unexpected state transition mid-interaction — while the change is still fresh in mind, rather than waiting for a pre-release fuzz pass to surface it days or weeks later.
+Run a short pass after changing an input listener. Use `?fuzz&ea` after changing pointer handling and `?fuzzBoard&ea` after changing keyboard handling. Run both passes for interactions that support both.
 :::
 
 The `fuzz`, `fuzzMouse`, `fuzzTouch`, `fuzzBoard`, `fuzzRate`, and `ea` flags are registered in SceneryStack's built-in query-parameter schema (`chipper/js/browser/initialize-globals.js` in `scenerystack@3.0.0`); `SimDisplay` reads them when driving the input and keyboard fuzzers.

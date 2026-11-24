@@ -2,7 +2,7 @@
   "site": "https://openlyceum.github.io/Almanach",
   "title": "Almanach — SceneryStack Knowledge Base",
   "description": "A file-based knowledge base of SceneryStack knowledge: API guides, software patterns, styling, and accessibility conventions for building interactive simulations. Every page is plain Markdown with structured frontmatter.",
-  "generated": "2026-10-03T16:27:17.738Z",
+  "generated": "2026-11-24T20:41:04.988Z",
   "documentCount": 418,
   "documents": [
     {
@@ -770,7 +770,7 @@
         "https://www.npmjs.com/package/scenerystack"
       ],
       "navOrder": 16,
-      "wordCount": 800,
+      "wordCount": 533,
       "url": "https://openlyceum.github.io/Almanach/guides/sim-lifecycle-and-startup-sequence"
     },
     {
@@ -854,7 +854,7 @@
         "https://www.npmjs.com/package/scenerystack"
       ],
       "navOrder": 20,
-      "wordCount": 818,
+      "wordCount": 742,
       "url": "https://openlyceum.github.io/Almanach/guides/testing-and-qa-strategy-overview"
     },
     {
@@ -8141,7 +8141,7 @@
       "sourceRefs": [
         "https://www.npmjs.com/package/scenerystack"
       ],
-      "wordCount": 427,
+      "wordCount": 442,
       "url": "https://openlyceum.github.io/Almanach/api/sun/on-off-switch"
     },
     {
@@ -9532,7 +9532,7 @@
         "https://www.npmjs.com/package/scenerystack",
         "https://scenerystack.org/reference/"
       ],
-      "wordCount": 607,
+      "wordCount": 650,
       "url": "https://openlyceum.github.io/Almanach/api/vegas/level-selection-button-group"
     },
     {
@@ -10169,7 +10169,7 @@
       "path": "/patterns/state-persistence-and-save-restore-patterns",
       "sourceFile": "docs/patterns/state-persistence-and-save-restore-patterns.md",
       "title": "State Persistence and Save/Restore Patterns",
-      "description": "Structuring model state as enumerable Properties so it can be saved and restored by a simulation's own save/load feature.",
+      "description": "Capturing the model state needed to resume a simulation and restoring it before notifying observers.",
       "category": "patterns",
       "tags": [
         "Property",
@@ -10189,7 +10189,7 @@
         "https://scenerystack.org/reference/"
       ],
       "navOrder": 21,
-      "wordCount": 645,
+      "wordCount": 370,
       "url": "https://openlyceum.github.io/Almanach/patterns/state-persistence-and-save-restore-patterns"
     },
     {
@@ -11723,7 +11723,7 @@
         "https://www.npmjs.com/package/scenerystack",
         "https://scenerystack.org/reference/"
       ],
-      "wordCount": 655,
+      "wordCount": 602,
       "url": "https://openlyceum.github.io/Almanach/cookbook/fuzz-testing-a-simulation-locally"
     },
     {
@@ -11887,7 +11887,7 @@
       ],
       "prerequisites": [],
       "sourceRefs": [],
-      "wordCount": 1400,
+      "wordCount": 1425,
       "url": "https://openlyceum.github.io/Almanach/meta/authoring-guide"
     },
     {

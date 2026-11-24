@@ -103,6 +103,7 @@ VitePress additionally fails the build on dead Markdown links, so inline links l
 
 - **One concept per page.** Small, focused pages retrieve better — for search engines, humans, and LLM context windows alike.
 - **Lead with what and why**, then show a complete, runnable TypeScript snippet using real `scenerystack/*` imports.
+- Put `<!-- typecheck -->` on the line immediately before a self-contained `ts` fence to check that snippet against the pinned SceneryStack version. Run `npm run examples:typecheck` to check the marked snippets directly.
 - **Cross-link generously** with site-absolute paths (`/api/phetcommon/model-view-transform`), and mirror the most important links in `related` (unordered "see also") or `prerequisites` (ordered "read this first").
 - Use tables for option/method summaries and `::: tip` / `::: warning` containers for the one thing readers must not miss.
 
@@ -116,7 +117,7 @@ Add a live embed when the page documents an **interactive control** (button, sli
 
 ### Authoring a new demo
 
-1. Create `docs/.vitepress/demos/<demo-id>.ts` exporting `createDemo( rootNode )` and optional `width` / `height`. Omit `tandem` on components in Markdown examples. In the demo host, pass `tandem: Tandem.OPTIONAL` only when TypeScript's `PickRequired` demands it — Almanach embeds are not PhET-iO sims (see [PhET-iO and Instrumentation](/guides/phet-io-and-instrumentation)).
+1. Create `docs/.vitepress/demos/<demo-id>.ts` exporting `createDemo( rootNode )` and optional `width` / `height`. In demos and uninstrumented Markdown examples, pass `tandem: Tandem.OPTIONAL` where the component's type requires a Tandem. See [PhET-iO and Instrumentation](/guides/phet-io-and-instrumentation) for instrumented examples.
 2. Register the id in `docs/.vitepress/demos/registry.ts`.
 3. Add `<SceneryDemo demo="<demo-id>" />` to the Markdown page **after** its primary code snippet.
 4. Run `npm run demos:check` and `npm run build`.

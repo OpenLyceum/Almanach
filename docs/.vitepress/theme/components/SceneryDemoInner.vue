@@ -95,8 +95,8 @@ onBeforeUnmount( () => {
         width: `${canvasWidth}px`,
         height: `${canvasHeight}px`
       }"
-      role="img"
-      :aria-label="`Interactive ${demo} demo`"
+      role="group"
+      :aria-label="`Interactive ${demo.replaceAll( '-', ' ' )} demo`"
     >
       <span v-if="isLoading" class="scenery-demo__loading">Loading…</span>
     </div>
